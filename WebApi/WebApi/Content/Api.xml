@@ -1,0 +1,7 @@
+﻿<?xml version="1.0"?>
+<ApiWeb>
+  <Api>
+    <Apihr>http://192.84.100.207/AsoftAPI/</Apihr>
+    <Hosting>http://localhost:4200</Hosting>
+  </Api> 
+</ApiWeb>

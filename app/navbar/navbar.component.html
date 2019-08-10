@@ -1,0 +1,141 @@
+<div class="navbar-top">
+    <div class="row">
+        <div class="col-md-6 col-lg-6">
+            <div class="navbar-topleft">
+                <ul class="menu-top-left" style="margin-left: 50px">
+                    <!-- <li *ngIf="Parents.length>1">
+                        <a title="Chức năng khác" class="sidebar-toggle dropdown-toggle" data-toggle="dropdown"
+                            aria-expanded="true"><img src="assets/Img/icon/menu.png" class="img-responsive img-icon"
+                                style="padding-top: 8px;"></a>
+                        <ul class="chucnang dropdown-menu">
+                            <li class="col-md-6" ng-repeat="m in Parents|filter:{hienThi:true}:true track by $index">
+                                <a (click)="setMain(m)">
+                                    <img src="{{baseUrl+m.iconWeb}}" class="" alt="Image">
+                                    <span ng-bind="m.ten"></span>
+                                    <span class="countitem" *ngIf="Counts[m.count]>0" ng-bind="Counts[m.count]"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li> --> 
+                    <li><a href="{{linkHome}}" class="title-logo" style="text-decoration: none">MEIKO ELECTRONICS Co., Ltd</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-6" style="padding-right:5px;">
+            <div class="navbar-topright">
+                <ul class="menu-topright">
+                    <!-- <li class="dropdown notification-menu" *ngIf="NMessages.hubs.length>0">
+                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+                            style="margin-top:4px;position:relative">
+                            <i style="font-size:18px" class="fa fa-envelope"></i>
+                            <div class="notify" *ngIf="NMessages.hubs.length>0">
+                                <span class="heartbit"></span>
+                                <span class="point"></span>
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu" style="right:0;left:auto;width:300px;overflow:hidden">
+                            <li class="not-head" ng-bind="'Bạn có '+NMessages.hubs.length+' thông báo xử lý mới'"></li>
+                            <li ng-repeat="n in NMessages.hubs| limitTo:5">
+                                <a class="media" (click)="goHubs(n)">
+                                    <span class="media-left media-icon" title="{{n.tenNguoiGui}}"><img
+                                            src="{{baseUrl+n.icon}}" class="img-user" /></span>
+                                    <div class="media-body">
+                                        <span class="block bold" ng-bind="n.tieuDe"></span>
+                                        <span class="block" ng-bind="n.noiDung"></span>
+                                        <span class="text-muted block" ng-bind="n.ngayGui|timeago"></span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="not-footer"><a (click)="setView('os/ThongBaoSend')">Xem tất cả</a></li>
+                        </ul>
+                    </li> -->
+                    <!-- <li class="dropdown notification-menu">
+                        <a title="Thông báo mới nhất" class="dropdown-toggle" data-toggle="dropdown"
+                            aria-expanded="false">
+                            <img src="assets/Img/Bell.png" class="img-icon" /><span
+                                class="label label-danger newbganimation" *ngIf="NMessages.tbs.length>0"
+                                ng-bind="NMessages.tbs.length"></span>
+                            <div class="notify" *ngIf="NMessages.tbs.length>0">
+                                <span class="heartbit"></span>
+                                <span class="point"></span>
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu" style="right:0;left:auto;width:300px;overflow:hidden">
+                            <li class="not-head" ng-bind="'Bạn có '+NMessages.tbs.length+' thông báo mới'"></li>
+                            <li ng-repeat="n in NMessages.tbs | limitTo:5">
+                                <a class="media" (click)="goHubs(n)">
+                                    <span class="media-left media-icon" title="{{n.fullName}}"><img
+                                            src="{{baseUrl+n.anhDaiDien}}" class="img-user" /></span>
+                                    <div class="media-body"><span class="block" ng-bind="n.tenThongBao"></span><span
+                                            class="text-muted block" ng-bind="n.ngayGui|timeago"></span></div>
+                                </a>
+                            </li>
+                            <li class="not-footer"><a (click)="setView('os/ThongBaoUser')">Xem tất cả</a></li>
+                        </ul>
+                    </li> -->
+                    <li>
+                        <a class="sidebar-toggle dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><img
+                                [src]="tk.anhDaiDien" class="img-responsive img-user"></a>
+                        <ul class="navbar-info dropdown-menu">
+                            <!-- <li><a (click)="ModalChangeInfor()"><i class="fa fa-user" aria-hidden="true"></i> Thông tin
+                                    cá nhân</a>
+                            </li> -->
+                            <li><a (click)="modalChangePass()"><i class="fa fa-cog" aria-hidden="true"></i> Đổi mật
+                                    khẩu</a></li>
+                            <li><a (click)="logOut()"><i class="fa fa-sign-in" aria-hidden="true"></i> Đăng xuất</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a style="color:#fff;margin-top:2px;font-size:16px;">{{tk.displayName}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="modal fadess" [style.display]="mModalPass ? 'block' : 'none'" id="ModalChangePass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog w360">
+            <div class="modal-content">
+                <div modal-movable class="modal-header head-modal">
+                    <button type="button" class="close" (click)="hideModalPass()">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Back</span>
+                    </button>
+                    <h4 class="modal-title">Đổi mật khẩu</h4>
+                </div>
+                <div class="modal-body" style="padding:5px 15px;overflow: initial;">
+                    <form class="form-horizontal" role="form" name="frchangepass" id="frchangepass" novalidate>
+                        <div style="display:block;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="text-title"><label style="width: 150px;">Nhập mật khẩu cũ
+                                            :</label><input style="width: calc(100% - 150px);" type="password"
+                                            class="form-control text-passowrd" name="mkcu"
+                                            [(ngModel)]="CMatkhau.mkcu" required /></div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="text-title"><label style="width: 150px;">Nhập mật khẩu mới
+                                            :</label><input style="width: calc(100% - 150px);" type="password"
+                                            class="form-control text-passowrd" name="mkmoi"
+                                            [(ngModel)]="CMatkhau.mkmoi" required /></div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="text-title"><label style="width: 150px;">Nhập lại mật khẩu
+                                            :</label><input style="width: calc(100% - 150px);" type="password"
+                                            class="form-control text-passowrd" name="mknhaplai"
+                                            [(ngModel)]="CMatkhau.mknhaplai" required /></div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" (click)="ChangePass(frchangepass)"><i
+                            class="fa fa-save"></i>Cập nhật</button>
+                    <button type="button" class="btn btn-default" (click)="hideModalPass()"><i
+                            class="fa fa-power-off"></i>Thoát</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

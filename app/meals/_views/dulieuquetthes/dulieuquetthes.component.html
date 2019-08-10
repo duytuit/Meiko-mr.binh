@@ -1,0 +1,381 @@
+<!--
+<div id="divDuLieuQuetThe">
+  <div class="row"></div>
+  <div class="navbar-bottom nav1-bottom">
+    <div class="row">
+      <div class="box-search">
+        <input
+          type="text"
+          class="form-control search-edu"
+          placeholder="Tìm kiếm..."
+          [(ngModel)]="opition.s"
+          my-enter="ListSearch()"
+        />
+        <div class="btn-group btngroup-search">
+          <button
+            type="button"
+            class="btn btn-primary dropdown-toggle"
+            data-toggle="dropdown"
+          >
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a (click)="FilterStatus('')">Tất cả</a></li>
+            <li>
+              <a
+                ng-style="{'color':(opition.sts == 'on') ? 'red':'black'}"
+                (click)="FilterStatus('on')"
+                >Kích hoạt</a
+              >
+            </li>
+            <li>
+              <a
+                ng-style="{'color':(opition.sts == 'off') ? 'red':'black'}"
+                (click)="FilterStatus('off')"
+                >Khóa</a
+              >
+            </li>
+          </ul>
+        </div>
+        <button
+          type="button"
+          class="btn btn-default btnseach"
+          (click)="ListSearch()"
+        >
+          <i class="fa fa-search icon-vedu"></i>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" style="width:600px">
+        <div class="row">
+          <div class="col-md-1">
+            <div class="text-title">
+              <label style="width: auto;">
+                Ngày
+              </label>
+            </div>
+          </div>
+          <div class="col-md-3" style="padding-left: 0px">
+            <div class="text-title">
+              <input
+                type="text"
+                class="form-control text-input-form"
+                [(ngModel)]="SF005.T006C"
+                name="SF005T006C"
+                bsDatepicker
+                [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }"
+                style="width: 100%"
+              />
+            </div>
+          </div>
+          <div class="col-md-1">
+              <div class="text-title">
+                <label style="width: auto;">
+                  Ca
+                </label>
+              </div>
+            </div>
+            <div class="col-md-2" style="padding-left: 0px">
+              <div class="text-title">
+                <input
+                  type="text"
+                  class="form-control text-input-form"
+                  [(ngModel)]="SF005.T006C"
+                  name="SF005T006C"
+                  bsDatepicker
+                  [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }"
+                  style="width: 100%"
+                />
+              </div>
+            </div>
+          <div class="col-md-5" style="padding-right:0">
+            <ul class="navbar-bottomleft">
+              
+              <li style="background: #ff6313;border-color: #ff6313;">
+                <a title="Thêm mới" (click)="ModalHSCV('add')"
+                  ><i class="fa fa-plus" style="color: white"></i
+                ></a>
+              </li>
+              <li>
+                <a (click)="Refersh()" title="Làm mới"
+                  ><i class="fa fa-refresh" aria-hidden="true"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>      
+    </div>
+  </div>
+  <div id="CDNhomGet" class="incluceView">
+    <div class="row">
+      <div class="col-md-12"> 
+        <div class="container-table mat-elevation-z8">
+                       
+      
+          <mat-table #table [dataSource]="dataSource" matSort matSortActive="nam" matSortDirection="desc" matSortDisableClear class="mat-cell">
+          
+          <ng-container matColumnDef="gioquet">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Giờ quẹt</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.gioquet}}
+          </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="manhanvien">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Mã nhân viên</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.manhanvien}}
+          </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="hoten">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Họ tên</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.hoten}}
+          </mat-cell>
+          </ng-container>
+          
+
+          <ng-container matColumnDef="phong">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Phòng</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.phong}}
+          </mat-cell>          
+          </ng-container> 
+
+          <ng-container matColumnDef="ban">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Ban</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.ban}}
+          </mat-cell>          
+          </ng-container> 
+
+          <ng-container matColumnDef="congdoan">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Công đoạn</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.congdoan}}
+          </mat-cell>          
+          </ng-container> 
+
+          <ng-container matColumnDef="mamay">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Máy</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.mamay}}
+          </mat-cell>          
+          </ng-container> 
+
+          <ng-container matColumnDef="maca">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Ca</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.macanhansu}}
+          </mat-cell>          
+          </ng-container> 
+          
+          
+          <ng-container matColumnDef="actions">
+            
+          <mat-header-cell *matHeaderCellDef>Xóa
+          </mat-header-cell>
+          
+          <mat-cell *matCellDef="let row; let i=index;">            
+            <button mat-icon-button color="warn" (click)="deleteItem(row.id)">
+            <mat-icon aria-label="Delete">delete</mat-icon>
+            </button>
+          </mat-cell>
+          </ng-container>  
+          
+          
+        
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{hovered: row.hovered, highlighted: row.highlighted}" (click)="row.highlighted = !row.highlighted" (mouseover)="row.hovered = true" (mouseout)="row.hovered = false"></mat-row>
+          </mat-table>
+        
+         
+          <mat-paginator #paginator
+                 
+                 [pageIndex]="0"
+                 [pageSize]="15"
+                 [pageSizeOptions]="[15, 30, 45]"
+                 [showFirstLastButtons]="true">
+          </mat-paginator>    
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+<div class="form" style="border-top: 1px">
+    <h3 class="text-title">DANH SÁCH NHÂN SỰ QUẸT THẺ</h3>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <form>
+      <div class="row">
+        <div class="col-md-2" style="padding-left: 30px">
+          <mat-form-field color="accent">
+            <input matInput [formControl]="_date" [matDatepicker]="picker" placeholder="Ngày" (dateChange)="getDataCheckIn()"/>
+            <mat-datepicker-toggle matSuffix  [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col-md-10">
+            <mat-form-field color="accent">
+                <mat-select placeholder="Ca" [formControl]="_ca" [(ngModel)] = "currCa" (ngModelChange)="getDataCheckIn()">
+                  <mat-option *ngFor="let ca of caLamViec" [value]="ca.ma">
+                    {{ca.ten}}                                
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            <button
+            mat-button
+            color="primary"
+            class="btn-sp"
+            (click)="AsyncEmpFromAsoft()"
+            matTooltip="Đồng bộ nhân sự"
+            aria-label=""
+          >
+            <mat-icon class="inline-icon">sync</mat-icon
+            ><mat-icon class="inline-icon">person</mat-icon>
+          </button>
+          <button
+            mat-button
+            color="primary"
+            class="btn-sp"
+            (click)="AsyncDataCheckin()"
+            matTooltip="Đồng bộ dữ liệu quẹt thẻ"
+            aria-label=""
+          >
+            <mat-icon class="inline-icon">sync</mat-icon>
+          </button>
+          <button
+            mat-button
+            color="primary"
+            class="btn-sp"
+            (click)="getDataCheckIn()"
+            matTooltip="Xem danh sách"
+            aria-label=""
+          >
+          <mat-icon class="inline-icon">view_list</mat-icon>
+          </button>
+          <button
+            mat-button
+            color="primary"
+            class="btn-sp"
+            (click)="DeleteAll()"
+            matTooltip="Xóa dữ liệu"
+            aria-label=""
+          >
+            <mat-icon aria-label="Delete">delete</mat-icon>
+          </button>
+        </div>
+        
+      </div>
+    </form>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    
+    <div class="container-table mat-elevation-z8">
+      <mat-table
+        #table
+        [dataSource]="dataSource"
+        matSort
+        matSortActive="nam"
+        matSortDirection="desc"
+        matSortDisableClear
+        class="mat-cell"
+      >
+        <ng-container matColumnDef="gioquet">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Giờ quẹt</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element">{{ element.gioquet }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="manhanvien">
+            <mat-header-cell *matHeaderCellDef>
+                <div>
+                  <mat-form-field>
+                    <input matInput class="form-field" [formControl]="maIdFilter" placeholder="Mã/ID">
+                  </mat-form-field>
+                </div>
+            </mat-header-cell>
+          <mat-cell *matCellDef="let element"
+            >{{ element.manhanvien }}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="hoten">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Họ tên</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element">{{ element.hoten }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="phong">
+            <mat-header-cell *matHeaderCellDef>
+                <div>
+                  <mat-form-field>
+                    <input matInput class="form-field" [formControl]="phongFilter" placeholder="Phòng">
+                  </mat-form-field>
+               </div>
+            </mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.phong }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="ban">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Ban</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element">{{ element.ban }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="congdoan">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Công đoạn</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element">{{ element.congdoan }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="mamay">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Máy</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element">{{ element.mamay }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="maca">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Ca</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element"
+            >{{ element.macanhansu }}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef>Xóa </mat-header-cell>
+
+          <mat-cell *matCellDef="let row; let i = index">
+            <button mat-icon-button color="warn" (click)="deleteItem(row.id)">
+              <mat-icon aria-label="Delete">delete</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row
+          *matRowDef="let row; columns: displayedColumns"
+          [ngClass]="{ hovered: row.hovered, highlighted: row.highlighted }"
+          (click)="row.highlighted = !row.highlighted"
+          (mouseover)="row.hovered = true"
+          (mouseout)="row.hovered = false"
+        ></mat-row>
+      </mat-table>
+
+      <mat-paginator
+        #paginator
+        [pageIndex]="0"
+        [pageSize]="20"
+        [pageSizeOptions]="[20, 40, 60,80,100]"
+        [showFirstLastButtons]="true"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</div>

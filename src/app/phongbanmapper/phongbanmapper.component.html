@@ -1,0 +1,247 @@
+<div id="PhongBanMapper">
+  <div class="navbar-bottom nav1-bottom">
+    <div class="row">
+    </div>
+    <div class="row">
+      <div class="col-md-4" style="width:240px">
+        <div class="row">
+          <div class="col-md-12" style="width:240px; padding-right:0">
+            <ul class="navbar-bottomleft">
+              <li class="checkall" title="Chọn tất cả"><input type="checkbox" name="checkAll" [(ngModel)]="mod.checkAll"
+                  (click)="toggleAll(ListPBMapper)"></li>
+              <li><a title="Thêm mới" (click)="modalPhongBanMapper('add')"><i class="fa fa-plus"></i></a></li>
+              <li *ngIf="checkLen > 0"><a title="Xóa" (click)="deleteList()"><i class="fa fa-trash-o"></i></a></li>
+              <li><a (click)="Refersh()" title="Làm mới"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8" style="width:calc(100% - 240px)">
+        <div class="row">
+          <div class="col-md-6" style="padding:5px 0 0 0">
+            <div class="row">
+              <div class="col-md-6 widths" style="padding-right:5px">
+                <div class="box-droplist">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="CDNhomGet" class="incluceView">
+    <table class="table dotborder table-hover table-vedu"
+      style="margin-bottom:-1px;table-layout:fixed;background: #f2f2f2;">
+      <thead>
+        <tr>
+          <th width="50" align="center"></th>
+          <th width="40" align="center">STT</th>
+          <th align="left">Tên bộ phận</th>
+          <th align="center" width="150">Danh Mục Báo Phế</th>
+          <th align="center" width="80">Trạng thái</th>
+          <th width="90" align="center">Chức năng</th>
+        </tr>
+      </thead>
+    </table>
+    <div style="max-height:calc(100vh - 170px)!important;margin-right:-17px;overflow:scroll;overflow-x:hidden">
+      <table class="table dotborder table-hover table-vedu" style="table-layout:fixed">
+        <tbody>
+          <tr *ngFor="let dg of ListPBMapper;index as i">
+            <td width="50" align="center"> <input type="checkbox" (change)="CheckCheked()" value="dg.A0034_ID"
+                [(ngModel)]="dg.checked" /></td>
+            <td width="40" align="center">{{i + 1}}</td>
+            <td align="left" [textContent]="dg.tenPhongBanMoi" [style.color]="dg.color" [style.font-weight]="dg.bold">
+            </td>
+            <td width="150" align="center">
+              <a title="Xem danh mục báo phế phòng ban" (click)="modalDMBaoPhePB(dg)">
+                <span class="badge" style="background-color:red">{{dg.count}}</span>
+              </a>
+            </td>
+            <td align="center" width="80" [textContent]="dg.trangThai == true ? 'Kích hoạt':'Khóa'"></td>
+            <td width="90" align="center"><a title="Sửa" (click)="selectEdit(dg)"><i
+                  class="fa fa-pencil-square-o"></i></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="modal fadess" id="modalPhongBanMapper" [style.display]="mPBMapper ? 'block' : 'none'" tabindex="-1"
+      role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div modal-movable class="modal-header head-modal">
+            <button type="button" class="close" (click)="hideModal()">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Back</span>
+            </button>
+            <h4 class="modal-title">Cập nhật phòng ban</h4>
+          </div>
+          <div class="modal-body" style="padding:5px 15px;overflow: initial;">
+            <form class="form-horizontal" role="form" name="frUser" id="frUser" novalidate>
+              <div style="display:block;">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="text-title"><label style="width:140px"><b>Nhóm phòng ban :</b></label>
+                      <select class="form-control text-company" name="Parent_ID"
+                        style="width: calc(100% - 140px) !important;display: inline-block"
+                        [(ngModel)]="PBMapper.Parent_ID">
+                        <option [value]="null">--- Chọn phòng ban ---</option>
+                        <option *ngFor="let item of ListPBMapper" [value]="item.A0034_ID">{{item.tenPhongBanMoi}}
+                        </option>
+                      </select>
+                    </div>
+
+                  </div>
+                  <div class="col-md-12">
+                    <div class="text-title"><label style="width:140px"><b>Link đến Phòng ban :</b></label>
+                      <ng-select style="width: calc(100% - 140px) !important;display: inline-block"
+                        [items]="ListCompageDiagram" bindLabel="tenPhongBanMoi" bindValue="id"
+                        [(ngModel)]="PBMapper.phongBanMapID" name="phongBanMapID" (change)="changePhongBan(Hs.phongBan)"
+                        placeholder="--- Chọn phòng ban kết nối đến ---">
+                      </ng-select>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="text-title"><label style="width: 140px;">Mã phòng ban :</label><input type="text"
+                        class="form-control text-company" style="width: calc(100% - 140px) !important"
+                        [(ngModel)]="PBMapper.maPhongBan" name="maPhongBan" required /></div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="text-title"><label style="width: 140px;">Tên phòng ban :</label><input type="text"
+                        class="form-control text-company" style="width: calc(100% - 140px) !important"
+                        [(ngModel)]="PBMapper.tenPhongBan" name="tenPhongBan" required /></div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="text-title"><label style="width: 140px;">Số thứ tự :</label><input type="text"
+                        class="form-control text-company" style="width: calc(100% - 140px) !important"
+                        [(ngModel)]="PBMapper.STT" name="STT" required /></div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="text-title">
+                      <label style="width:140px">Trạng thái: </label>
+                      <div class="boxquydanh" style="width:calc(100% - 140px) !important">
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="trangThai" [(ngModel)]="PBMapper.trangThai" [value]="true">
+                            Kích hoạt
+                          </label>
+                        </div>
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="trangThai" [(ngModel)]="PBMapper.trangThai" [value]="false">
+                            Khóa
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="savePBMapper()"><i class="fa fa-save"></i>
+              Lưu</button>
+            <button type="button" class="btn btn-default" (click)="hideModal()"><i class="fa fa-power-off"></i>
+              Thoát</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fadess" id="ModalDanhMucBP" [style.display]="mDMBaoPhe ? 'block' : 'none'" tabindex="-1"
+      role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div modal-movable class="modal-header head-modal">
+            <button type="button" class="close" (click)="hideModalDMBPPB()">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Back</span>
+            </button>
+            <h4 class="modal-title">Cập nhật danh sách danh mục báo phế</h4>
+          </div>
+          <!-- Modal Body -->
+          <div class="modal-body" style="padding:5px 15px;overflow: initial;">
+            <form class="form-horizontal" role="form" name="frModule" id="frModule" novalidate>
+              <div style="display:block;">
+                <div class="row"> 
+                  <div class="col-md-12">
+                    <div style="float: right;margin-top: -6px;">
+                      <ul class="navbar-bottomleft" style="display: inline-block">
+                        <li><a (click)="RefershDMBP()" title="Làm mới"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
+                        <li *ngIf="dmBPSelect.length > 0"><a (click)="DeleteDMBP()" title="Xóa danh mục báo phế"><i class="fa fa-trash-o" aria-hidden="true"></i></a></li>
+                        <li><a (click)="ChoiseDanhMucPhongBan()" title="Lưu lại"><i class="fa fa-save" aria-hidden="true"></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div style="clear: both;"></div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <h3 style="font-size: 14px;margin: 7px 0px;color: #023f98;">Danh sách danh mục báo phế</h3>
+                    <table class="table dotborder table-hover table-vedu"
+                      style="margin-bottom:-1px;table-layout:fixed;background: #f2f2f2;margin-top: 5px">
+                      <thead>
+                        <tr>
+                          <th width="50" align="center"></th>
+                          <th width="50" align="center">STT</th>
+                          <th width="100" align="center">Mã danh mục</th>
+                          <th align="left">Tên danh mục</th>
+                        </tr>
+                      </thead>
+                    </table>
+                    <table class="table dotborder table-hover table-vedu"
+                      style="table-layout:fixed;margin-bottom: 5px;">
+                      <tbody>
+                        <tr *ngFor="let r of listDanhMucBaoPhe;index as i">
+                          <td width="50" align="center"><input type="checkbox" name="checkedPB-{{i}}}"
+                              value="r.A0035_ID" [(ngModel)]="r.checked" /></td>
+                          <td width="50" align="center">{{i + 1}}</td>
+                          <td width="100" align="left">{{r.maNoiDungBaoPhe}}</td>
+                          <td align="left">{{r.tenTiengViet}} - ({{r.tenTiengNhat}})</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="col-md-6">
+                    <h3 style="font-size: 14px;margin: 7px 0px;color: #ff6313">Danh sách danh mục đã chọn</h3>
+                    <table class="table dotborder table-hover table-vedu"
+                      style="margin-bottom:-1px;table-layout:fixed;background: #f2f2f2;margin-top: 5px">
+                      <thead>
+                        <tr>
+                          <th width="50" align="center"></th>
+                          <th width="50" align="center">STT</th>
+                          <th width="100" align="center">Mã danh mục</th>
+                          <th align="left">Tên danh mục</th>
+                        </tr>
+                      </thead>
+                    </table>
+                    <table class="table dotborder table-hover table-vedu"
+                      style="table-layout:fixed;margin-bottom: 5px;">
+                      <tbody>
+                        <tr *ngFor="let r of listDanhMucBaoPheSelect;index as i">
+                          <td width="50" align="center"><input type="checkbox" name="checkedPBMapper-{{i}}}"
+                              value="r.A0035_ID" [(ngModel)]="r.checked" (change)="CheckDMBP()" /></td>
+                          <td width="50" align="center">{{i + 1}}</td>
+                          <td width="100" align="left">{{r.maNoiDungBaoPhe}}</td>
+                          <td align="left">{{r.tenTiengViet}} - ({{r.tenTiengNhat}})</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!-- Modal Footer -->
+          <div class="modal-footer"> 
+            <button type="button" class="btn btn-default" (click)="hideModalDMBPPB()"><i class="fa fa-power-off"></i>
+              Thoát</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

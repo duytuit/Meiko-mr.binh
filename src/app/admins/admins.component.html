@@ -1,0 +1,65 @@
+<app-navbar></app-navbar>
+<div class="boxtooglemenu">
+  <a style="display:inline-block;float:left;" (click)="ToogleMenu()">
+    <img src="assets/Img/linemenu.png" class="img-responsive img-TD_Sys_UserInfo"
+      style="float:none !important;height:28px">
+  </a>
+</div>
+<div class="boxmenumainLeft">
+  <div class="boxitemleft" *ngFor="let m of ParentMenu;index as i">
+    <div class="boxitemcontent" (click)="setMain(m)" [class.ActiveMenu]="m.isActive == true">
+      <img [src]="m.IconDoc" class="img-responsive" alt="Image">
+      <span>{{m.tenRutGon}}</span>
+    </div>
+  </div>
+</div>
+<div class="content-page-tree">
+  <div class="page-tree-left col-md-3" *ngIf="HideMenu == false">
+    <div class="page-panel">
+      <!-- <div ng-repeat="p in Menus|filter:{parentID:Main.menuID}:true track by $index">
+          <div class="dvgroup" data-toggle="collapse" data-target="#collapse{{$index}}" aria-expanded="false"
+              aria-controls="collapse{{$index}}"><img height="24" src="{{baseUrl+p.iconWeb}}" /><span
+                  ng-bind="p.ten"></span></div>
+          <div class="collapse in" id="collapse{{$index}}" data-parent="#accordion">
+              <ul class="menu-left-content">
+                  <li ng-repeat="m in Menus|filter:{parentID:p.menuID}:true track by $index"><img
+                          src="{{baseUrl+m.iconWeb}}" /><a (click)="setUrl(m)"
+                          class="{{v==m.webView?'active':''}}" ng-bind="m.ten"></a></li>
+              </ul>
+          </div>
+      </div> -->
+      <div *ngFor="let p of MenuList|Filter:{IDCha:menuMain.A0007_ID}:true;index as i">
+        <div class="dvgroup" data-toggle="collapse" data-target="#collapse" aria-expanded="false"
+          aria-controls="collapse">
+          <!-- <img [src]="p.Icon" style="width:16px !important" /> -->
+          <span style="text-transform: uppercase">{{p.tenMenu}}</span>
+        </div>
+        <div class="collapse in" id="collapse" data-parent="#accordion">
+          <ul class="menu-left-content">
+            <li *ngFor="let m of MenuList|Filter:{IDCha:p.A0007_ID}:true|orderBy:'thuThu';index as i"><img
+                [src]="m.Icon" /><a (click)="SetUrl(m)" routerLink="{{m.Link}}" class="{{m.isActive}}">{{m.tenMenu}}
+                <!-- <span class="countitem">{{Counts[m.count]}}</span> -->
+              </a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-tree-right col-md-9" [class.FullDesktop]="HideMenu==true">
+    <router-outlet></router-outlet>
+    <!-- <div class="footer" style="width: 100%;
+    display: block;
+    position: relative;
+    height: 42px;
+    border-top: 1px solid #999;
+    background: #999;
+    text-align: center;
+    line-height: 42px;
+    color: white;">
+    © MEIKO ELECTRONICS Co., Ltd. All rights reserved.
+    </div> -->
+  </div>
+
+  <ng4-loading-spinner> </ng4-loading-spinner>
+</div>
+<div style="clear: both"></div>

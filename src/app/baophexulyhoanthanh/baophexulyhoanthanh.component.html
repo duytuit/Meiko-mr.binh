@@ -1,0 +1,601 @@
+<div id="CVCuaToi">
+  <div class="navbar-bottom nav1-bottom">
+    <div class="row">
+      <div class="box-search">
+        <input type="text" class="form-control search-edu" placeholder="Tìm kiếm..." [(ngModel)]="opition.s"
+          my-enter="ListSearch()">
+        <div class="btn-group btngroup-search">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span
+              class="caret"></span></button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a (click)="FilterStatus('')">Tất cả</a></li>
+            <li><a ng-style="{'color':(opition.sts == 'on') ? 'red':'black'}" (click)="FilterStatus('on')">Kích hoạt</a>
+            </li>
+            <li><a ng-style="{'color':(opition.sts == 'off') ? 'red':'black'}" (click)="FilterStatus('off')">Khóa</a>
+            </li>
+          </ul>
+        </div>
+        <button type="button" class="btn btn-default btnseach" (click)="ListSearch()"><i
+            class="fa fa-search icon-vedu"></i></button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4" style="width:400px">
+        <div class="row">
+          <div class="col-md-12" style="width:400px; padding-right:0">
+            <ul class="navbar-bottomleft">
+              <li><a (click)="Refersh()" title="Làm mới"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
+              <li [style.display]="rowSelect != null ? 'block' : 'none'">
+                <a class="sidebar-toggle dropdown-toggle refresh-icon" data-toggle="dropdown" aria-expanded="true"
+                  style="padding: 6px 10px 5px;margin-top:-2px"><i class="fa fa-tag"></i> Tác
+                  vụ</a>
+                <ul class="dropdown-menu navbar-color navbarsign">
+                  <li (click)="ModalSignAndSend()">
+                    <img src="assets/Img/Approved.png" style="width: 24px;margin-right: 8px;margin-top: -1px;" />
+                    <span>Ký và Gửi</span>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8" style="width:calc(100% - 400px)">
+        <div class="row">
+          <div class="col-md-6" style="padding:5px 0 0 0">
+            <div class="row">
+              <div class="col-md-6 widths" style="padding-right:5px">
+                <div class="box-droplist">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="box-page">
+              <ul class="ul-box-page">
+                <li><span [textContent]="(opition.p-1)*opition.pz+1"></span> - <span
+                    [textContent]="opition.pz*opition.p>opition.total?opition.total:opition.pz*opition.p"></span> trong
+                  số <span [textContent]="opition.total"></span></li>
+                <li class="li-prevpage" title="Trang trước"><a (click)="PrevPage()"><i class="fa fa-chevron-left"
+                      aria-hidden="true"></i></a></li>
+                <li class="li-nextpage" title="Trang sau"><a (click)="NextPage()"><i class="fa fa-chevron-right"
+                      aria-hidden="true"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="CDNhomGet" class="incluceView">
+    <table class="table dotborder table-hover table-vedu"
+      style="margin-bottom:-1px;table-layout:fixed;background: #f2f2f2;">
+      <thead>
+        <tr>
+          <th width="50" align="center"></th>
+          <th width="50" align="center">STT</th>
+          <th width="100" align="center">Mã sản phẩm</th>
+          <th width="130" align="center">Mã số báo phế</th>
+          <th align="left">Tên công việc</th>
+          <th align="left" width="150">Người tạo</th>
+          <th width="200" align="left">Bộ phận xử lý</th>
+          <th width="100" align="center">Ngày lập</th>
+          <th width="150" align="center">Tiến trình</th>
+          <th width="100" align="center">Chức năng</th>
+        </tr>
+      </thead>
+    </table>
+    <div style="max-height:calc(100vh - 170px)!important;margin-right:-17px;overflow:scroll;overflow-x:hidden">
+      <table class="table dotborder table-hover table-vedu" style="table-layout:fixed">
+        <tbody>
+          <tr *ngFor="let r of ListMyDocumentCam;index as i" (click)="selectItem(r)" class="{{r.isSelected}}"
+            style="cursor: pointer;">
+            <td width="50" align="center"></td>
+            <td width="50" align="center">{{i + 1}}</td>
+            <td width="100" align="center" [textContent]="r.T004C == null || r.T004C == null ? r.T017C:r.T004C"></td>
+            <td width="130" align="center">{{r.T005C}}</td>
+            <td align="left">{{r.tenCongViec}}</td>
+            <td align="left" width="150">{{r.hoVaTen}}</td>
+            <td width="200" align="left">{{r.tenBoPhan}}</td>
+            <td width="100" align="center">{{r.ngayTao | date: 'dd/MM/yyyy'}}</td>
+            <td width="150" align="center">
+              <div title="Xem quy trình ký" class="progress" (click)="ModalEvenNote(r)">
+                <div class="progress-bar progress-bar-warning" title="" role="progressbar" aria-valuenow="0"
+                  aria-valuemin="0" aria-valuemax="100" [style.width.%]="r.phantram"
+                  [ngClass]="(r.CountSign < 100)?'progress-bar-warning' : 'progress-bar-info'">
+                  {{r.phantram}}%
+                </div>
+              </div>
+            </td>
+            <td width="100" align="center">
+              <a class="btnlinktbl" title="Xem chi tiết" (click)="selectEdit(r)"><i class="fa fa-search"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div> 
+
+    <div class="modal fadess" id="ModalForm006" [style.display]="mForm006 ? 'block' : 'none'" tabindex="-1"
+      role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog w1300">
+        <div class="modal-content">
+          <div modal-movable class="modal-header head-modal">
+            <button type="button" class="close" (click)="hideModalForm()">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Back</span>
+            </button>
+            <h4 class="modal-title">BIỂU YÊU CẦU BÁO PHẾ, THU HỒI CCSX</h4>
+          </div>
+          <div class="modal-body" style="padding:5px 15px;max-height: calc(100vh - 150px)">
+            <form class="form-horizontal" role="form" name="frEventLogs" id="frEventLogs" novalidate>
+              <div class="row">
+                <div class="Formtitle">
+                  <h3>BIỂU YÊU CẦU BÁO PHẾ, THU HỒI CCSX<br /> <span
+                      style="padding-top: 10px;display: inline-block;margin-bottom: 10px;">冶工具破棄・返却依頼書</span>
+                  </h3>
+                </div>
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-1" style="padding-right: 0px">
+                      <table class="table table-hover table-bordered" style="margin-bottom:-1px;font-size: 12px">
+                        <thead>
+                          <tr>
+                            <th width="20" align="center" height="150">STT</th>
+                            <th width="80" align="center">To:　Báo phế đến bộ phận 廃棄部門先</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let r of ListA0034;index as i" style="cursor: pointer;">
+                            <td width="20" align="center">{{i + 1}}</td>
+                            <td width="80" align="center"><b>{{r.tenPhongBan}}</b></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="col-md-11" style="padding-left: 0px">
+                      <table class="table table-hover table-bordered"
+                        style="table-layout: fixed;margin-bottom: -1px;font-size: 12px">
+                        <thead>
+                          <tr>
+                            <th width="200" align="center" colspan="2">
+                              基板製造投入工場<br>
+                              Nhà máy sản xuất bo mạch
+                            </th>
+                            <th width="200" align="center" colspan="2">{{SF006.T001C}}</th>
+                            <th width="400" align="center" colspan="4">
+                              <div class="row">
+                                <div class="col-md-5">
+                                  Phụ trách báo phế/廃棄担当者:
+                                </div>
+                                <div class="col-md-4">
+                                  <span style="text-transform: uppercase;float: left;">{{SF006.T002C}}</span>
+                                </div>
+                                <div class="col-md-3">
+                                  {{SF006.T002C}}
+                                </div>
+                                <div class="col-md-3">
+                                  SĐT: {{SF006.T003C}}
+                                </div>
+                              </div>
+                            </th>
+                          </tr>
+                          <tr>
+                            <th align="center" width="200" colspan="2">
+                              品名コード（貨名代号）<br />
+                              Mã sản phẩm
+                            </th>
+                            <th align="center" width="200" colspan="2"
+                              [textContent]="SF006.T004C == null || SF006.T004C == null ? SF006.T017C:SF006.T004C"></th>
+                            <th align="center" width="200" colspan="2">
+                              文章NO.<br />
+                              Mã số báo phế
+                            </th>
+                            <th align="center" width="200" colspan="2">
+                              {{SF006.T005C}}
+                            </th>
+                          </tr>
+                        </thead>
+                      </table>
+                      <div class="row">
+                        <div class="col-md-9" style="padding-right: 0px;">
+                          <table class="table table-hover table-bordered"
+                            style="table-layout: fixed;font-size: 12px;margin-bottom: 0px">
+                            <thead>
+                              <tr>
+                                <th align="center" width="300">
+                                  Nội dung 内容
+                                </th>
+                                <th align="center" width="60">
+                                  返却<br />
+                                  Hoàn trả
+                                </th>
+                                <th align="center" width="60">
+                                  変更<br />
+                                  Thay đổi
+                                </th>
+                                <th align="center" width="60">
+                                  破棄<br />
+                                  Báo phế
+                                </th>
+                                <th align="center" width="60">
+                                  差し替え<br />
+                                  Thay thế
+                                </th>
+                                <th align="center" width="80">
+                                  処置日<br />
+                                  Ngày xử lý
+                                </th>
+                                <th align="center" width="90">
+                                  処置内容<br />
+                                  Nội dung xử lý
+                                </th>
+                                <th align="center" width="80">
+                                  処置者<br />
+                                  Người xử lý
+                                </th>
+                              </tr>
+                            </thead>
+                          </table>
+                          <table class="table table-hover table-bordered" style="table-layout: fixed;margin-top: -1px">
+                            <tbody *ngFor="let item of SF006D;index as j">
+                              <tr *ngFor="let bp of item.ListDMBaoPhe;index as i">
+                                <td *ngIf="i == 0" align="center" width="150" [attr.rowspan]="item.ListDMBaoPhe.length">
+                                  <select class="form-control text-company" style="width: 100%;font-weight: bold;"
+                                    name="SF002DPB-{{j}}" [(ngModel)]="item.C001C" disabled>
+                                    <option [value]="null">--- Chọn Phòng Ban ---</option>
+                                    <option *ngFor="let item of ListPhongBan" [value]="item.A0034_ID">
+                                      {{item.tenPhongBan}}</option>
+                                  </select>
+                                </td>
+                                <td align="left" width="150">
+                                  {{bp.C002C}}<br />
+                                  {{bp.C003C}}
+                                </td>
+                                <td align="center" width="60">
+                                  <label>
+                                    <input type="radio" name="SF002DC004C-{{i}}-{{j}}" [(ngModel)]="bp.C004C"
+                                      [value]="1">
+                                  </label>
+                                </td>
+                                <td align="center" width="60">
+                                  <label>
+                                    <input type="radio" name="SF002DC004C-{{i}}-{{j}}" [(ngModel)]="bp.C004C"
+                                      [value]="2">
+                                  </label>
+                                </td>
+                                <td align="center" width="60">
+                                  <label>
+                                    <input type="radio" name="SF002DC004C-{{i}}-{{j}}" [(ngModel)]="bp.C004C"
+                                      [value]="3">
+                                  </label>
+                                </td>
+                                <td align="center" width="60">
+                                  <label>
+                                    <input type="radio" name="SF002DC004C-{{i}}-{{j}}" [(ngModel)]="bp.C004C"
+                                      [value]="4">
+                                  </label>
+                                </td>
+                                <td align="left" width="80" title="{{bp.C005C}}">
+                                  <!-- <input type="text" class="form-control  text-input-form" style="width:100% !important"
+                                    [(ngModel)]="bp.C005C" name="SF002DC005C-{{i}}-{{j}}" maxlength="250"> -->
+                                  <label class="text-input-form"
+                                    style="width:100% !important;margin-bottom: 0px">{{bp.C005C | date: 'dd/MM/yyyy'}}</label>
+                                </td>
+                                <td align="left" width="90" title="{{bp.C006C}}">
+                                  <input type="text" class="form-control  text-input-form" style="width:100% !important"
+                                    [(ngModel)]="bp.C006C" name="SF002DC006C-{{i}}-{{j}}" maxlength="250">
+                                </td>
+                                <td align="left" width="80" title="{{bp.C007C}}">
+                                  <input type="text" class="form-control  text-input-form" style="width:100% !important"
+                                    [(ngModel)]="bp.C007C" name="SF002DC007C-{{i}}-{{j}}" maxlength="250">
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <div class="col-md-3" style="padding-left: 0px;">
+                          <table class="table table-hover table-bordered"
+                            style="table-layout: fixed;margin-bottom: 5px">
+                            <thead>
+                              <tr>
+                                <th align="center" colspan="2">
+                                  変更内容(処置方法）<br />
+                                  Nội dung thay đổi ( Cách thức xử lý)
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td align="left">
+                                  Độ cấp thiết xử lý<br />
+                                  処理緊急度
+                                </td>
+                                <td align="center">
+                                  <input type="text" class="form-control text-input-form"
+                                    style="width:47% !important;float: left;font-weight: 300;text-align: right;padding-right: 5px !important;"
+                                    maxlength="250" name="SF006T006C" [(ngModel)]="SF006.T006C">
+                                  <span style="float: left;font-size: 18px">/</span>
+                                  <input type="text" class="form-control text-input-form"
+                                    style="width:47% !important;float: left;font-weight: 300;padding-left: 5px !important"
+                                    maxlength="250" name="SF006T007C" [(ngModel)]="SF006.T007C">
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" colspan="2">
+                                  Nội dung thay đổi 変更内容
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" colspan="2">
+                                  <textarea rows="3" class="form-control text-input-form" name="SF006T008C"
+                                    [(ngModel)]="SF006.T008C" style="width:100%"></textarea>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" colspan="2">
+                                  Dữ liệu báo phế 廃棄データ
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left" colspan="2">
+                                  <textarea rows="3" class="form-control text-input-form" style="width: 100%"
+                                    name="SF006T009C" [(ngModel)]="SF006.T009C"></textarea>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <div style="clear: both"></div>
+                          <div style="padding: 0px">
+                            <table class="table table-hover"
+                              style="table-layout: fixed;border: 2px solid black;margin-left: 0px;margin-bottom: 0px">
+                              <tbody>
+                                <tr>
+                                  <td align="left">
+                                    Mã số công cụ/ツール番号:
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td align="left">
+                                    <textarea rows="2" class="form-control text-input-form" name="SF006T010C"
+                                      [(ngModel)]="SF006.T010C" style="width:100%"></textarea>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td align="left">
+                                    備考/Ghi chú:
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td align="left">
+                                    <textarea rows="2" class="form-control text-input-form" style="width: 100%"
+                                      name="SF006T011C" [(ngModel)]="SF006.T011C"></textarea>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <!-- <div style="clear: both"></div>
+                            <div style="width: 100%;margin: 5px 0px;border-top: 1px dashed black;padding: 1px 0px;"></div> -->
+                          <div style="clear: both"></div>
+                          <div style="padding: 5px;margin-top: 5px">
+                            <h5
+                              style="line-height: 20px;text-align: center;font-weight: bold;font-size: 13px;margin-top: -5px">
+                              ランニングチェンジ品の処理方法<br />
+                              Phương pháp xử lý hàng running change
+                            </h5>
+                            <select class="form-control text-input-form"
+                              style="width: 100%;font-weight: 300 !important;" name="SF006T012C"
+                              [(ngModel)]="SF006.T012C">
+                              <option [value]="null">--- Chọn phương pháp ---</option>
+                              <option [value]="1">
+                                Dừng sản xuất ngay (đến khi có công cụ mới). -
+                                生産をストップ（新データが出来るまで）
+                              </option>
+                              <option [value]="2">
+                                Tiếp tục sản xuất khi hoàn thành công cụ sẽ tiến hành thay đổi (sản xuất liên tục). -
+                                生産は続いて、ツール完了したら差し替え（継続生産）
+                              </option>
+                              <option [value]="3">
+                                Chia lot ra để thay đổi (ghi rõ vào giấy lot tiến hành thay đổi). -
+                                ロット切り替えとする（切り替えロットを別紙で明確に）
+                              </option>
+                            </select>
+                          </div>
+                          <div style="clear: both"></div>
+                          <div
+                            style="width: 100%;margin: 5px 0px;border-top: 1px dashed black;padding: 1px 0px;margin-top: 15px;">
+                          </div>
+                          <div style="clear: both"></div>
+                          <div style="padding: 5px;padding-top: 0px;">
+                            <table class="table table-hover" border="0" style="margin-bottom: 0px">
+                              <tbody>
+                                <tr>
+                                  <td align="center" style="border: 0px">
+                                    Phương pháp xử lý tồn kho của hàng trước khi thay đổi<br />
+                                    変更前在庫分処理方法
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td align="center" style="border: 0px">
+                                    <textarea rows="2" class="form-control text-input-form" style="width: 100%"
+                                      name="SF006T013C" [(ngModel)]="SF006.T013C"></textarea>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div style="clear: both"></div>
+                          <div style="padding: 5px;border: 2px solid black;">
+                            <span
+                              style="display: block;position: relative;float: left;margin: 5px 0px 7px 0px;">破棄在庫が１０ｍ２以上になる物は、下記項目
+                              を記入すること</span>
+                            <span style="display: block;position: relative;float: left;margin-bottom: 7px">Hàng tồn kho
+                              báo phế trên 10m2 thì nhập vào mục phía dưới</span>
+                            <table class="table table-hover" border="1"
+                              style="table-layout: fixed;margin-left: 0px;margin-bottom: 0px;border: 1px solid #dddddd;">
+                              <tbody>
+                                <tr>
+                                  <td align="center" width="60">
+                                    層数<br />
+                                    Số lớp
+                                  </td>
+                                  <td align="center" width="70">
+                                    枚数<br />
+                                    Số sheet
+                                  </td>
+                                  <td align="center">
+                                    １枚当ｍ２<br />
+                                    Số m2/sheet
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td align="left" width="60">
+                                    <input type="text" class="form-control text-input-form"
+                                      style="width:100% !important;float: left;font-weight: 300" maxlength="250"
+                                      name="SF006T014C" [(ngModel)]="SF006.T014C">
+                                  </td>
+                                  <td align="left" width="70">
+                                    <input type="text" class="form-control text-input-form"
+                                      style="width:100% !important;float: left;font-weight: 300" maxlength="250"
+                                      name="SF006T015C" [(ngModel)]="SF006.T015C">
+                                  </td>
+                                  <td align="left">
+                                    <input type="text" class="form-control text-input-form"
+                                      style="width:100% !important;float: left;font-weight: 300" maxlength="250"
+                                      name="SF006T016C" [(ngModel)]="SF006.T016C">
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="clear: both"></div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="ExportExcel()">
+              <i class="fa fa-file-excel-o"></i> Export Excel</button>
+            <button type="button" class="btn btn-default" (click)="hideModalForm()">
+              <i class="fa fa-power-off"></i>Thoát
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fadess" id="ModalEventLogs" [style.display]="mEventLogs ? 'block' : 'none'" tabindex="-1"
+      role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog w700">
+        <div class="modal-content">
+          <div modal-movable class="modal-header head-modal">
+            <button type="button" class="close" (click)="hideModal()">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Back</span>
+            </button>
+            <h4 class="modal-title">Event Log</h4>
+          </div>
+          <div class="modal-body" style="padding:5px 15px;max-height: calc(100vh - 150px);height: calc(100vh - 150px);">
+            <form class="form-horizontal" role="form" name="frEventLogs" id="frEventLogs" novalidate>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="BoxNote">
+                    <div class="headerEventNote">
+                      <ul>
+                        <li (click)="setTabLog(1)" [ngClass]="(Istab==1)?'activeTabLogs':''"><a>Lịch Sử Trình Ký</a>
+                        </li>
+                        <!-- <li (click)="setTabLog(2)" [ngClass]="(Istab==2)?'activeTabLogs':''"><a>Ghi Chú Trình Ký</a>
+                        </li> -->
+                      </ul>
+                    </div>
+                    <div class="ContentSignLog">
+                      <div class="boxlogsign" [style.display]="Istab == 1 ? 'block' : 'none'">
+                        <div class="itemboxlogsign" *ngFor="let doc of ListDocSign;index as i">
+                          <div class="boxloginsignleft">
+                            <span class="dateloginsign"
+                              *ngIf="doc.thoiGianGui != null">{{doc.thoiGianKy | date: 'dd/MM/yyyy'}}</span>
+                            <span class="dotsign" [style.background]="doc.daKy == true ? '#32db64' : '#cccccc'"></span>
+                          </div>
+                          <div class="boxloginsignright">
+                            <div class="boxinforsign">
+                              <div class="avatarsign">
+                                <img [src]="doc.anhDaiDien" alt="">
+                              </div>
+                              <div class="inforsign">
+                                <span class="namesign">{{doc.hoVaTen}}</span>
+                                <!-- <div style="clear: both"></div>
+                                <span class="positionsign">{{doc.tenViTri}}</span> -->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="boxnotesign" [style.display]="Istab == 2 ? 'block' : 'none'">
+                        <div class="boxnoteeventlog">
+                          <div class="itemeventlog" *ngFor="let note of ListEventNote;index as i">
+                            <div class="boxavatarlog">
+                              <img [src]="note.anhDaiDien" alt="">
+                            </div>
+                            <div class="boxtextnotelogs">
+                              <span class="nameuserlog">{{note.hoVaTen}}</span>
+                              <span class="statusnotelog">{{note.tieuDe}}</span>
+                              <span class="datenotelog">{{note.thoiGianGui | date: 'dd/MM/yyyy HH:mm:ss'}}</span>
+                              <span class="statusnotelog" *ngIf="note.trangThai == 1"
+                                style="color: #023f98">{{note.noiDung}}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" (click)="hideModal()"><i
+                class="fa fa-power-off"></i>Thoát</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fadess" id="ModalSendAndSend" [style.display]="mSend ? 'block' : 'none'" tabindex="-1"
+      role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog w300">
+        <div class="modal-content">
+          <div modal-movable class="modal-header head-modal">
+            <button type="button" class="close" (click)="hideModal()">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Back</span>
+            </button>
+            <h4 class="modal-title">Event Log</h4>
+          </div>
+          <div class="modal-body" style="padding:5px 15px;max-height: calc(100vh - 150px)">
+            <form class="form-horizontal" role="form" name="frEventLogs" id="frEventLogs" novalidate>
+              <div class="row">
+                <div class="col-sm-12" style="padding: 0px 10px;">
+                  <label>Ghi chú: </label>
+                </div>
+                <div class="col-sm-12" style="padding: 0px 10px;">
+                  <textarea rows="5" class="form-control" style="width: 100%" [(ngModel)]="DocSend.noiDung"
+                    name="noiDung"></textarea>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="SignAndSend(frEventLogs)"><i
+                class="fa fa-paper-plane"></i> Send</button>
+            <button type="button" class="btn btn-default" (click)="hideModal()"><i
+                class="fa fa-power-off"></i>Thoát</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

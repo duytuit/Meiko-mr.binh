@@ -1,0 +1,79 @@
+<div class="navbar-bottom">
+  <div class="row">
+      <div class="col-md-5">
+          <ul class="navbar-bottomleft">
+              <li><a (click)="Refersh()" title="Làm mới"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
+              <li><a (click)="SubmitRole(1)" title="Lưu lại"><i class="fa fa-save" aria-hidden="true"></i></a></li>
+              <li><a (click)="SubmitRole(2)" title="Lưu lại và áp dụng cho tất cả User"><img src="assets/Img/saveall2.png"></a></li>
+          </ul>
+      </div>
+  </div>
+</div>
+<div class="row bar-content">
+  <div class="col-md-12" style="padding-top: 10px">
+      <div class="row">
+          <div class="col-md-3 panelh">
+              <div class="card card-table" style="box-shadow:unset;padding-left:10px">
+                  <div class="card-body">
+                      <table class="table table-hover table-bordered">
+                          <thead>
+                              <tr>
+                                  <th width="40" align="center">STT</th>
+                                  <th>Role tác nghiệp</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let row of Rolelist;index as i" class="{{row.isSelected}}">
+                                  <td align="center" [textContent]="row.thuTu"></td>
+                                  <td (click)="View(row)"><a [textContent]="row.tenRole"></a></td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-9">
+              <div class="panelh">
+                  <div class="card card-table" style="box-shadow:unset">
+                      <div class="card-body">
+                        <div class="content-section implementation">
+                            <p-treeTable [value]="Rolemenu" [columns]="cols">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th width="60" align="center"></th>
+                                        <th align="left">Tên Menu</th>
+                                        <th width="80" align="center">Hiển thị</th>
+                                        <th width="70" align="center">Thêm</th>
+                                        <th width="70" align="center">Sửa</th>
+                                        <th width="70" align="center">Xóa</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+                                    <tr>
+                                        <td align="center" width="60">
+                                            <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
+                                        </td>
+                                        <td>{{rowData.tenMenu}}</td>
+                                        <td width="80" align="center">
+                                            <input type="checkbox" [(ngModel)]="rowData.quyenXem"/>                                          
+                                        </td>
+                                        <td width="70" align="center">
+                                            <input type="checkbox" [(ngModel)]="rowData.quyenThem"/>
+                                        </td>
+                                        <td width="70" align="center">
+                                            <input type="checkbox" [(ngModel)]="rowData.quyenCapNhap"/>
+                                        </td>
+                                        <td width="70" align="center">
+                                            <input type="checkbox" [(ngModel)]="rowData.quyenXoa"/>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-treeTable>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

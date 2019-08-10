@@ -1,0 +1,245 @@
+<div id="ConfigQuytrinh">
+  <div class="navbar-bottom nav1-bottom">
+    <div class="row">
+      <div class="box-search">
+        <input type="text" class="form-control search-edu" placeholder="Tìm kiếm..." [(ngModel)]="opition.s"
+          my-enter="ListSearch()">
+        <div class="btn-group btngroup-search">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span
+              class="caret"></span></button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a (click)="FilterStatus('')">Tất cả</a></li>
+            <li><a ng-style="{'color':(opition.sts == 'on') ? 'red':'black'}" (click)="FilterStatus('on')">Kích hoạt</a>
+            </li>
+            <li><a ng-style="{'color':(opition.sts == 'off') ? 'red':'black'}" (click)="FilterStatus('off')">Khóa</a>
+            </li>
+          </ul>
+        </div>
+        <button type="button" class="btn btn-default btnseach"><i class="fa fa-search icon-vedu"></i></button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="row">
+          <div class="col-md-12">
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="row">
+          <ul class="navbar-bottomleft">
+            <li><a title="Thêm mới quy trình" (click)="modalQuyTrinhCV('add')"><i class="fa fa-plus"></i></a></li>
+            <li><a (click)="Refersh()" title="Làm mới"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="CDNhomGet" class="incluceView">
+    <div class="col-md-3"
+      style="border-right: 10px solid #f4f5fa;height: calc(100vh - 105px);padding-top: 5px;padding-left: 0px;overflow-x: auto">
+      <a (click)="refershModel()"><img src="assets/Img/MyBox.ico" /><b
+          style="margin-left: 5px;vertical-align: sub;color: #023f98;">Danh sách các loại công việc</b></a>
+      <div class="boxtreecustom">
+        <ul class="ullcv">
+          <li *ngFor="let r of ListLCV;index as i">
+            <label style="cursor: pointer;font-weight: 300" (click)="getQuyTrinh(r)">
+              <img src="assets/Img/folder.png" />&nbsp;&nbsp; {{r.tenLoaiCongViec}}
+            </label>
+            <ul class="ulcv" *ngIf="(ListCV|Filter:{A0015_ID: r.A0015_ID}:true).length > 0">
+              <li *ngFor="let cv of ListCV|Filter:{A0015_ID: r.A0015_ID}:true">
+                <span style="cursor: default;font-weight: 300">
+                  <img src="assets/Img/congviec.png" width="16" />&nbsp; {{cv.tenCongViec}}
+                </span>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-9" style="padding: 0px;">
+      <div style="width: 100%;float: left;overflow: auto;">
+        <table class="table dotborder table-hover table-vedu"
+          style="margin-bottom:-1px;background: #f2f2f2;table-layout: fixed;min-width: 100%;" [style.width.px]="SteepKy.length * 150">
+          <thead>
+            <tr>
+              <th *ngFor="let ss of SteepKy;index as i" width="150" align="center">
+                {{ss.tenBuocKy}}
+                <span style="font-size: 12px;display: block;font-weight: 300;">({{ss.AliasBuocKy}})</span>
+              </th>
+            </tr>
+          </thead>
+        </table>
+        <div style="max-height:calc(100vh - 170px)!important;margin-right:-17px;overflow: hidden;overflow-y: auto;min-width: 100%;"
+          [style.width.px]="SteepKy.length * 150">
+          <table class="table dotborder table-hover table-vedu" style="table-layout:fixed;margin-bottom: 0px">
+            <tbody *ngFor="let q of QuyTrinh;index as i">
+              <tr class="trhide">
+                <td width="150" *ngFor="let ss of SteepKy;index as i"></td>
+              </tr>
+              <tr>
+                <td [attr.colspan]="SteepKy.length"
+                  style="font-weight: bold;font-size: 13px;color: #023f98;padding: 6px 8px;"><a (click)="EditQuyTrinh(q)">{{q.tenQuyTrinh}}</a></td>
+              </tr>
+              <tr>
+                <td width="150" align="center" height="32" *ngFor="let g of q.SteepSign;index as i"
+                  style="border-top:0px !important;cursor: pointer;overflow: hidden;position: relative;"
+                  class="trquytrinh">
+                  <a *ngIf="g.GroupSignSteep.length > 0" style="text-decoration: none">
+                    <span style="text-decoration: none !important" (click)="modalConfigQuyTrinh(q,g)"
+                      style="white-space: nowrap;width: 100%;position: relative;float: left;"
+                      title="({{g.GroupSignSteep[0].tenphongban}}) {{g.GroupSignSteep[0].thanhvien}}">
+                      {{g.GroupSignSteep[0].tenNhomNguoiKy}}
+                    </span>
+                    <span class="icondelete" title="Xóa" (click)="deleteSignGroup(g.GroupSignSteep[0])"><i
+                        class="fa fa-times"></i></span>
+                  </a>
+                  <a *ngIf="g.GroupSignSteep.length == 0" (click)="modalConfigQuyTrinh(q,g)"
+                    style="display: block;position: relative;width: 100%;height: 100%;"></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fadess" id="modalConfigQuyTrinh" [style.display]="mConfigQuytrinh ? 'block' : 'none'"
+      tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false"
+      data-backdrop="static">
+      <div class="modal-dialog w700">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div modal-movable class="modal-header head-modal">
+            <button type="button" class="close" (click)="hideModal()">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Back</span>
+            </button>
+            <h4 class="modal-title">Cấu hình quy trình</h4>
+          </div>
+          <!-- Modal Body -->
+          <div class="modal-body" style="padding:0px 15px;overflow: initial;max-height: initial">
+            <form class="form-horizontal" role="form" name="frModule" id="frModule" novalidate>
+              <div class="row">
+                <div class="col-md-6"
+                  style="border-right: 5px solid #f4f5fa;height: calc(100vh - 250px);overflow-x: auto;padding: 5px 15px">
+                  <a (click)="refershModel()"><img src="assets/Img/MyBox.ico" /><b
+                      style="margin-left: 5px;vertical-align: sub;color: #023f98;">Công ty MEIKO</b></a>
+                  <div class="boxtree">
+                    <p-tree [value]="ListPhongBan">
+                      <ng-template let-node pTemplate="default">
+                        <label style="cursor: pointer;font-weight: 300" (click)="SelectModelQT(node)"><img
+                            src="assets/Img/folder.png" />&nbsp;&nbsp; {{node.bophan_ten}}</label>
+                      </ng-template>
+                    </p-tree>
+                  </div>
+                </div>
+                <div class="col-md-6" style="padding: 5px 0px">
+                  <table class="table dotborder table-hover table-vedu"
+                    style="margin-bottom:-1px;table-layout:fixed;background: #f2f2f2;">
+                    <thead>
+                      <tr>
+                        <th width="50" align="center">STT</th>
+                        <th align="left">Nhóm ký</th>
+                      </tr>
+                    </thead>
+                  </table>
+                  <div style="max-height:calc(100vh - 170px)!important;overflow:scroll;overflow-x:hidden">
+                    <span *ngIf="QuyTrinhPhongBan.length > 0" style="margin-left: 5px;padding: 5px 2px;float: left;">Các
+                      nhóm ký bộ phận <b style="color: #008e44;">{{TenPBSelect}}</b></span>
+                    <table class="table dotborder table-hover table-vedu" style="table-layout:fixed">
+                      <tbody *ngIf="QuyTrinhPhongBan.length > 0">
+                        <tr *ngFor="let r of QuyTrinhPhongBan;index as i" class="trgroupsign" style="cursor: pointer;"
+                          [ngClass]="(r.select == true)?'selectrow':''" (click)="SelectRowTable(r)"
+                          title="{{r.thanhvien}}">
+                          <td width="50" align="center">{{i + 1}}</td>
+                          <td align="left">{{r.tenNhomNguoiKy}} ({{r.moTaNhomNguoiKy}})</td>
+                        </tr>
+                      </tbody>
+                      <tbody *ngIf="QuyTrinhPhongBan.length == 0">
+                        <tr>
+                          <td colspan="2" align="left" style="border: none">
+                            Hiện tại bộ phận <b style="color: #023f98">{{TenPBSelect}}</b> chưa có nhóm ký nào
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!-- Modal Footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="saveGroupSign()"><i class="fa fa-save"></i>
+              Lưu</button>
+            <button type="button" class="btn btn-default" (click)="hideModal()"><i class="fa fa-power-off"></i>
+              Thoát</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fadess" id="modalQuyTrinhCV" [style.display]="mQT ? 'block' : 'none'" tabindex="-1" role="dialog"
+      aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div modal-movable class="modal-header head-modal">
+            <button type="button" class="close" (click)="hideModal()">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Back</span>
+            </button>
+            <h4 class="modal-title">Cập nhật quy trình cho loại công việc </h4>
+          </div>
+          <div class="modal-body" style="padding:5px 15px;overflow: initial;">
+            <form class="form-horizontal" role="form" name="frModule" id="frModule" novalidate>
+              <div style="display:block;">
+                <div class="text-title"><label style="width:120px"><b>Nhóm phòng ban :</b></label>
+                  <select class="form-control text-company" name="A0004_ID" [(ngModel)]="quytrinh.A0004_ID">
+                    <option [value]="null">--- Chọn phòng ban ---</option>
+                    <option *ngFor="let item of ListPhongBanSelect" [value]="item.id">{{item.tenPhongBanMoi}}
+                    </option>
+                  </select>
+                </div>
+                <div class="text-title">
+                  <label style="width: 120px;">Tên quy trình: </label>
+                  <input type="text" class="form-control  text-company" [(ngModel)]="quytrinh.tenQuyTrinh"
+                    name="tenQuyTrinh" style="width:calc(100% - 120px) !important" maxlength="250">
+                </div>
+                <div class="text-title">
+                  <label style="width: 120px;">Thứ Tự: </label>
+                  <input type="text" class="form-control  text-company" [(ngModel)]="quytrinh.STT" name="STT"
+                    style="width:calc(100% - 120px) !important" maxlength="250">
+                </div>
+                <div class="text-title">
+                  <label style="width:120px">Trạng thái: </label>
+                  <div class="boxquydanh" style="width:calc(100% - 120px) !important">
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="trangThai" [(ngModel)]="quytrinh.trangThai" [value]="true">
+                        Kích hoạt
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="trangThai" [(ngModel)]="quytrinh.trangThai" [value]="false">
+                        Khóa
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="saveQuytrinhLCV()"><i class="fa fa-save"></i>
+              Lưu</button>
+            <button type="button" class="btn btn-default" (click)="hideModal()"><i class="fa fa-power-off"></i>
+              Thoát</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

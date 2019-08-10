@@ -1,0 +1,157 @@
+<div id="ConfigQuytrinh">
+  <div class="navbar-bottom nav1-bottom">
+    <div class="row">
+      <div class="box-search">
+        <input type="text" class="form-control search-edu" placeholder="Tìm kiếm..." [(ngModel)]="opition.s"
+          my-enter="ListSearch()">
+        <div class="btn-group btngroup-search">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span
+              class="caret"></span></button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a (click)="FilterStatus('')">Tất cả</a></li>
+            <li><a ng-style="{'color':(opition.sts == 'on') ? 'red':'black'}" (click)="FilterStatus('on')">Kích hoạt</a>
+            </li>
+            <li><a ng-style="{'color':(opition.sts == 'off') ? 'red':'black'}" (click)="FilterStatus('off')">Khóa</a>
+            </li>
+          </ul>
+        </div>
+        <button type="button" class="btn btn-default btnseach"><i class="fa fa-search icon-vedu"></i></button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4" style="width:240px">
+        <div class="row">
+          <div class="col-md-12" style="width:240px; padding-right:0">
+            <ul class="navbar-bottomleft">
+              <li><a (click)="Refersh()" title="Làm mới"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8" style="width:calc(100% - 240px)">
+        <div class="row">
+          <div class="col-md-6" style="padding:5px 0 0 0">
+            <div class="row">
+              <div class="col-md-6 widths" style="padding-right:5px">
+                <div class="box-droplist">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="box-page"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="CDNhomGet" class="incluceView">
+    <div class="col-md-3"
+      style="border-right: 10px solid #f4f5fa;height: calc(100vh - 105px);padding-top: 5px;padding-left: 0px;overflow-x: auto">
+      <a (click)="refershModel()"><img src="assets/Img/MyBox.ico" /><b
+          style="margin-left: 5px;vertical-align: sub;color: #023f98;">Công ty MEIKO</b></a>
+      <div class="boxtree">
+        <p-tree [value]="ListPhongBan">
+          <ng-template let-node pTemplate="default">
+            <label style="cursor: pointer;font-weight: 300" (click)="SelectModel(node)"><img
+                src="assets/Img/folder.png" />&nbsp;&nbsp; {{node.bophan_ten}}</label>
+          </ng-template>
+        </p-tree>
+      </div>
+    </div>
+    <div class="col-md-9" style="padding: 0px">
+      <table class="table dotborder table-hover table-vedu"
+        style="margin-bottom:-1px;table-layout:fixed;background: #f2f2f2;">
+        <thead>
+          <tr>
+            <th *ngFor="let g of ListGroupSignWorkfollow;index as i" width="200" align="center">
+              {{g.tenNhomNguoiKy}}
+              <span style="font-size: 12px;display: block;font-weight: 300;">({{g.moTaNhomNguoiKy}})</span>
+            </th>
+          </tr>
+        </thead>
+      </table>
+      <div style="max-height:calc(100vh - 170px)!important;margin-right:-17px;overflow:scroll;overflow-x:hidden">
+        <table class="table dotborder table-hover table-vedu" style="table-layout:fixed">
+          <tbody>
+            <tr>
+              <td *ngFor="let g of ListGroupSignWorkfollow;index as i" width="200" align="center">
+                <a (click)="modalNhomKy(g)"><span class="badge" style="background: #ff5e0b" title="{{g.thanhvien}}">{{g.CountUser}}</span></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="modal fadess" id="modalNhomKy" [style.display]="mUserGroup ? 'block' : 'none'" tabindex="-1" role="dialog"
+      aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog w700">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div modal-movable class="modal-header head-modal">
+            <button type="button" class="close" (click)="hideModal()">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Back</span>
+            </button>
+            <h4 class="modal-title">Thành viên nhóm ký {{grouptitle}}</h4>
+          </div>
+          <!-- Modal Body -->
+          <div class="modal-body" style="padding:5px 15px;overflow: initial;max-height: inherit;">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="box-search" style="width: calc(100% - 170px);padding-top: 0px;top: 0px;left: 15px;">
+                  <input type="text" class="form-control" style="width:calc(100% - 60px)"
+                    [(ngModel)]="opition.sts" name="sts">
+                  <button type="button" class="btn btn-default btnseach" style="border-radius:0px !important"
+                    (click)="SearchMUserCD()"><i class="fa fa-search"></i></button>
+                </div>
+                <div class="box-inputlct"
+                  style="float: right !important;margin-top: 0px;margin-right: 0px;margin-bottom: 5px;">
+                  <button type="button" class="btn btn-default btnseach"
+                    style="margin-right:0px;border-radius:0px !important" (click)="showusersModal()">cập nhật thành
+                    viên</button>
+                </div>
+              </div>
+            </div>
+            <div style="clear: both;"></div>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table dotborder table-hover" style="margin-bottom:-1px;table-layout:fixed;">
+                  <thead style="background-color:#d9edf7">
+                    <tr>
+                      <th align="center" width="40">STT</th>
+                      <th align="center" width="50"></th>
+                      <th align="left">Tên</th>
+                      <th width="150">Phòng ban</th>
+                      <th width="100" align="center">Chức năng</th>
+                    </tr>
+                  </thead>
+                </table>
+                <div style="height: calc(100vh - 460px);overflow-y: auto;">
+                  <table class="table dotborder table-hover" style="margin-bottom:-1px;table-layout:fixed;">
+                    <tr *ngFor="let u of ListNguoiKy|Filter:{hoVaTen: opition.sts};index as i" class="{{u.isSelected}}">
+                      <td align="center" width="40">{{i + 1}}</td>
+                      <td width="50" align="center"><img class="ava" style="width:32px;height:32px;object-fit:cover"
+                          [src]="u.anhDaiDien" /></td>
+                      <td align="left">{{u.hoVaTen}}</td>
+                      <td width="150"><span>{{u.tenphongban}}</span></td>
+                      <td width="100" align="center">
+                        <a class="btnlinktbl" title="Xóa" (click)="deleteUserGroupSign(u)"><i class="fa fa-trash-o"></i></a>                          
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Modal Footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" (click)="hideModal()"><i
+                class="fa fa-power-off"></i>Thoát</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-user-list (choiceUser)="ChoiceSelectUser($event)"></app-user-list>
+  </div>
+</div>

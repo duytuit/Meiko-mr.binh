@@ -1,0 +1,1863 @@
+<div id="CVCuaToi">
+  <div class="navbar-bottom nav1-bottom">
+    <div class="row">
+      <div class="box-search">
+        <input type="text" class="form-control search-edu" placeholder="Tìm kiếm..." [(ngModel)]="opition.s"
+          my-enter="ListSearch()">
+        <div class="btn-group btngroup-search">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span
+              class="caret"></span></button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a (click)="FilterStatus('')">Tất cả</a></li>
+            <li><a ng-style="{'color':(opition.sts == 'on') ? 'red':'black'}" (click)="FilterStatus('on')">Kích hoạt</a>
+            </li>
+            <li><a ng-style="{'color':(opition.sts == 'off') ? 'red':'black'}" (click)="FilterStatus('off')">Khóa</a>
+            </li>
+          </ul>
+        </div>
+        <button type="button" class="btn btn-default btnseach" (click)="ListSearch()"><i
+            class="fa fa-search icon-vedu"></i></button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4" style="width:400px">
+        <div class="row">
+          <div class="col-md-12" style="width:400px; padding-right:0">
+            <ul class="navbar-bottomleft">
+              <!-- (click)="ModalClass('add')" -->
+              <li style="background: #ff6313;border-color: #ff6313;"><a title="Thêm mới" (click)="ModalHSCV('add')"><i
+                    class="fa fa-plus" style="color: white"></i></a></li>
+              <li *ngIf="rowSelect != null"><a title="Xóa" (click)="deleteList()"><i class="fa fa-trash-o"></i></a></li>
+              <li><a (click)="Refersh()" title="Làm mới"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
+              <li [style.display]="rowSelect != null ? 'block' : 'none'">
+                <a class="sidebar-toggle dropdown-toggle refresh-icon" data-toggle="dropdown" aria-expanded="true"
+                  style="padding: 6px 10px 5px;margin-top:-2px"><i class="fa fa-tag"></i> Tác
+                  vụ</a>
+                <ul class="dropdown-menu navbar-color navbarsign">
+                  <li (click)="ModalSignAndSend()">
+                    <img src="assets/Img/Approved.png" style="width: 24px;margin-right: 8px;margin-top: -1px;" />
+                    <span>Ký và Gửi</span>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8" style="width:calc(100% - 400px)">
+        <div class="row">
+          <div class="col-md-6" style="padding:5px 0 0 0">
+            <div class="row">
+              <div class="col-md-6 widths" style="padding-right:5px">
+                <div class="box-droplist">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="box-page">
+              <ul class="ul-box-page">
+                <li><span [textContent]="(opition.p-1)*opition.pz+1"></span> - <span
+                    [textContent]="opition.pz*opition.p>opition.total?opition.total:opition.pz*opition.p"></span> trong
+                  số <span [textContent]="opition.total"></span></li>
+                <li class="li-prevpage" title="Trang trước"><a (click)="PrevPage()"><i class="fa fa-chevron-left"
+                      aria-hidden="true"></i></a></li>
+                <li class="li-nextpage" title="Trang sau"><a (click)="NextPage()"><i class="fa fa-chevron-right"
+                      aria-hidden="true"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="CDNhomGet" class="incluceView">
+    <table class="table dotborder table-hover table-vedu"
+      style="margin-bottom:-1px;table-layout:fixed;background: #f2f2f2;">
+      <thead>
+        <tr>
+          <th width="50" align="center"></th>
+          <th width="50" align="center">STT</th>
+          <th width="100" align="center">Mã công việc</th>
+          <th width="230" align="left">Tên công việc</th>
+          <th align="left">Tiêu đề công việc</th>
+          <th width="100" align="center">Ngày lập</th>
+          <th width="150" align="center">Tiến trình</th>
+          <th width="100" align="center">Chức năng</th>
+        </tr>
+      </thead>
+    </table>
+    <div style="max-height:calc(100vh - 170px)!important;margin-right:-17px;overflow:scroll;overflow-x:hidden">
+      <table class="table dotborder table-hover table-vedu" style="table-layout:fixed">
+        <tbody>
+          <tr *ngFor="let r of ListMyDocument;index as i" (click)="selectItem(r)" class="{{r.isSelected}}"
+            style="cursor: pointer;">
+            <td width="50" align="center"></td>
+            <td width="50" align="center">{{i + 1}}</td>
+            <td width="100" align="center">{{r.maCongViec}}</td>
+            <td width="230" align="left">{{r.tenCongViec}}</td>
+            <td align="left">{{r.tieuDeCongViec}}</td>
+            <td width="100" align="center">{{r.ngayTao | date: 'dd/MM/yyyy'}}</td>
+            <td width="150" align="center">
+              <div title="Xem quy trình ký" class="progress" (click)="ModalEvenNote(r)">
+                <div class="progress-bar progress-bar-warning" title="" role="progressbar" aria-valuenow="0"
+                  aria-valuemin="0" aria-valuemax="100" [style.width.%]="r.phantram"
+                  [ngClass]="(r.CountSign < 100)?'progress-bar-warning' : 'progress-bar-info'">
+                  {{r.phantram}}%
+                </div>
+              </div>
+            </td>
+            <td width="100" align="center">
+              <a class="btnlinktbl" title="Sửa" (click)="selectEdit(r)"><i class="fa fa-pencil-square-o"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <app-user-list (choiceUser)="ChoiceSelectUser($event)"></app-user-list>
+    <div class="modal fadess" id="ModalVHSCV" [style.display]="mHSCV ? 'block' : 'none'" tabindex="-1" role="dialog"
+      aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog w780">
+        <div class="modal-content">
+          <div modal-movable class="modal-header head-modal">
+            <button type="button" class="close" (click)="hideModal()">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Back</span>
+            </button>
+            <h4 class="modal-title">Hồ sơ công việc</h4>
+          </div>
+          <div class="modal-body" style="padding:5px 15px;max-height: calc(100vh - 150px);">
+            <form class="form-horizontal" role="form" name="frHSCV" id="frHSCV" novalidate>
+              <input type="hidden" [(ngModel)]="Hs.A0028_ID" name="A0028_ID" />
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="panel panel-default">
+                    <div class="panel-heading"><b><i class="fa fa-folder-open" aria-hidden="true"></i> Thông tin hồ
+                        sơ</b></div>
+                    <div class="panel-body">
+                      <div class="form-group">
+                        <label class="col-sm-2 control-label">Công việc: <span class="note"> * </span></label>
+                        <div class="col-sm-10">
+                          <ng-select [items]="ListCVGroupLCV" bindLabel="tenCongViec" bindValue="A0016_ID"
+                            groupBy="tenLoaiCongViec" [(ngModel)]="Hs.A0016_ID" name="A0016_ID"
+                            (change)="changeSelectCV(Hs.A0016_ID)" placeholder="--- Chọn công việc ---">
+                          </ng-select>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-sm-2 control-label">Tóm tắt công việc: <span class="note"> * </span></label>
+                        <div class="col-sm-10">
+                          <input type="text" [(ngModel)]="Hs.tieuDeCongViec" name="tieuDeCongViec" class="form-control"
+                            style="width: 100% !important;" required>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-sm-2 control-label">Trạng thái: <span class="note"> * </span></label>
+                        <div class="col-sm-10">
+                          <label style="margin-bottom: 0px;margin-top: 7px;"><span style="font-weight: 300">In
+                              Process</span></label>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="name" class="col-sm-2 control-label">Gửi tới: <span class="note"> *
+                          </span></label>
+                        <div style="width:calc(100% - 150px) !important;float: right;">
+                          <div class="col-sm-4">
+                            <!-- <select class="form-control text-company" style="width: 100%;" name="phongBan"
+                              [(ngModel)]="Hs.phongBan" (change)="ChangeGroupSign()">
+                              <option [value]="null">--- Chọn phòng ban ---</option>
+                              <option *ngFor="let item of ListPhongBanSelect" [value]="item.A0004_ID">
+                                {{item.tenPhongBanMoi}}</option>
+                            </select> -->
+                            <ng-select [items]="ListPhongBanSelect" bindLabel="tenPhongBanMoi" bindValue="id"
+                              [(ngModel)]="Hs.phongBan" name="phongBan" (change)="changePhongBan(Hs.phongBan)"
+                              [disabled]="Hs.A0016_ID == null" placeholder="--- Chọn phòng ban ---">
+                            </ng-select>
+                          </div>
+                          <div class="col-sm-4" style="padding-left: 0px">
+                            <select class="form-control text-company" [disabled]="Hs.A0016_ID == null"
+                              style="width: 100%;" name="Nhomky" [(ngModel)]="Hs.Nhomky" (change)="ChangeGroupSign()">
+                              <option [value]="null">--- Nhóm ký ---</option>
+                              <option *ngFor="let item of ListNhomKy" [value]="item.A0021_ID">
+                                {{item.tenNhomNguoiKy}} ({{item.thanhvien}})</option>
+                            </select>
+                          </div>
+                          <div class="col-sm-4" style="padding-left: 0px">
+                            <select class="form-control text-company" [disabled]="Hs.A0016_ID == null"
+                              style="width: 100%;" name="Nguoiky" [(ngModel)]="Hs.Nguoiky">
+                              <option [value]="null">--- Chọn người ký ---</option>
+                              <option *ngFor="let item of ListNguoiKy" [value]="item.A0019_ID">
+                                {{item.maNhanVien}} - {{item.hoVaTen}}</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="clr"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-body">
+                      <div class="form-group">
+                        <label for="name" class="col-sm-3">Nội dung: </label>
+                        <div class="clr"></div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-sm-12">
+                          <textarea rows="3" class="form-control" style="width: 100%" [(ngModel)]="Hs.noiDung"
+                            name="noiDung"></textarea>
+                        </div>
+                        <div class="clr"></div>
+                      </div>
+                      <div class="form-group" style="margin-bottom:0px">
+                        <div class="col-md-12">
+                          <div class="text-title">
+                            <label style="width: 120px">File đính kèm: </label>
+                            <input type="file" style="display:none" name="FileDinhkem" class="inputimgFile"
+                              accept=".xlsx,.xls,.doc,.docx,.ppt,.pptx,.txt,.pdf" multiple="multiple" #fileInput
+                              (change)="onFileSelect($event,2)" />
+                            <a title="Chọn file đính kèm" class="iconfileattach" (click)="fileInput.click()"><i
+                                class="fa fa-paperclip" aria-hidden="true"></i> Chọn file đính kèm</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group" *ngIf="ListFile.length > 0 || FilesAttach.length > 0">
+                        <div class="col-md-12 ListImagesFile">
+                          <div class="item-imgfile" *ngFor="let ffile of FilesAttach;index as j">
+                            <span style="color:#01a4ef;cursor:pointer"
+                              (click)="openFile(ffile)">{{ffile.tenFile}}</span>
+                            <a (click)="DeleteFiles(j,ffile,2)"><i class="fa fa-close"></i></a>
+                          </div>
+                          <div class="item-imgfile" *ngFor="let f of ListFile;index as i">
+                            <span>{{f.name}}</span>
+                            <a (click)="removeFiles(i,2)"><i class="fa fa-close"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="updateHSCV(frHSCV)"><i class="fa fa-save"></i>Cập
+              nhật</button>
+            <button type="button" class="btn btn-default" (click)="hideModal()"><i
+                class="fa fa-power-off"></i>Thoát</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fadess" id="ModalForm" [style.display]="mForm ? 'block' : 'none'" tabindex="-1" role="dialog"
+      aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog w550">
+        <div class="modal-content">
+          <div modal-movable class="modal-header head-modal">
+            <button type="button" class="close" (click)="hideModal()">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Back</span>
+            </button>
+            <h4 class="modal-title">Select Form</h4>
+          </div>
+          <div class="modal-body" style="padding:5px 15px;max-height: calc(100vh - 150px);">
+            <form class="form-horizontal" role="form" name="frHSCV" id="frHSCV" novalidate>
+              <div class="row">
+                <div class="col-md-6" *ngFor="let f of ListForm;index as i">
+                  <input type="radio" id="{{f.maForm}}" name="Form" [(ngModel)]="FormSelect" [value]="f.maForm">
+                  <label for="{{f.maForm}}"
+                    style="margin-left: 5px;margin-bottom: 0px;display: inline-block;cursor: pointer;">{{f.tenForm}}</label>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="selectForm(frHSCV)"><i class="fa fa-save"></i>
+              OK</button>
+            <button type="button" class="btn btn-default" (click)="hideModal()"><i
+                class="fa fa-power-off"></i>Thoát</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fadess" id="ModalEventLogs" [style.display]="mEventLogs ? 'block' : 'none'" tabindex="-1"
+      role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog w700">
+        <div class="modal-content">
+          <div modal-movable class="modal-header head-modal">
+            <button type="button" class="close" (click)="hideModal()">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Back</span>
+            </button>
+            <h4 class="modal-title">Event Log</h4>
+          </div>
+          <div class="modal-body" style="padding:5px 15px;max-height: calc(100vh - 150px);height: calc(100vh - 150px);">
+            <form class="form-horizontal" role="form" name="frEventLogs" id="frEventLogs" novalidate>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="BoxNote">
+                    <div class="headerEventNote">
+                      <ul>
+                        <li (click)="setTabLog(1)" [ngClass]="(Istab==1)?'activeTabLogs':''"><a>Lịch Sử Trình Ký</a>
+                        </li>
+                        <li (click)="setTabLog(2)" [ngClass]="(Istab==2)?'activeTabLogs':''"><a>Ghi Chú Trình Ký</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="ContentSignLog">
+                      <div class="boxlogsign" [style.display]="Istab == 1 ? 'block' : 'none'">
+                        <div class="itemboxlogsign" *ngFor="let doc of ListDocSign;index as i">
+                          <div class="boxloginsignleft">
+                            <span class="dateloginsign"
+                              *ngIf="doc.thoiGianGui != null">{{doc.thoiGianGui | date: 'dd/MM/yyyy'}}</span>
+                            <span class="dotsign" [style.background]="doc.daKy == true ? '#32db64' : '#cccccc'"></span>
+                          </div>
+                          <div class="boxloginsignright">
+                            <div class="boxinforsign">
+                              <div class="avatarsign">
+                                <img [src]="doc.anhDaiDien" alt="">
+                              </div>
+                              <div class="inforsign">
+                                <span class="namesign">{{doc.hoVaTen}}</span>
+                                <div style="clear: both"></div>
+                                <span class="positionsign">{{doc.tenViTri}}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="boxnotesign" [style.display]="Istab == 2 ? 'block' : 'none'">
+                        <div class="boxnoteeventlog">
+                          <div class="itemeventlog" *ngFor="let note of ListEventNote;index as i">
+                            <div class="boxavatarlog">
+                              <img [src]="note.anhDaiDien" alt="">
+                            </div>
+                            <div class="boxtextnotelogs">
+                              <span class="nameuserlog">{{note.hoVaTen}}</span>
+                              <span class="statusnotelog">{{note.tieuDe}}</span>
+                              <span class="datenotelog">{{note.thoiGianGui | date: 'dd/MM/yyyy HH:mm:ss'}}</span>
+                              <span class="statusnotelog" *ngIf="note.trangThai == 1"
+                                style="color: #023f98">{{note.noiDung}}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" (click)="hideModal()"><i
+                class="fa fa-power-off"></i>Thoát</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fadess" id="ModalSendAndSend" [style.display]="mSend ? 'block' : 'none'" tabindex="-1"
+      role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog w300">
+        <div class="modal-content">
+          <div modal-movable class="modal-header head-modal">
+            <button type="button" class="close" (click)="hideModal()">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Back</span>
+            </button>
+            <h4 class="modal-title">Event Log</h4>
+          </div>
+          <div class="modal-body" style="padding:5px 15px;max-height: calc(100vh - 150px)">
+            <form class="form-horizontal" role="form" name="frEventLogs" id="frEventLogs" novalidate>
+              <div class="row">
+                <div class="col-sm-12" style="padding: 0px 10px;">
+                  <label>Ghi chú: </label>
+                </div>
+                <div class="col-sm-12" style="padding: 0px 10px;">
+                  <textarea rows="5" class="form-control" style="width: 100%" [(ngModel)]="DocSend.noiDung"
+                    name="noiDung"></textarea>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="SignAndSend(frEventLogs)"><i
+                class="fa fa-paper-plane"></i> Send</button>
+            <button type="button" class="btn btn-default" (click)="hideModal()"><i
+                class="fa fa-power-off"></i>Thoát</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fadess" id="ModalForm001" [style.display]="mForm001 ? 'block' : 'none'" tabindex="-1"
+      role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog w1000">
+        <div class="modal-content">
+          <div modal-movable class="modal-header head-modal">
+            <button type="button" class="close" (click)="hideModalForm()">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Back</span>
+            </button>
+            <h4 class="modal-title">PHIẾU YÊU CẦU SỬ DỤNG DỊCH VỤ EMAIL</h4>
+          </div>
+          <div class="modal-body" style="padding:5px 15px;max-height: calc(100vh - 150px)">
+            <form class="form-horizontal" role="form" name="frEventLogs" id="frEventLogs" novalidate>
+              <div class="row">
+                <div class="Formtitle">
+                  <h3>PHIẾU YÊU CẦU SỬ DỤNG DỊCH VỤ EMAIL</h3>
+                </div>
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="text-title">
+                        <label style="margin: 0px;width: 175px;">Phòng・Bộ phận /申請部門: </label>
+                        <span>{{SF001.T001C}}</span>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <h4 style="font-size: 15px;font-weight: bold;margin-bottom: 10px">I. PARTICULAR</h4>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="text-title">
+                        <label style="margin: 0px;">1．Nội dung đơn/申請内容： </label>
+                      </div>
+                    </div>
+                    <div style="margin-bottom: 8px;display: inline-block;width: 100%;float: left;">
+                      <div class="col-md-12" *ngIf="ListCVGroupLCV.length > 1">
+                        <div class="text-title">
+                          <label style="margin: 0px;width: 160px;margin-top: 10px">Công việc: <span class="note"> *
+                            </span></label>
+                          <ng-select style="width: calc(100% - 160px);float: left;" [items]="ListCVGroupLCV"
+                            bindLabel="tenCongViec" bindValue="A0016_ID" groupBy="tenLoaiCongViec"
+                            [(ngModel)]="SF001.A0016_ID" name="A0016_ID" placeholder="--- Chọn công việc ---">
+                          </ng-select>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="text-title">
+                          <label style="margin: 0px;">(1) Đối tượng/対象</label>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="text-title">
+                          <input type="checkbox" [(ngModel)]="SF001.T002C" id="SF001T002C" name="SF001T002C"
+                            class="checkform"> <label style="margin: 0px;" for="SF001T002C">Tài khoản email cá
+                            nhân/個人ﾒｰﾙｱｶｳﾝﾄ</label>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="text-title">
+                          <input type="checkbox" [(ngModel)]="SF001.T003C" id="SF001T003C" name="SF001T003C"
+                            class="checkform"> <label style="margin: 0px;width: auto;" for="SF001T003C">Tài khoản email
+                            tổ chức/
+                            組織ﾒｰﾙアカウント</label>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="text-title">
+                          <input type="checkbox" [(ngModel)]="SF001.T004C" class="checkform" id="SF001T004C"
+                            name="SF001T004C"> <label style="margin: 0px;" for="SF001T004C">Nhóm mail/メール送信グループ</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="margin-bottom: 8px;display: inline-block;width: 100%;float: left;">
+                      <div class="col-md-12">
+                        <div class="text-title">
+                          <label style="margin: 0px;">(2) Nội dung xử lý/手続き内容</label>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="text-title">
+                          <input type="checkbox" [(ngModel)]="SF001.T005C" id="SF001T005C" name="SF001T005C"
+                            class="checkform"> <label style="margin: 0px;" for="SF001T005C">Tạo/ghi mới/新規作成/登録</label>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="text-title">
+                          <input type="checkbox" [(ngModel)]="SF001.T006C" id="SF001T006C" name="SF001T006C"
+                            class="checkform"> <label style="margin: 0px;" for="SF001T006C">Thay đổi/変更</label>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="text-title">
+                          <input type="checkbox" [(ngModel)]="SF001.T007C" id="SF001T007C" name="SF001T007C"
+                            class="checkform"> <label style="margin: 0px;" for="SF001T007C">Xóa/削除</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="text-title">
+                        <label style="margin: 0px;">(3) Chi tiết yêu cầu/申請詳細</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="text-title">
+                        <label style="width: 145px;">Người yêu cầu/申請者: </label>
+                        <input type="text" class="form-control  text-input-form" [(ngModel)]="SF001.T008C" name="T008C"
+                          style="width:calc(100% - 145px) !important" maxlength="250">
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="text-title">
+                        <label style="width: 60px;">Mã ID/ID: </label>
+                        <input type="text" class="form-control text-input-form" [(ngModel)]="SF001.T009C" name="T009C"
+                          style="width:calc(100% - 60px) !important" maxlength="250">
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="text-title">
+                        <label style="width: 115px;">Chức vụ/ﾎﾟｼﾞｼｮﾝ: </label>
+                        <input type="text" class="form-control text-input-form" [(ngModel)]="SF001.T010C" name="T010C"
+                          style="width:calc(100% - 115px) !important" maxlength="250">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="text-title">
+                        <label style="width: 185px;">Mục đích sử dụng /使用目的: </label>
+                        <input type="text" class="form-control text-input-form" [(ngModel)]="SF001.T011C" name="T011C"
+                          style="width:calc(100% - 185px) !important" maxlength="250">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="text-title">
+                        <label style="width: 275px;">Ngày mong muốn sử dụng /希望利用開始日:</label>
+                        <input type="text" class="form-control text-input-form" [(ngModel)]="SF001.T012C" name="T012C"
+                          style="width:calc(100% - 275px) !important" maxlength="250">
+                      </div>
+                    </div>
+                    <p>&nbsp;&nbsp;</p>
+                    <div class="col-md-12">
+                      <label style="font-weight: 600">2. IT Phần ghi chép của bộ phận IT /情報システム利用</label>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="text-title">
+                        <label style="width: 205px;">Tên người sử dụng /ユーザー名:</label>
+                        <input type="text" class="form-control text-input-form" [(ngModel)]="SF001.T013C" name="T013C"
+                          style="width:calc(100% - 205px) !important" maxlength="250">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="text-title">
+                        <label style="width: 320px;">Địa chỉ E-mail/Group mail /E-mail・ｸﾞﾙｰﾌﾟﾒｰﾙｱﾄﾞﾚｽ:</label>
+                        <input type="text" class="form-control text-input-form" [(ngModel)]="SF001.T014C" name="T014C"
+                          style="width:calc(100% - 436px) !important;float: left;" maxlength="250">
+                        <label style="width: auto;margin-left: 5px">@meiko-elec.com</label>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="text-title">
+                        <label style="width: 285px">Tên máy tính được cài đặt /設定するパソコン:</label>
+                        <input type="text" class="form-control text-input-form" [(ngModel)]="SF001.T015C" name="T015C"
+                          style="width:calc(100% - 285px) !important" maxlength="250">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="text-title">
+                        <label style="width: 270px;">Ngày bắt đầu sử dụng dịch vụ/利用開始日:</label>
+                        <input type="text" class="form-control text-input-form" [(ngModel)]="SF001.T016C" name="T016C"
+                          style="width:calc(100% - 270px) !important" maxlength="250">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="text-title">
+                        <label style="width: 180px;">Ngày lưu hồ sơ/資料保管日:</label>
+                        <input type="text" class="form-control text-input-form" [(ngModel)]="SF001.T017C" name="T017C"
+                          style="width:calc(100% - 180px) !important" maxlength="250">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="text-title">
+                        <label style="width: 135px;">Điều khoản sử dụng:</label>
+                        <a (click)="ViewDKSDEmail()"
+                          style="display: inline-block;margin-top: 7px;margin-left: 5px;font-weight: bold;color: red;">Xem
+                          điều khoản sử dụng</a>
+                      </div>
+                      <div class="text-title"
+                        style="border: 2px dashed red;padding: 10px;margin-top: 5px;margin-bottom: 10px;transition: all ease .4s;-webkit-transition: all ease .4s;-moz-transition: all ease .4s;-o-transition: all ease .4s;"
+                        *ngIf="isViewDK == true">
+                        <h3 style="text-align: center;margin: 10px 10px 20px 10px;">QUY ĐỊNH SỬ DỤNG EMAIL<br />メール使用ルール
+                        </h3>
+                        <b>1.</b> Không sử dụng email, group mail ngoài mục đích và công việc đã được phê duyệt.<br />
+                        仕事に関する目的以外にメール・グループメールを使用してはいけない。<br /><br />
+                        <b>2.</b> Không sử dụng email để gửi những thông tin kinh doanh, tài liệu mật, tài liệu lưu hành
+                        nội bộ khi chưa được sự cho phép của cấp quản lý liên quan.<br />
+                        上司からの許可を得ない時、外へ経営情報・機密性の高いデータ・内部記録などを送信してはいけない。<br /><br />
+                        <b>3.</b> Khi nhận được mail do người khác gửi nhầm thì báo ngay cho phòng IT để xử lý. Tuyệt
+                        đối không gửi cho người khác.<br />
+                        誤送でメールが来る場合は、必ずIT課に連絡してください。絶対に他人に転送してはいけない。<br /><br />
+                        <b>4.</b> Trước khi gửi e-mail, cần xác nhận thật kỹ xem địa chỉ e-mail cần gửi có đúng hay
+                        không, hoặc có cần thiết không, hạn chế tối đa việc reply all. Ví dụ khi gửi email xác nhận là
+                        đã nhận được thông tin hoặc cảm ơn thì không cần thiết phải gửi lại cho tất cả mọi người. <br />
+                        メールを送信する前に、もう一度相手先が正しいか確認することが必要です。全員に返信を最小限に収める。たとえば、「情報を受け取りました」、「ありがとう」といった返事のメールを送信する際して、全員に返信する必要ない。<br /><br />
+                        <b>5.</b> Không gửi file đính kèm quá 20Mb, không tạo quá 20 rules.<br />
+                        20MBを超える添付ファイルを送信したり、20 rules以上の作成をしたりしてはいけない。<br /><br />
+                        <b>6.</b> Khi nhận được những email lạ yêu cầu hoặc gợi ý mở file đính kèm thì bắt buộc phải xác
+                        nhận với phòng IT. Tuyệt đối không được mở file đính kèm.<br />
+                        不明なメールを受信する際には、添付ファイルを開ける指示がある場合はIT課に連絡することが必要です。絶対に添付ファイルを開けてはいけない。<br /><br />
+                        <b>7.</b> Thực hiện backup và xóa email định kỳ hoặc khi có thông báo từ phòng IT để giảm dung
+                        lượng Server.<br />
+                        サーバー容量を減らすために、定期的にメールのバックアップを行う。<br /><br />
+                        <b>8.</b> Phải chỉ định người quản lý đối với những email dùng chung hoặc những nhóm
+                        email.<br />
+                        共有メール又はグループメールに対しては管理者を指定するのが必要。<br /><br />
+                        <b>9.</b> Khi cần thiết, ban lãnh đạo công ty có quyền kiểm tra nội dung email và xóa những
+                        email vi phạm nội quy mà không cần thông báo cho người dùng. Vì Email là tài sản thông tin của
+                        công ty, không phải tài sản cá nhân.<br />
+                        メールは会社の情報資産であり、個人の資産ではないから。必要に応じて、会社の管理者は、ユーザーに通知せずに、メールの内容を検討し、ルールに違反しているメールを削除する権利を持つ。<br /><br />
+                        <b>10.</b> Đối với những trường hợp vi phạm, phòng IT sẽ tạm thời khóa email cho đến khi nhận
+                        được cam kết không tái phạm của người dùng và người quản lý liên quan.<br />
+                        違反がある場合は、IT課はそのユーザーのメールを一時ロックする。管理者と違反人からのコミットメントを受け取るまで にユーザーを復旧する。<br />
+                      </div>
+                      <div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="boxformemail">
+
+                              Viết nội dung dưới đây vào cột bên phải và ký tên:<br />
+                              下記の内容を右欄に記入して、サインをお願いします。<br /><br />
+
+                              Những thông tin trên đây tôi đã đọc và hiểu rõ, nếu như có bất cứ vi phạm gì tôi xin chịu
+                              mọi hình thức kỷ luật và đồng ý dừng sử dụng email.<br />
+                              上記の内容を理解しました。<br />
+                              違反があれば責任を負って、メール使用の中止を同意致します。<br />
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="boxformemail" style="min-height: 160px;padding: 5px 10px">
+                              <textarea rows="3" class="form-control text-input-form" style="width: 100%"
+                                [(ngModel)]="SF001.T018C" name="SF001T018C"></textarea>
+                              <div class="row">
+                                <div class="col-md-12">
+                                  <div class="text-title">
+                                    <label style="width: 80px;">Ký tên/Sign:</label>
+                                    <input type="text" class="form-control text-input-form" [(ngModel)]="SF001.T019C"
+                                      name="SF001T019C" style="width:calc(100% - 80px) !important" maxlength="250">
+                                  </div>
+                                </div>
+                                <div class="col-md-12">
+                                  <div class="text-title" style="margin-top: -10px;">
+                                    <label style="width: 80px;">Ngày/Date:</label>
+                                    <input type="text" class="form-control text-input-form" [(ngModel)]="SF001.T020C"
+                                      name="SF001T020C" style="width:calc(100% - 80px) !important" maxlength="250">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div style="clear: both"></div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="UpdateSF001(frEventLogs)"><i class="fa fa-save"></i>
+              Lưu lại</button>
+            <button type="button" class="btn btn-default" (click)="hideModalForm()"><i
+                class="fa fa-power-off"></i>Thoát</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fadess" id="ModalForm002" [style.display]="mForm002 ? 'block' : 'none'" tabindex="-1"
+      role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog w1000">
+        <div class="modal-content">
+          <div modal-movable class="modal-header head-modal">
+            <button type="button" class="close" (click)="hideModalForm()">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Back</span>
+            </button>
+            <h4 class="modal-title">THƯ LIÊN LẠC NỘI BỘ</h4>
+          </div>
+          <div class="modal-body" style="padding:5px 15px;max-height: calc(100vh - 150px)">
+            <form class="form-horizontal" role="form" name="frEventLogs" id="frEventLogs" novalidate>
+              <div class="row">
+                <div class="Formtitle">
+                  <h3>THƯ LIÊN LẠC NỘI BỘ</h3>
+                  <H4 style="text-align: center;font-style: italic;margin-top: -10px;margin-bottom: 25px;">
+                    INTERNAL LETTER<br />
+                    内部連絡
+                  </H4>
+                </div>
+                <div class="col-md-12" *ngIf="ListCVGroupLCV.length > 1">
+                  <div class="text-title">
+                    <label style="margin: 0px;width: 160px;margin-top: 10px">Công việc: <span class="note"> *
+                      </span></label>
+                    <ng-select style="width: calc(100% - 160px);float: left;" [items]="ListCVGroupLCV"
+                      bindLabel="tenCongViec" bindValue="A0016_ID" groupBy="tenLoaiCongViec"
+                      [(ngModel)]="SF002.A0016_ID" name="A0016_ID" placeholder="--- Chọn công việc ---">
+                    </ng-select>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="row">
+                    <div style="margin-bottom: 8px;display: inline-block;width: 100%;float: left;">
+                      <div class="col-md-2" style="padding-right: 0px">
+                        <div class="text-title">
+                          <label style="margin: 0px;" for="SF001T002C">
+                            Bên liên lạc/連絡者<br />
+                            Sender:
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md-2 padding10leftright">
+                        <div class="text-title">
+                          <label style="margin: 0px;width: 100%;">BP/ Dept/部:</label>
+                          <input type="text" class="form-control  text-input-form" style="width:100% !important"
+                            [(ngModel)]="SF002.T001C" name="T001C" maxlength="250">
+                        </div>
+                      </div>
+                      <div class="col-md-2 padding10leftright">
+                        <div class="text-title">
+                          <label style="margin: 0px;width: 100%" for="SF001T004C">Họ và tên/ Name/氏名:</label>
+                          <input type="text" class="form-control  text-input-form" style="width:100% !important"
+                            [(ngModel)]="SF002.T002C" name="T002C" maxlength="250">
+                        </div>
+                      </div>
+                      <div class="col-md-2" style="padding-left: 0px">
+                        <div class="text-title">
+                          <label style="margin: 0px;">
+                            Số tel người gửi/電話番号<br />
+                            Sending phone:
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md-2 padding10leftright">
+                        <div class="text-title">
+                          <label style="margin: 0px;width: 100%">
+                            Máy lẻ/ Ext/内戦:
+                          </label>
+                          <input type="text" class="form-control  text-input-form" style="width:100% !important"
+                            [(ngModel)]="SF002.T005C" name="T005C" maxlength="250">
+                        </div>
+                      </div>
+                      <div class="col-md-2 padding10leftright">
+                        <div class="text-title">
+                          <label style="margin: 0px;width: 100%">
+                            Di động/ Mobile/携帯:
+                          </label>
+                          <input type="text" class="form-control  text-input-form" style="width:100% !important"
+                            [(ngModel)]="SF002.T006C" name="T006C" maxlength="250">
+                        </div>
+                      </div>
+                    </div>
+                    <div style="display: inline-block;width: 100%;float: left;">
+                      <div class="col-md-12">
+                        <table class="table table-hover table-bordered" style="table-layout: fixed">
+                          <thead>
+                            <tr>
+                              <th width="30" align="center" rowspan="2">N<u>o</u></th>
+                              <th align="center" colspan="3">Bên nhận/宛先<br /> Receiver Dept:</th>
+                              <th align="center" colspan="2"> Số tel người nhận/電話<br /> Receiving phone:</th>
+                              <th align="center" rowspan="2" width="70">
+                                <ul class="navbar-bottomleft" style="float:none">
+                                  <li>
+                                    <a title="Thêm mới dòng" (click)="addRowItemSF002(1)"><i class="fa fa-plus"></i></a>
+                                  </li>
+                                </ul>
+                              </th>
+                            </tr>
+                            <tr>
+                              <th align="left" width="100">
+                                BP/ Dept/部:
+                              </th>
+                              <th align="left" width="100">
+                                Nhóm người nhận:
+                              </th>
+                              <th align="left" width="100">
+                                Người nhận/ Name/氏名:
+                              </th>
+                              <th align="left" width="100">
+                                Máy lẻ/ Ext/内戦:
+                              </th>
+                              <th align="left" width="100">
+                                Di động/ Mobile/携帯:
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let item of SF002D;index as i">
+                              <td align="center" width="30">
+                                {{i + 1}}
+                              </td>
+                              <td align="left" width="100">
+                                <ng-select [items]="ListPhongBanSelect" bindLabel="tenPhongBanMoi" bindValue="id"
+                                  [(ngModel)]="item.C001C" name="SF002DC001C-{{i}}" (change)="changePhongDept(item)"
+                                  placeholder="--- Chọn phòng ban ---">
+                                </ng-select>
+                              </td>
+                              <td align="left" width="100">
+                                <select class="form-control text-company" style="width: 100%;" name="SF002DC002C-{{i}}"
+                                  [(ngModel)]="item.C002C" (change)="ChangeGroupSignByDept(item)">
+                                  <option [value]="null">--- chọn nhóm nhận ---</option>
+                                  <option *ngFor="let item of item.ListNhomKy" [value]="item.A0021_ID">
+                                    {{item.tenNhomNguoiKy}} ({{item.thanhvien}})</option>
+                                </select>
+                              </td>
+                              <td align="left" width="100">
+                                <select class="form-control text-company" style="width: 100%;" name="SF002DC003C-{{i}}"
+                                  [(ngModel)]="item.C003C">
+                                  <option [value]="null">--- Chọn người nhận ---</option>
+                                  <option *ngFor="let item of item.ListNguoiKy" [value]="item.A0019_ID">
+                                    {{item.maNhanVien}} - {{item.hoVaTen}}</option>
+                                </select>
+                              </td>
+                              <td align="left" width="100">
+                                <input type="text" class="form-control  text-input-form" style="width:100% !important"
+                                  [(ngModel)]="item.C004C" name="SF002DC004C-{{i}}" maxlength="250">
+                              </td>
+                              <td align="left" width="100">
+                                <input type="text" class="form-control  text-input-form" style="width:100% !important"
+                                  [(ngModel)]="item.C005C" name="SF002DC005C-{{i}}" maxlength="250">
+                              </td>
+                              <td align="center" width="70">
+                                <a title="Xóa" (click)="removeRowSF002D(1,i)"><i class="fa fa-trash-o"></i></a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <!-- <div class="col-md-2 padding10leftright">
+                        <div class="text-title">
+                          <label style="margin: 0px;width: 100%;">BP/ Dept/部:</label>                          
+                        </div>
+                      </div>
+                      <div class="col-md-2 padding10leftright">
+                        <div class="text-title">
+                          <label style="margin: 0px;width: 100%">Họ và tên/ Name/氏名:</label>                         
+                        </div>
+                      </div>
+
+                      <div class="col-md-2 padding10leftright">
+                        <div class="text-title">
+                          <label style="margin: 0px;width: 100%">
+                            Máy lẻ/ Ext/内戦:
+                          </label>                          
+                        </div>
+                      </div>
+                      <div class="col-md-2 padding10leftright">
+                        <div class="text-title">
+                          <label style="margin: 0px;width: 100%">
+                            Di động/ Mobile/携帯:
+                          </label>                          
+                        </div>
+                      </div> -->
+                    </div>
+
+                    <div style="display: inline-block;width: 100%;float: left;">
+                      <div class="col-md-2" style="padding-right: 0px">
+                        <div class="text-title">
+                          <label style="margin: 0px;">
+                            Ngày gửi/連絡日付<br />
+                            Sending date:
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md-4 padding10leftright">
+                        <div class="text-title">
+                          <input type="text" class="form-control  text-input-form" style="width:100% !important"
+                            [(ngModel)]="SF002.T009C" name="T009C" maxlength="250">
+                        </div>
+                      </div>
+                      <div class="col-md-2" style="padding:0px">
+                        <div class="text-title">
+                          <label style="margin: 0px;">
+                            Ngày nhận/貰う日付<br />
+                            Receiving date:
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md-4 padding10leftright">
+                        <div class="text-title">
+                          <input type="text" class="form-control  text-input-form" style="width:100% !important"
+                            [(ngModel)]="SF002.T010C" name="T010C" maxlength="250">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-2" style="padding-right: 0px">
+                      <div class="text-title">
+                        <label style="margin: 0px;">Liên lạc về việc/連絡内容 Re:</label>
+                      </div>
+                    </div>
+                    <div class="col-md-10 padding10leftright">
+                      <div class="text-title">
+                        <input type="text" class="form-control  text-input-form" style="width:100% !important"
+                          [(ngModel)]="SF002.T011C" name="T011C" maxlength="250">
+                      </div>
+                    </div>
+                    <br /><br />
+
+                    <div class="col-md-12">
+                      <div class="text-title">
+                        <label style="width: 100%;">Nội dung cần liên lạc/内容: </label>
+                        <input type="text" class="form-control  text-input-form" [(ngModel)]="SF002.T012C" name="T012C"
+                          style="width:100% !important" maxlength="250">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="text-title">
+                        <label style="width: 100%;">Ý kiến của phòng ban liên quan/関連部門コメント: </label>
+                        <input type="text" class="form-control text-input-form" [(ngModel)]="SF002.T013C" name="T013C"
+                          style="width:100% !important" maxlength="250">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="text-title">
+                        <label style="width: 100%;">Ý kiến của phòng ban liên quan/関連部門コメント: </label>
+                        <input type="text" class="form-control text-input-form" [(ngModel)]="SF002.T014C" name="T014C"
+                          style="width:100% !important" maxlength="250">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="clear: both"></div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="UpdateSF002(frEventLogs)"><i class="fa fa-save"></i>
+              Lưu lại</button>
+            <button type="button" class="btn btn-default" (click)="hideModalForm()"><i
+                class="fa fa-power-off"></i>Thoát</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fadess" id="ModalForm003" [style.display]="mForm003 ? 'block' : 'none'" tabindex="-1"
+      role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog w1000">
+        <div class="modal-content">
+          <div modal-movable class="modal-header head-modal">
+            <button type="button" class="close" (click)="hideModalForm()">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Back</span>
+            </button>
+            <h4 class="modal-title">Account Creation Required</h4>
+          </div>
+          <div class="modal-body" style="padding:5px 15px;max-height: calc(100vh - 150px)">
+            <form class="form-horizontal" role="form" name="frEventLogs" id="frEventLogs" novalidate>
+              <div class="Formtitle">
+                <h3>YÊU CẦU TẠO TÀI KHOẢN</h3>
+              </div>
+              <h4 style="font-size: 15px;font-weight: bold;margin-bottom: 10px">I. PARTICULAR</h4>
+              <div class="row">
+                <div class="col-md-12" *ngIf="ListCVGroupLCV.length > 1">
+                  <div class="text-title">
+                    <label style="margin: 0px;width: 160px;margin-top: 10px">Công việc: <span class="note"> *
+                      </span></label>
+                    <ng-select style="width: calc(100% - 160px);float: left;" [items]="ListCVGroupLCV"
+                      bindLabel="tenCongViec" bindValue="A0016_ID" groupBy="tenLoaiCongViec"
+                      [(ngModel)]="SF003.A0016_ID" name="A0016_ID" placeholder="--- Chọn công việc ---">
+                    </ng-select>
+                  </div>
+                </div>
+                <div class="col-md-7">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="text-title">
+                        <label style="margin: 0px;width: 90px;">User: </label>
+                        <span>{{SF003.T001C}}</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="text-title">
+                        <label style="margin: 0px;width: 90px;">User Code: </label>
+                        <span>{{SF003.T002C}}</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="text-title">
+                        <label style="margin: 0px;width: 90px;">Department: </label>
+                        <span>{{SF003.T003C}}</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="text-title">
+                        <label style="margin: 0px;width: 90px;">Request Date: </label>
+                        <span>{{SF003.T004C | date: 'dd/MM/yyyy'}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div style="clear: both"></div>
+                <div class="col-md-12">
+                  <h4 style="font-size: 15px;font-weight: bold;margin-bottom: 10px">II. DETAILS</h4>
+                  <table class="table table-hover table-bordered">
+                    <thead>
+                      <tr>
+                        <th width="30" align="center">N<u>o</u></th>
+                        <th align="center" width="100">System</th>
+                        <th align="center" width="140">Request</th>
+                        <th align="center" width="110">Description / Instructions</th>
+                        <th align="center" width="70">User Create</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td width="30" align="center">1</td>
+                        <td align="left" width="100">
+                          <span>Tài khoản máy tính</span>
+                        </td>
+                        <td align="left" width="140">
+                          <input [(ngModel)]="SF003.T005C" name="SF003T005C" class="form-control text-input-form"
+                            style="width: 100%;">
+                        </td>
+                        <td align="left" width="110">
+                          <span>Tài khoản sử dụng máy tính</span>
+                        </td>
+                        <td align="left" width="70">
+                          <input [(ngModel)]="SF003.T006C" name="SF003T006C" class="form-control text-input-form"
+                            style="width: 100%;">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="30" align="center">2</td>
+                        <td align="left" width="100">
+                          <span>Server chung (.234)</span>
+                        </td>
+                        <td align="left" width="140">
+                          <input [(ngModel)]="SF003.T007C" name="SF003T007C" class="form-control text-input-form"
+                            style="width: 100%;">
+                        </td>
+                        <td align="left" width="110">
+                          <span>Ghi rõ truy cập thư mục nào và quyền thao tác trên thư mục đó. (Read or
+                            Read/write)</span>
+                        </td>
+                        <td align="left" width="70">
+                          <input [(ngModel)]="SF003.T008C" name="SF003T008C" class="form-control text-input-form"
+                            style="width: 100%;">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="30" align="center">3</td>
+                        <td align="left" width="100">
+                          <span>Máy in</span>
+                        </td>
+                        <td align="left" width="140">
+                          <input [(ngModel)]="SF003.T009C" name="SF003T009C" class="form-control text-input-form"
+                            style="width: 100%;">
+                        </td>
+                        <td align="left" width="110">
+                          <span>Quyền in và photocopy</span>
+                        </td>
+                        <td align="left" width="70">
+                          <input [(ngModel)]="SF003.T010C" name="SF003T010C" class="form-control text-input-form"
+                            style="width: 100%;">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="30" align="center">4</td>
+                        <td align="left" width="100">
+                          <span>Điện thoại bàn</span>
+                        </td>
+                        <td align="left" width="140">
+                          <input [(ngModel)]="SF003.T011C" name="SF003T011C" class="form-control text-input-form"
+                            style="width: 100%;">
+                        </td>
+                        <td align="left" width="110">
+                          <span>Mã dùng để gọi điện ra ngoài công ty</span>
+                        </td>
+                        <td align="left" width="70">
+                          <input [(ngModel)]="SF003.T012C" name="SF003T012C" class="form-control text-input-form"
+                            style="width: 100%;">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="30" align="center">5</td>
+                        <td align="left" width="100">
+                          <span>Thẻ quyẹt ra vào</span>
+                        </td>
+                        <td align="left" width="140">
+                          <input [(ngModel)]="SF003.T013C" name="SF003T013C" class="form-control text-input-form"
+                            style="width: 100%;">
+                        </td>
+                        <td align="left" width="110">
+                          <span>Chú ý: Phần này chỉ dành cho các nhân viên phòng CAM, FN, LG và MA5</span>
+                        </td>
+                        <td align="left" width="70">
+                          <input [(ngModel)]="SF003.T014C" name="SF003T014C" class="form-control text-input-form"
+                            style="width: 100%;">
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="UpdateSF003(frEventLogs)"><i class="fa fa-save"></i>
+              Lưu lại</button>
+            <button type="button" class="btn btn-default" (click)="hideModalForm()"><i
+                class="fa fa-power-off"></i>Thoát</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fadess" id="ModalForm004" [style.display]="mForm004 ? 'block' : 'none'" tabindex="-1"
+      role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog w1000">
+        <div class="modal-content">
+          <div modal-movable class="modal-header head-modal">
+            <button type="button" class="close" (click)="hideModalForm()">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Back</span>
+            </button>
+            <h4 class="modal-title">BIÊN BẢN BÀN GIAO (HAND-OVER)</h4>
+          </div>
+          <div class="modal-body" style="padding:5px 15px;max-height: calc(100vh - 150px)">
+            <form class="form-horizontal" role="form" name="frEventLogs" id="frEventLogs" novalidate>
+              <div class="row">
+                <div class="Formtitle">
+                  <h3>BIÊN BẢN BÀN GIAO</h3>
+                  <H4 style="text-align: center;font-style: italic;margin-top: -10px;margin-bottom: 25px;">
+                    HAND-OVER
+                  </H4>
+                </div>
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <h4 style="font-size: 15px;font-weight: bold;margin-bottom: 10px">I. PARTICULAR</h4>
+                    </div>
+                    <div style="margin-bottom: 8px;display: inline-block;width: 100%;float: left;">
+                      <div class="col-md-12" *ngIf="ListCVGroupLCV.length > 1">
+                        <div class="text-title">
+                          <label style="margin: 0px;width: 160px;margin-top: 10px">Công việc: <span class="note"> *
+                            </span></label>
+                          <ng-select style="width: calc(100% - 160px);float: left;" [items]="ListCVGroupLCV"
+                            bindLabel="tenCongViec" bindValue="A0016_ID" groupBy="tenLoaiCongViec"
+                            [(ngModel)]="SF004.A0016_ID" name="A0016_ID" placeholder="--- Chọn công việc ---">
+                          </ng-select>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="text-title">
+                          <label style="margin: 0px;">User name: {{SF004.T001C}}</label>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="text-title">
+                          <label style="margin: 0px;width: auto;">ID: {{SF004.T002C}}</label>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="text-title">
+                          <label style="margin: 0px;">Dept: {{SF004.T003C}}</label>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="text-title">
+                          <label style="margin: 0px;">Ngày: {{SF004.T004C | date: 'dd/MM/yyyy'}}</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="text-title">
+                        <h4 style="font-size: 13px;font-weight: bold;color: #023f98;">A. Phần cứng - Hardware</h4>
+                      </div>
+                    </div>
+                    <div style="margin-bottom: 8px;display: inline-block;width: 100%;float: left;">
+                      <div class="col-md-12">
+                        <table class="table table-hover table-bordered" style="table-layout: fixed">
+                          <thead>
+                            <tr>
+                              <th width="30" align="center">N<u>o</u></th>
+                              <th align="center" width="200">Tên thiết bị<br /> (Device Name)</th>
+                              <th align="center" width="80">Số lượng<br /> (Quantity)</th>
+                              <th align="center" width="80">Tình trạng thiết bị <br /> (Device status)</th>
+                              <th align="center" width="70">Mã thiết bị<br /> (Serial)</th>
+                              <th align="center" width="30">
+                                <ul class="navbar-bottomleft" style="float:none">
+                                  <li>
+                                    <a title="Thêm mới dòng" (click)="addRowItemSF004(1)"><i class="fa fa-plus"></i></a>
+                                  </li>
+                                </ul>
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let r of ListSF004DPC;index as i">
+                              <td width="30" align="center">{{i + 1}}</td>
+                              <td align="left" width="200">
+                                <input [(ngModel)]="r.C001C" name="SF004DPCC001C-{{i}}"
+                                  class="form-control text-input-form" style="width: 100%;">
+                              </td>
+                              <td align="left" width="80">
+                                <input [(ngModel)]="r.C002C" name="SF004DPCC002C-{{i}}"
+                                  class="form-control text-input-form" style="width: 100%;">
+                              </td>
+                              <td align="left" width="80">
+                                <!-- <input [(ngModel)]="r.C003C" name="SF004DPCC003C" class="form-control text-input-form"
+                                  style="width: 100%;"> -->
+                                <select class="form-control text-input-form" style="width: 100%;"
+                                  name="SF004DPCC003C-{{i}}" [(ngModel)]="r.C003C">
+                                  <option [value]="null">--- Select Item ---</option>
+                                  <option *ngFor="let item of selectStatusPCSF004" [value]="item.IDStatus">
+                                    {{item.NameStatus}}</option>
+                                </select>
+                              </td>
+                              <td align="left" width="70">
+                                <input [(ngModel)]="r.C004C" name="SF004DPCC004C-{{i}}"
+                                  class="form-control text-input-form" style="width: 100%;">
+                              </td>
+                              <td align="center" width="30">
+                                <a title="Xóa" (click)="removeRowSF004(1,i)"><i class="fa fa-trash-o"></i></a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="text-title">
+                        <h4 style="font-size: 13px;font-weight: bold;color: #023f98;">B. Phần mềm - Software</h4>
+                      </div>
+                    </div>
+                    <div style="margin-bottom: 8px;display: inline-block;width: 100%;float: left;">
+                      <div class="col-md-12">
+                        <table class="table table-hover table-bordered" style="table-layout: fixed">
+                          <thead>
+                            <tr>
+                              <th width="30" align="center">N<u>o</u></th>
+                              <th align="center" width="200">Tên phần mềm<br /> (Software's name)</th>
+                              <th align="center" width="80">Phiên bản<br /> (Version)</th>
+                              <th align="center" width="80">Loại phần mềm <br /> (Software's type)</th>
+                              <th align="center" width="70">Ghi chú<br /> (Remark)</th>
+                              <th align="center" width="30">
+                                <ul class="navbar-bottomleft" style="float:none">
+                                  <li>
+                                    <a title="Thêm mới dòng" (click)="addRowItemSF004(2)"><i class="fa fa-plus"></i></a>
+                                  </li>
+                                </ul>
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let r of ListSF004DPM;index as i">
+                              <td width="30" align="center">{{i + 1}}</td>
+                              <td align="left" width="200">
+                                <input [(ngModel)]="r.C001C" name="SF004DPMC001C-{{i}}"
+                                  class="form-control text-input-form" style="width: 100%;">
+                              </td>
+                              <td align="left" width="80">
+                                <input [(ngModel)]="r.C002C" name="SF004DPMC002C-{{i}}"
+                                  class="form-control text-input-form" style="width: 100%;">
+                              </td>
+                              <td align="left" width="80">
+                                <select class="form-control text-input-form" style="width: 100%;"
+                                  name="SF004DPMC003C-{{i}}" [(ngModel)]="r.C003C">
+                                  <option [value]="null">--- Select Item ---</option>
+                                  <option *ngFor="let item of selectTypePMSF004" [value]="item.IDType">
+                                    {{item.NameType}}</option>
+                                </select>
+                              </td>
+                              <td align="left" width="70">
+                                <input [(ngModel)]="r.C004C" name="SF004DPMC004C-{{i}}"
+                                  class="form-control text-input-form" style="width: 100%;">
+                              </td>
+                              <td align="center" width="30">
+                                <a title="Xóa" (click)="removeRowSF004(2,i)"><i class="fa fa-trash-o"></i></a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div style="clear: both"></div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="UpdateSF004(frEventLogs)"><i class="fa fa-save"></i>
+              Lưu lại</button>
+            <button type="button" class="btn btn-default" (click)="hideModalForm()"><i
+                class="fa fa-power-off"></i>Thoát</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fadess" id="ModalForm005" [style.display]="mForm005 ? 'block' : 'none'" tabindex="-1"
+      role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog w1000">
+        <div class="modal-content">
+          <div modal-movable class="modal-header head-modal">
+            <button type="button" class="close" (click)="hideModalForm()">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Back</span>
+            </button>
+            <h4 class="modal-title">Yêu cầu tạo user trên phần mềm</h4>
+          </div>
+          <div class="modal-body" style="padding:5px 15px;max-height: calc(100vh - 150px)">
+            <form class="form-horizontal" role="form" name="frEventLogs" id="frEventLogs" novalidate>
+              <div class="row">
+                <div class="Formtitle">
+                  <h3>
+                    Yêu cầu tạo user trên phần mềm<br />
+                    <span style="font-style: italic">Account Requirement</span>
+                  </h3>
+                </div>
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <h4 style="font-size: 15px;font-weight: bold;margin-bottom: 10px">I. PARTICULAR</h4>
+                    </div>
+                    <div style="margin-bottom: 8px;display: inline-block;width: 100%;float: left;">
+                      <div class="col-md-12" *ngIf="ListCVGroupLCV.length > 1">
+                        <div class="text-title">
+                          <label style="margin: 0px;width: 160px;margin-top: 10px">Công việc: <span class="note"> *
+                            </span></label>
+                          <ng-select style="width: calc(100% - 160px);float: left;" [items]="ListCVGroupLCV"
+                            bindLabel="tenCongViec" bindValue="A0016_ID" groupBy="tenLoaiCongViec"
+                            [(ngModel)]="SF005.A0016_ID" name="A0016_ID" placeholder="--- Chọn công việc ---">
+                          </ng-select>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="text-title">
+                          <label style="margin: 0px;">
+                            Loại hình yêu cầu<br />
+                            <span style="font-style: italic">Type of requirement</span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="row">
+                          <div class="col-md-4">
+                            <div class="text-title">
+                              <input type="checkbox" [(ngModel)]="SF005.T001C" id="SF005T001C" name="SF005T001C"
+                                class="checkform">
+                              <label style="margin: 0px;width: auto;" for="SF005T001C">Tạo mới<br /><span
+                                  style="font-style: italic;clear: both;">New</span></label>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="text-title">
+                              <input type="checkbox" [(ngModel)]="SF005.T002C" id="SF005T002C" name="SF005T002C"
+                                class="checkform">
+                              <label style="margin: 0px;width: auto;" for="SF005T002C">Sửa đổi<br /><span
+                                  style="font-style: italic;clear: both;">Modify</span></label>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="text-title">
+                              <input type="checkbox" [(ngModel)]="SF005.T003C" id="SF005T003C" name="SF005T003C"
+                                class="checkform">
+                              <label style="margin: 0px;width: auto;" for="SF005T003C">Xóa bỏ<br /><span
+                                  style="font-style: italic;clear: both;">Delete</span></label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div style="clear: both"></div>
+                      <div class="col-md-2">
+                        <div class="text-title">
+                          <label style="margin: 0px;width: auto;">
+                            Người yêu cầu
+                            <span>Applicant</span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md-4" style="padding-left: 0px">
+                        <div class="text-title">
+                          <input type="text" class="form-control text-input-form" [(ngModel)]="SF005.T004C"
+                            name="SF005T004C" style="width:100% !important;margin-top: 8px;" maxlength="250">
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="text-title">
+                          <label style="margin: 0px;width: auto;">Bộ phận<br /> <span>Dept</span></label>
+                        </div>
+                      </div>
+                      <div class="col-md-4" style="padding-left: 0px">
+                        <div class="text-title">
+                          <input type="text" class="form-control text-input-form" [(ngModel)]="SF005.T005C"
+                            name="SF005T005C" style="width:100% !important;margin-top: 8px;" maxlength="250">
+                        </div>
+                      </div>
+                      <div style="clear: both"></div>
+                      <div class="col-md-2">
+                        <div class="text-title">
+                          <label style="margin: 0px;width: auto;">
+                            Ngày yêu cầu
+                            <span>Required Date</span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md-4" style="padding-left: 0px">
+                        <div class="text-title">
+                          <input type="text" class="form-control text-input-form" [(ngModel)]="SF005.T006C"
+                            name="SF005T006C" bsDatepicker [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY'}" placement="top"
+                            style="width: 100%">
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="text-title">
+                          <label style="margin: 0px;width: auto;">Cấp bậc <br /><span>Position</span></label>
+                        </div>
+                      </div>
+                      <div class="col-md-4" style="padding-left: 0px">
+                        <div class="text-title">
+                          <input type="text" class="form-control text-input-form" [(ngModel)]="SF005.T007C"
+                            name="SF005T007C" style="width:100% !important;margin-top: 8px;" maxlength="250">
+                        </div>
+                      </div>
+                      <div style="clear: both"></div>
+                      <div class="col-md-2">
+                        <div class="text-title">
+                          <label style="margin: 0px;">
+                            Tên phần mềm
+                            <span style="font-style: italic">Software</span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="text-title">
+                          <input type="checkbox" [(ngModel)]="SF005.T008C" id="SF005T008C" name="SF005T008C"
+                            [checked]="SF005.T008C == 'true'" class="checkform">
+                          <label style="margin: 0px;width: auto;" for="SF005T008C">Paradigm</label>
+                        </div>
+                        <div class="text-title">
+                          <input type="checkbox" [(ngModel)]="SF005.T009C" id="SF005T009C" name="SF005T009C"
+                            [checked]="SF005.T009C == 'true'" class="checkform">
+                          <label style="margin: 0px;width: auto;" for="SF005T009C">Link-paradigm</label>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="text-title">
+                          <input type="checkbox" [(ngModel)]="SF005.T010C" id="SF005T010C" name="SF005T010C"
+                            [checked]="SF005.T010C == 'true'" class="checkform">
+                          <label style="margin: 0px;width: auto;" for="SF005T010C">Koubai</label>
+                        </div>
+                        <div class="text-title">
+                          <input type="checkbox" [(ngModel)]="SF005.T011C" id="SF005T011C" name="SF005T011C"
+                            [checked]="SF005.T011C == 'true'" class="checkform">
+                          <label style="margin: 0px;width: auto;" for="SF005T011C">KoubaiIrai</label>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="text-title">
+                          <input type="checkbox" [(ngModel)]="SF005.T012C" id="SF005T012C" name="SF005T012C"
+                            [checked]="SF005.T012C == 'true'" class="checkform">
+                          <label style="margin: 0px;width: auto;" for="SF005T012C">Ringi</label>
+                        </div>
+                        <div class="text-title">
+                          <input type="checkbox" [(ngModel)]="SF005.T013C" id="SF005T013C" name="SF005T013C"
+                            [checked]="SF005.T013C == 'true'" class="checkform">
+                          <label style="margin: 0px;width: auto;" for="SF005T013C">Kensyu</label>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="text-title">
+                          <input type="checkbox" [(ngModel)]="SF005.T014C" id="SF005T014C" name="SF005T014C"
+                            [checked]="SF005.T014C == 'true'" class="checkform">
+                          <label style="margin: 0px;width: auto;" for="SF005T014C">Room</label>
+                        </div>
+                        <div class="text-title">
+                          <input type="checkbox" [(ngModel)]="SF005.T015C" id="SF005T015C" name="SF005T015C"
+                            [checked]="SF005.T015C == 'true'" class="checkform">
+                          <label style="margin: 0px;width: auto;" for="SF005T015C">Buturyu</label>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="text-title">
+                          <input type="checkbox" [(ngModel)]="SF005.T016C" id="SF005T016C" name="SF005T016C"
+                            [checked]="SF005.T016C == 'true'" class="checkform">
+                          <label style="margin: 0px;width: auto;" for="SF005T016C">Others</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="margin-bottom: 8px;display: inline-block;width: 100%;float: left;">
+                      <div class="col-md-2">
+                        <div class="text-title">
+                          <label style="margin: 0px;">
+                            Miêu tả <br /><span style="font-style: italic">Description</span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md-10">
+                        <div class="text-title">
+                          <label style="width: 300px;">
+                            Mục đích sử dụng và những nội dung liên quan:<br />
+                            <span style="font-style: italic">Purpose and relevant content: </span>
+                          </label>
+                          <textarea rows="2" class="form-control text-input-form" style="width: 100%"
+                            [(ngModel)]="SF005.T017C" name="SF005T017C"
+                            style="width:calc(100% - 310px) !important"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="clear: both"></div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="UpdateSF005(frEventLogs)">
+              <i class="fa fa-save"></i>
+              Lưu lại
+            </button>
+            <button type="button" class="btn btn-default" (click)="hideModalForm()">
+              <i class="fa fa-power-off"></i>Thoát
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fadess" id="ModalForm007" [style.display]="mForm007 ? 'block' : 'none'" tabindex="-1"
+      role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog w1200">
+        <div class="modal-content">
+          <div modal-movable class="modal-header head-modal">
+            <button type="button" class="close" (click)="hideModalForm()">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Back</span>
+            </button>
+            <h4 class="modal-title">One Point Lesson (OPL)</h4>
+          </div>
+          <div class="modal-body" style="padding:5px 15px;max-height: calc(100vh - 150px)">
+            <form class="form-horizontal" role="form" name="frEventLogs" id="frEventLogs" novalidate>
+              <div class="row">
+                <div class="Formtitle">
+                  <h3 style="margin-bottom: 30px;margin-top: -10px">
+                    One Point Lesson (OPL)
+                  </h3>
+                </div>
+                <div class="col-md-12">
+                  <div class="row">
+                    <div style="margin-bottom: 8px;display: inline-block;width: 100%;float: left;">
+                      <div>
+                        <div class="col-md-12">
+                          <table class="table dotborder table-hover table-vedu tableopl">
+                            <tr>
+                              <td colspan="3">
+                                <h5 style="font-weight: bold;margin: 0px;margin-left: 10px;">Tick <i class="fa fa-check"
+                                    style="font-size: 20px"></i> vào ô bậc để được chọn (Cấp trên
+                                  Tick)</h5>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td rowspan="3" width="50" align="center">
+                                <img src="assets/Img/iconx.png" width="22">
+                              </td>
+                              <td>
+                                Cải tiến liên quan đến công việc nhưng chỉ dừng lại ở ý tưởng -
+                                <span>業務に関するアイデアのみ、実施しない</span>
+                              </td>
+                              <td>
+
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Không triển khai / 展開しない
+                              </td>
+                              <td width="50" align="center"> 
+                                <input type="radio" name="SF007T001" [(ngModel)]="SF007.T001C" [value]="1">                                
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Sẽ triển khai / 展開予定
+                              </td>
+                              <td width="50" align="center">
+                                <input type="radio" name="SF007T001" [(ngModel)]="SF007.T001C" [value]="2">
+                              </td>
+                            </tr>
+                            <tr>
+                              <td width="50" align="center">
+                                <img src="assets/Img/icontamgiac.png" width="22">
+                              </td>
+                              <td>
+                                Bài cải tiến đang được thực hiện, giá trị nhỏ -
+                                改善を実施しているが得る価値が少ない
+                              </td>
+                              <td width="50" align="center">
+                                <input type="radio" name="SF007T001" [(ngModel)]="SF007.T001C" [value]="3">
+                              </td>
+                            </tr>
+                            <tr>
+                              <td width="50" align="center">
+                                <img src="assets/Img/iconvongtron.png" width="22">
+                              </td>
+                              <td>
+                                Bài cải tiến ưu tú, mang lại giá trị cao -
+                                改善を実施しているが、得る価値が大きい
+                              </td>
+                              <td width="50" align="center">
+                                <input type="radio" name="SF007T001" [(ngModel)]="SF007.T001C" [value]="4">
+                              </td>
+                            </tr>
+                          </table>
+                        </div>
+                        <div class="col-md-12">
+                          <table class="table dotborder table-hover table-vedu tableopl4">
+                            <tr>
+                              <td>
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    <div class="text-title">
+                                      <label style="width: 90px;">Đề tài/テーマ :</label>
+                                      <input type="text" class="form-control text-input-form" [(ngModel)]="SF007.T002C"
+                                        name="SF007T002C" style="width:calc(100% - 90px) !important" maxlength="250">
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div class="row">
+                                  <div class="col-md-3">
+                                    <div class="text-title">
+                                      <label style="width: 90px;">Họ tên/名前 :</label>
+                                      <input type="text" class="form-control text-input-form" [(ngModel)]="SF007.T003C"
+                                        name="SF007T003C" style="width:calc(100% - 90px) !important" maxlength="250">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-2">
+                                    <div class="text-title">
+                                      <label style="width: 30px;">ID :</label>
+                                      <input type="text" class="form-control text-input-form" [(ngModel)]="SF007.T004C"
+                                        name="SF007T004C" style="width:calc(100% - 30px) !important" maxlength="250">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <div class="text-title">
+                                      <label style="width: 90px;">Chức vụ/職務 :</label>
+                                      <input type="text" class="form-control text-input-form" [(ngModel)]="SF007.T005C"
+                                        name="SF007T005C" style="width:calc(100% - 90px) !important" maxlength="250">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <div class="text-title">
+                                      <label style="width: 85px;">Máy lẻ/Tel :</label>
+                                      <input type="text" class="form-control text-input-form" [(ngModel)]="SF007.T006C"
+                                        name="SF007T006C" style="width:calc(100% - 85px) !important" maxlength="250">
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div class="row">
+                                  <div class="col-md-3">
+                                    <div class="text-title">
+                                      <label style="width: 90px;">Bộ phận/所属 :</label>
+                                      <input type="text" class="form-control text-input-form" [(ngModel)]="SF007.T007C"
+                                        name="SF007T007C" style="width:calc(100% - 90px) !important" maxlength="250">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="text-title">
+                                      <label style="width: 170px;">Địa điểm cải tiến/改善工程 :</label>
+                                      <input type="text" class="form-control text-input-form" [(ngModel)]="SF007.T008C"
+                                        name="SF007T008C" style="width:calc(100% - 170px) !important" maxlength="250">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <div class="text-title">
+                                      <label style="width: 115px;">Ngày nộp/ 提出日:</label>
+                                      <input type="text" class="form-control text-input-form" [(ngModel)]="SF007.T009C"
+                                        name="SF007T009C" style="width:calc(100% - 115px) !important" maxlength="250">
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                          </table>
+                        </div>
+                        <div class="col-md-12">
+                          <table class="table dotborder table-hover tableopl2" style="background: #ffff00;margin: 0px">
+                            <tr>
+                              <td width="150">
+                                <b>Phân loại</b>
+                              </td>
+                              <td width="100">
+                                <input type="checkbox" [(ngModel)]="SF007.T010C" name="SF007T010C" /> Chất lượng
+                              </td>
+                              <td width="100">
+                                <input type="checkbox" [(ngModel)]="SF007.T011C" name="SF007T011C" /> An toàn
+                              </td>
+                              <td width="100">
+                                <input type="checkbox" [(ngModel)]="SF007.T012C" name="SF007T012C" /> Thiết bị
+                              </td>
+                              <td width="100">
+                                <input type="checkbox" [(ngModel)]="SF007.T013C" name="SF007T013C" /> Phòng cháy
+                              </td>
+                              <td width="100">
+                                <input type="checkbox" [(ngModel)]="SF007.T014C" name="SF007T014C" /> 5S
+                              </td>
+                              <td width="120">
+                                <input type="checkbox" [(ngModel)]="SF007.T015C" name="SF007T015C" /> Up năng lực
+                              </td>
+                              <td width="120">
+                                <input type="checkbox" [(ngModel)]="SF007.T016C" name="SF007T016C" /> Giảm chí phí
+                              </td>
+                              <td width="100">
+                                <input type="checkbox" [(ngModel)]="SF007.T017C" name="SF007T017C" /> Khác
+                              </td>
+                            </tr>
+                          </table>
+                        </div>
+                        <div class="col-md-12">
+                          <table class="table dotborder table-hover table-vedu"
+                            style="border:2px solid black;border-top: 0px">
+                            <tr>
+                              <td colspan="2" align="center" style="background: #ffff99 !important">
+                                <b>NỘI DUNG　内容</b>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td width="500" align="center" style="background: #ffff99 !important"><b>GIẢI THÍCH NỘI
+                                  DUNG　内容説明</b></td>
+                              <td width="500" align="center" style="background:#ffff99 !important"><b>Hình ảnh minh họa
+                                  (写真)</b></td>
+                            </tr>
+                            <tr>
+                              <td width="500" style="vertical-align: top !important">
+                                <label style="width: 100%;border-bottom: 1px dotted black;">A. Trước cải
+                                  tiến:　改善前</label><br />
+                                <label style="width: 100%;border-bottom: 1px dotted black;">*Tình trạng trước cải tiến
+                                  (改善前の状況、問題点）</label>
+                                <textarea rows="8" class="form-control text-input-form" style="width: 100%"
+                                  [(ngModel)]="SF007.T018C" name="SF007T018C"></textarea>
+                              </td>
+                              <td width="500" style="vertical-align: top !important;">
+                                <input type="file" style="display:none" name="FileDinhkem" class="inputimgFile"
+                                  accept="image/*" multiple="multiple" #fileInput1
+                                  (change)="onFileSelectOPL($event,1)" />
+                                <a title="Chọn hình ảnh đính kèm" class="iconfileattach" (click)="fileInput1.click()"><i
+                                    class="fa fa-paperclip" aria-hidden="true"></i> Chọn hình ảnh đính kèm</a>
+                                <div class="boximagesOPL">
+                                  <div class="itemimages" *ngFor="let item of FileAttachView1|orderBy: 'stt';index as i"
+                                    [ngClass]="{'iopl1': FileAttachView1.length==1, 'iopl2':FileAttachView1.length==2 || FileAttachView1.length==4, 'iopl3':FileAttachView1.length==3 || FileAttachView1.length==6, 'iopl5':FileAttachView1.length==5,'ioplmax':FileAttachView1.length > 6 }">
+                                    <div class="iconarrow" title="Lên trên" (click)="UpArrowImages(1,item,i)">
+                                      <i class="fa fa-arrow-up"></i>
+                                    </div>
+                                    <div class="iconarrow" title="Xuống dưới" (click)="DownArrowImages(1,item,i)">
+                                      <i class="fa fa-arrow-down"></i>
+                                    </div>
+                                    <div class="icondeleteimages" title="Xóa" (click)="DeleteImages(1,i)">
+                                      <i class="fa fa-times"></i>
+                                    </div>
+                                    <img [src]="item.file" name="{{item.stt}}" alt="">
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td width="500" style="vertical-align: top !important">
+                                <label style="width: 100%;border-bottom: 1px dotted black;">B. Sau cải
+                                  tiến:　改善後</label><br />
+                                <label style="width: 100%;border-bottom: 1px dotted black;">* Phương pháp cải tiến
+                                  (改善方案）</label>
+                                <textarea rows="6" class="form-control text-input-form" style="width: 100%"
+                                  [(ngModel)]="SF007.T019C" name="SF007T019C"></textarea>
+                              </td>
+                              <td width="500" rowspan="2" style="vertical-align: top !important">
+                                <label style="width: 100%;border-bottom: 1px dotted black;text-align: center;">Hình ảnh
+                                  minh họa
+                                  (写真)</label>
+
+                                <input type="file" style="display:none" name="FileDinhkem" class="inputimgFile"
+                                  accept="image/*" multiple="multiple" #fileInput2
+                                  (change)="onFileSelectOPL($event,2)" />
+                                <a title="Chọn hình ảnh đính kèm" class="iconfileattach" (click)="fileInput2.click()"><i
+                                    class="fa fa-paperclip" aria-hidden="true"></i> Chọn hình ảnh đính kèm</a>
+                                <div class="boximagesOPL">
+                                  <div class="itemimages" *ngFor="let item of FileAttachView2;index as i"
+                                    [ngClass]="{'iopl1': FileAttachView2.length==1, 'iopl2':FileAttachView2.length==2 || FileAttachView2.length==4, 'iopl3':FileAttachView2.length==3 || FileAttachView2.length==6, 'iopl5':FileAttachView2.length==5,'ioplmax':FileAttachView2.length > 6 }">
+                                    <div class="iconarrow" title="Lên trên" (click)="UpArrowImages(2,item,i)">
+                                      <i class="fa fa-arrow-up"></i>
+                                    </div>
+                                    <div class="iconarrow" title="Xuống dưới" (click)="DownArrowImages(2,item,i)">
+                                      <i class="fa fa-arrow-down"></i>
+                                    </div>
+                                    <div class="icondeleteimages" title="Xóa" (click)="DeleteImages(2,i)">
+                                      <i class="fa fa-times"></i>
+                                    </div>
+                                    <img [src]="item.file" name="images2item-{{i}}" alt="">
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td width="500" style="vertical-align: top !important">
+                                <label style="width: 100%;border-bottom: 1px dotted black;">* Đã đưa vào sử dụng từ
+                                  ngày: 　いつから使用しているか？</label>
+                                <textarea rows="3" class="form-control text-input-form" style="width: 100%"
+                                  [(ngModel)]="SF007.T020C" name="SF007T020C"></textarea>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td width="500" style="vertical-align: top !important">
+                                <label style="width: 100%;border-bottom: 1px dotted black;">C. Hiệu quả sau cải
+                                  tiến　/改善前後の効果</label>
+                                <textarea rows="8" class="form-control text-input-form" style="width: 100%"
+                                  [(ngModel)]="SF007.T021C" name="SF007T021C"></textarea>
+                              </td>
+                              <td width="500" style="vertical-align: top !important">
+                                <label style="width: 100%;border-bottom: 1px dotted black;text-align: center;">Hình ảnh
+                                  minh họa
+                                  (写真)</label>
+                                <input type="file" style="display:none" name="FileDinhkem" class="inputimgFile"
+                                  accept="image/*" multiple="multiple" #fileInput3
+                                  (change)="onFileSelectOPL($event,3)" />
+                                <a title="Chọn hình ảnh đính kèm" class="iconfileattach" (click)="fileInput3.click()"><i
+                                    class="fa fa-paperclip" aria-hidden="true"></i> Chọn hình ảnh đính kèm</a>
+                                <div class="boximagesOPL">
+                                  <div class="itemimages" *ngFor="let item of FileAttachView3;index as i"
+                                    [ngClass]="{'iopl1': FileAttachView3.length==1, 'iopl2':FileAttachView3.length==2 || FileAttachView3.length==4, 'iopl3':FileAttachView3.length==3 || FileAttachView3.length==6, 'iopl5':FileAttachView3.length==5,'ioplmax':FileAttachView3.length > 6 }">
+                                    <div class="iconarrow" title="Lên trên" (click)="UpArrowImages(3,item,i)">
+                                      <i class="fa fa-arrow-up"></i>
+                                    </div>
+                                    <div class="iconarrow" title="Xuống dưới" (click)="DownArrowImages(3,item,i)">
+                                      <i class="fa fa-arrow-down"></i>
+                                    </div>
+                                    <div class="icondeleteimages" title="Xóa" (click)="DeleteImages(3,i)">
+                                      <i class="fa fa-times"></i>
+                                    </div>
+                                    <img [src]="item.file" name="images3item-{{i}}" alt="">
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="clear: both"></div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="UpdateSF007(frEventLogs)">
+              <i class="fa fa-save"></i>
+              Lưu lại
+            </button>
+            <button type="button" class="btn btn-default" (click)="hideModalForm()">
+              <i class="fa fa-power-off"></i>Thoát
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

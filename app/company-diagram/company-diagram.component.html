@@ -1,0 +1,187 @@
+<div id="Users">
+  <div class="navbar-bottom nav1-bottom">
+    <div class="row">
+      <!-- <div class="box-search">
+        <input type="text" class="form-control search-edu" placeholder="Tìm kiếm..." [(ngModel)]="opition.s"
+          my-enter="ListSearch()">
+        <div class="btn-group btngroup-search">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span
+              class="caret"></span></button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a (click)="FilterStatus('')">Tất cả</a></li>
+            <li><a ng-style="{'color':(opition.sts == 'on') ? 'red':'black'}" (click)="FilterStatus('on')">Kích hoạt</a>
+            </li>
+            <li><a ng-style="{'color':(opition.sts == 'off') ? 'red':'black'}" (click)="FilterStatus('off')">Khóa</a>
+            </li>
+          </ul>
+        </div>
+        <button type="button" class="btn btn-default btnseach" (click)="ListSearch()"><i
+            class="fa fa-search icon-vedu"></i></button>
+      </div> -->
+    </div>
+    <div class="row">
+      <div class="col-md-4" style="width:240px">
+        <div class="row">
+          <div class="col-md-12" style="width:240px; padding-right:0">
+            <ul class="navbar-bottomleft">
+              <li class="checkall" title="Chọn tất cả"><input type="checkbox" name="checkAll" [(ngModel)]="mod.checkAll"
+                  (click)="toggleAll(ListCompageDiagram)"></li>
+              <li><a title="Thêm mới" (click)="modalCompageDiagram('add')"><i class="fa fa-plus"></i></a></li>
+              <li *ngIf="checkLen > 0"><a title="Xóa" (click)="deleteList()"><i class="fa fa-trash-o"></i></a></li>
+              <li><a (click)="Refersh()" title="Làm mới"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8" style="width:calc(100% - 240px)">
+        <div class="row">
+          <div class="col-md-6" style="padding:5px 0 0 0">
+            <div class="row">
+              <div class="col-md-6 widths" style="padding-right:5px">
+                <div class="box-droplist">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="CDNhomGet" class="incluceView">
+    <table class="table dotborder table-hover table-vedu"
+      style="margin-bottom:-1px;table-layout:fixed;background: #f2f2f2;">
+      <thead>
+        <tr>
+          <th width="50" align="center"></th>
+          <th width="40" align="center">STT</th>
+          <!-- <th align="left" width="110">Mã phòng ban</th> -->
+          <th align="left">Tên bộ phận</th>
+          <!-- <th width="95" align="center">Ảnh đại diện</th>
+          <th align="center" width="110">Số thành viên</th> -->
+          <th align="center" width="80">Trạng thái</th>
+          <th width="90" align="center">Chức năng</th>
+        </tr>
+      </thead>
+    </table>
+    <div style="max-height:calc(100vh - 170px)!important;margin-right:-17px;overflow:scroll;overflow-x:hidden">
+      <table class="table dotborder table-hover table-vedu" style="table-layout:fixed">
+        <tbody>
+          <tr *ngFor="let dg of ListCompageDiagram;index as i">
+            <td width="50" align="center"> <input type="checkbox" (change)="CheckCheked()" value="dg.A0004_ID"
+                [(ngModel)]="dg.checked" /></td>
+            <td width="40" align="center">{{i + 1}}</td>
+            <!-- <td align="center" width="110" [textContent]="dg.maPhongBan"></td> -->
+            <td align="left" [textContent]="dg.tenPhongBanMoi" [style.color]="dg.color" [style.font-weight]="dg.bold">
+            </td>
+            <!-- <td align="center" width="95">
+               <img [src]="dg.logo" class="img-responsive img-user" style="float:none !important"> 
+              <crystal-gallery class="img-responsive img-user" style="float:none !important" [images]="dg.imgages"></crystal-gallery>
+            </td>
+            <td width="110" align="center">
+              <a style="cursor: default">
+                <span class="badge" style="background-color:red;cursor: default">{{dg.count}}</span>
+              </a>
+            </td> -->
+            <td align="center" width="80" [textContent]="dg.tinhTrang == true ? 'Kích hoạt':'Khóa'"></td>
+            <td width="90" align="center"><a title="Sửa" (click)="selectEdit(dg)"><i
+                  class="fa fa-pencil-square-o"></i></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="modal fadess" id="modalCompageDiagram" [style.display]="mCompanyDiagram ? 'block' : 'none'"
+      tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false"
+      data-backdrop="static">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div modal-movable class="modal-header head-modal">
+            <button type="button" class="close" (click)="hideModal()">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Back</span>
+            </button>
+            <h4 class="modal-title">Cập nhật phòng ban</h4>
+          </div>
+          <div class="modal-body" style="padding:5px 15px;overflow: initial;">
+            <form class="form-horizontal" role="form" name="frUser" id="frUser" novalidate>
+              <div style="display:block;">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="text-title"><label style="width:120px"><b>Nhóm phòng ban :</b></label>
+                      <select class="form-control text-company" name="IDCha" [(ngModel)]="companydiagram.IDCha">
+                        <option [value]="null">--- Chọn phòng ban ---</option>
+                        <option *ngFor="let item of ListCompageDiagram" [value]="item.A0004_ID">{{item.tenPhongBanMoi}}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="text-title"><label style="width: 120px;">Mã phòng ban :</label><input type="text"
+                        class="form-control text-company" [(ngModel)]="companydiagram.maPhongBan" name="maPhongBan"
+                        required /></div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="text-title"><label style="width: 120px;">Tên phòng ban :</label><input type="text"
+                        class="form-control text-company" [(ngModel)]="companydiagram.tenPhongBan" name="tenPhongBan"
+                        required /></div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="text-title"><label style="width: 120px;">Địa chỉ :</label><input type="text"
+                        class="form-control text-company" [(ngModel)]="companydiagram.diaChi" name="diaChi" /></div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="text-title"><label style="width: 120px;">Số điện thoại :</label><input type="text"
+                        class="form-control text-company" [(ngModel)]="companydiagram.dienThoai" name="dienThoai" />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="text-title"><label style="width: 120px;">Email :</label><input type="text"
+                        class="form-control text-company" [(ngModel)]="companydiagram.Email" name="Email" /></div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="text-title"><label style="width: 120px;">Logo :</label><input type="text"
+                        class="form-control text-imgnhansu" [(ngModel)]="companydiagram.logo" name="logo" /><button
+                        type="button" class="btn btn-primary btn-images" style="margin-left:10px;padding: 6px 15px;"
+                        ng-click="BrowseServer(1);">Chọn
+                        ảnh</button> </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="text-title" style="margin-top: 5px"><label style="width: 120px;">Thứ tự :</label><input
+                        type="text" class="form-control text-company" [(ngModel)]="companydiagram.thuTu" name="thuTu" />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="text-title">
+                      <label style="width:80px">Trạng thái: </label>
+                      <div class="boxquydanh" style="width:calc(100% - 80px) !important">
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="tinhTrang" [(ngModel)]="companydiagram.tinhTrang" [value]="true">
+                            Kích hoạt
+                          </label>
+                        </div>
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="tinhTrang" [(ngModel)]="companydiagram.tinhTrang" [value]="false">
+                            Khóa
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="saveCompanyDiagram()"><i class="fa fa-save"></i>
+              Lưu</button>
+            <button type="button" class="btn btn-default" (click)="hideModal()"><i class="fa fa-power-off"></i>
+              Thoát</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

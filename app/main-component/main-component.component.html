@@ -1,0 +1,22 @@
+<app-navbar></app-navbar>
+<div class="content-wrapper cthome" id="ct-wrapper">
+    <div class="MainMenu">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-4" *ngFor="let m of ParentMenu;index as i">
+                        <div (click)="setMain(m)" class="mblock">
+                            <div class="cblock">
+                                <img [src]="m.Icon" class="img-responsive" alt="Image">
+                                <span>{{m.tenMenu}}</span>
+                            </div>
+                            <!-- <span class="countitem" ng-if="Counts[m.count]>0" ng-bind="Counts[m.count]"></span> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

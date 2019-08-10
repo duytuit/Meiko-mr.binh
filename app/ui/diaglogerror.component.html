@@ -1,0 +1,17 @@
+<div modal-movable class="modal-header head-modal" style="background: #BD362F !important;padding: 7px 9px !important">
+  <button type="button" class="close" (click)="accept()">
+    <span aria-hidden="true">&times;</span>
+    <span class="sr-only">Back</span>
+  </button>
+  <h4 class="modal-title">{{ title }}</h4>
+</div>
+<!-- Modal Body -->
+<div class="modal-body" style="padding:5px 15px;overflow: initial;">
+  <div style="padding: 10px 0px">
+    {{ message }}
+  </div>
+</div>
+<!-- Modal Footer -->
+<div class="modal-footer" style="padding: 7px 9px !important">
+  <button type="button" class="btn btn-primary" style="background-color: #BD362F;border-color: #BD362F;" (click)="accept()"><i class="fa fa-power-off"></i> {{ btnOkText }}</button>
+</div>

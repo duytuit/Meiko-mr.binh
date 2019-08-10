@@ -1,0 +1,161 @@
+<div id="LCV">
+  <div class="navbar-bottom nav1-bottom">
+    <div class="row">
+      <div class="box-search">
+        <input type="text" class="form-control search-edu" placeholder="Tìm kiếm..." [(ngModel)]="opition.s"
+          my-enter="ListSearch()">
+        <div class="btn-group btngroup-search">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span
+              class="caret"></span></button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a (click)="FilterStatus('')">Tất cả</a></li>
+            <li><a ng-style="{'color':(opition.sts == 'on') ? 'red':'black'}" (click)="FilterStatus('on')">Kích hoạt</a>
+            </li>
+            <li><a ng-style="{'color':(opition.sts == 'off') ? 'red':'black'}" (click)="FilterStatus('off')">Khóa</a>
+            </li>
+          </ul>
+        </div>
+        <button type="button" class="btn btn-default btnseach" (click)="ListSearch()"><i
+            class="fa fa-search icon-vedu"></i></button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4" style="width:240px">
+        <div class="row">
+          <div class="col-md-12" style="width:240px; padding-right:0">
+            <ul class="navbar-bottomleft">
+              <li class="checkall" title="Chọn tất cả"><input type="checkbox" name="checkAll" [(ngModel)]="mod.checkAll"
+                  (click)="toggleAll(ListLCV)"></li>
+              <li><a title="Thêm mới" (click)="modalLCV('add')"><i class="fa fa-plus"></i></a></li>
+              <li *ngIf="checkLen > 0"><a title="Xóa" (click)="deleteList()"><i class="fa fa-trash-o"></i></a></li>
+              <li><a (click)="Refersh()" title="Làm mới"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8" style="width:calc(100% - 240px)">
+        <div class="row">
+          <div class="col-md-6" style="padding:5px 0 0 0">
+            <div class="row">
+              <div class="col-md-6 widths" style="padding-right:5px">
+                <div class="box-droplist">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="box-page">
+              <ul class="ul-box-page">
+                <li><span [textContent]="(opition.p-1)*opition.pz+1"></span> - <span
+                    [textContent]="opition.pz*opition.p>opition.total?opition.total:opition.pz*opition.p"></span> trong
+                  số <span [textContent]="opition.total"></span></li>
+                <li class="li-prevpage" title="Trang trước"><a (click)="PrevPage()"><i class="fa fa-chevron-left"
+                      aria-hidden="true"></i></a></li>
+                <li class="li-nextpage" title="Trang sau"><a (click)="NextPage()"><i class="fa fa-chevron-right"
+                      aria-hidden="true"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="CDNhomGet" class="incluceView">
+    <table class="table dotborder table-hover table-vedu"
+      style="margin-bottom:-1px;table-layout:fixed;background: #f2f2f2;">
+      <thead>
+        <tr>
+          <th width="50" align="center"></th>
+          <th width="50" align="center">STT</th>
+          <th width="150" align="center">Mã loại công việc</th>
+          <th align="left">Tên Loại công việc</th>
+          <th width="100" align="center">Trạng thái</th>
+          <th width="100" align="center">Thứ tự</th>
+          <!-- <th width="100" align="center">Quy trình</th> -->
+          <th width="100" align="center">Chức năng</th>
+        </tr>
+      </thead>
+    </table>
+    <div style="max-height:calc(100vh - 170px)!important;margin-right:-17px;overflow:scroll;overflow-x:hidden">
+      <table class="table dotborder table-hover table-vedu" style="table-layout:fixed">
+        <tbody>
+          <tr *ngFor="let r of ListLCV;index as i">
+            <td width="50" align="center"> <input type="checkbox" (change)="CheckCheked()" value="r.A0015_ID"
+                [(ngModel)]="r.checked" /> </td>
+            <td width="50" align="center">{{i + 1}}</td>
+            <td width="150" align="center">{{r.maLoaiCongViec}}</td>
+            <td align="left">{{r.tenLoaiCongViec}}</td>
+            <td width="100" align="center" [textContent]="r.trangThai == true ? 'Kích hoạt':'Khóa'"></td>
+            <td width="100" align="center">{{r.STT}}</td>
+            <!-- <td width="100" align="center">
+              <img src="../../assets/Img/Team.png" width="20">
+            </td> -->
+            <td width="100" align="center">
+              <a class="btnlinktbl" title="Sửa" (click)="selectEdit(r)"><i class="fa fa-pencil-square-o"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="modal fadess" id="modalLCV" [style.display]="mLCV ? 'block' : 'none'" tabindex="-1" role="dialog"
+      aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div modal-movable class="modal-header head-modal">
+            <button type="button" class="close" (click)="hideModal()">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Back</span>
+            </button>
+            <h4 class="modal-title">Cập nhật loại công việc</h4>
+          </div>
+          <!-- Modal Body -->
+          <div class="modal-body" style="padding:5px 15px;overflow: initial;">
+            <form class="form-horizontal" role="form" name="frModule" id="frModule" novalidate>
+              <div style="display:block;">
+                <div class="text-title">
+                  <label style="width: 120px;">Mã loại công việc: </label>
+                  <input type="text" class="form-control  text-company" [(ngModel)]="lcv.maLoaiCongViec"
+                    name="maLoaiCongViec" style="width:calc(100% - 120px) !important" maxlength="250">
+                </div>
+                <div class="text-title">
+                  <label style="width: 120px;">Tên loại công việc: </label>
+                  <input type="text" class="form-control  text-company" [(ngModel)]="lcv.tenLoaiCongViec"
+                    name="tenLoaiCongViec" style="width:calc(100% - 120px) !important" maxlength="250">
+                </div>
+                <div class="text-title">
+                  <label style="width: 120px;">Thứ Tự: </label>
+                  <input type="text" class="form-control  text-company" [(ngModel)]="lcv.STT" name="STT"
+                    style="width:calc(100% - 120px) !important" maxlength="250">
+                </div>
+                <div class="text-title">
+                  <label style="width:120px">Trạng thái: </label>
+                  <div class="boxquydanh" style="width:calc(100% - 120px) !important">
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="trangThai" [(ngModel)]="lcv.trangThai" [value]="true">
+                        Kích hoạt
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="trangThai" [(ngModel)]="lcv.trangThai" [value]="false">
+                        Khóa
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!-- Modal Footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="saveLCV()"><i class="fa fa-save"></i> Lưu</button>
+            <button type="button" class="btn btn-default" (click)="hideModal()"><i class="fa fa-power-off"></i>
+              Thoát</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

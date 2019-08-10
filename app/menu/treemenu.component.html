@@ -1,0 +1,21 @@
+<div *ngFor="let item of data" [hidden]="item.IDCha!=parentId" class="treemenu">
+  <ul *ngIf="item.IDCha==parentId">
+    <li>
+      <div class="trli">
+        <div class="itemtree1">
+          <span class="spantree" *ngIf="(data|Filter:{IDCha:item.MenuID}:true).length>0">
+            <i (click)="toogleModel(item)" class="treefo fa fa-{{!item.close?'minus':'plus'}}"></i>
+          </span>
+        </div>
+        <div class="itemtree2">{{item.tenMenu}}</div>
+        <div class="itemtree3"><img src="{{item.Icon}}"></div>
+        <div class="itemtree4"><a class="btnlinktbl" title="Sửa" (click)="selectEdit(item)"><i
+              class="fa fa-pencil-square-o"></i></a></div>
+        <div class="itemtree5"><a class="btnlinktbl" title="Xóa" (click)="deleteMenu(item)"><i
+              class="fa fa-trash-o"></i></a></div>
+      </div>
+      <treemenu *ngIf="!item.close" [parentId]="item.MenuID" [data]="removeItemNotParent(data,parentId)"></treemenu>
+    </li>
+  </ul>
+</div>
+

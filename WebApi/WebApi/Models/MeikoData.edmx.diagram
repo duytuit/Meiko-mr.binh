@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="443987e254d34a51abb723bb17a4f66a" Name="Diagram1" ZoomLevel="109">
+        <EntityTypeShape EntityType="PhanQuyenModel.A0001" Width="1.5" PointX="0.75" PointY="21.625" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0002" Width="1.5" PointX="0.75" PointY="25.5" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0003" Width="1.5" PointX="6" PointY="25" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0004" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0005" Width="1.5" PointX="6" PointY="31.375" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0006" Width="1.5" PointX="1.5" PointY="38" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0007" Width="1.5" PointX="3.75" PointY="37.125" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0008" Width="1.5" PointX="10.75" PointY="5" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0009" Width="1.5" PointX="13" PointY="5" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0010" Width="1.5" PointX="3" PointY="69.875" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0011" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0012" Width="1.5" PointX="5.75" PointY="12.75" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0013" Width="1.5" PointX="12.75" PointY="8.75" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0014" Width="1.5" PointX="3" PointY="32" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0015" Width="1.5" PointX="1.5" PointY="11.75" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0016" Width="1.5" PointX="1.5" PointY="15.125" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0017" Width="1.5" PointX="0.75" PointY="33.625" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0018" Width="1.5" PointX="3.75" PointY="20.25" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0019" Width="1.5" PointX="3" PointY="27.875" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0020" Width="1.5" PointX="4.5" PointY="2.875" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0021" Width="1.5" PointX="6.75" PointY="20.625" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0022" Width="1.5" PointX="3.75" PointY="14.875" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0023" Width="1.5" PointX="6" PointY="6.125" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0024" Width="1.5" PointX="8.25" PointY="7.875" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0025" Width="1.5" PointX="6" PointY="27.75" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0026" Width="1.5" PointX="8.25" PointY="4.75" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0027" Width="1.5" PointX="10.5" PointY="8.375" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0028" Width="1.5" PointX="9" PointY="17" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0028D" Width="1.5" PointX="11.25" PointY="41.625" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0029" Width="1.5" PointX="14.25" PointY="27.125" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0030" Width="1.5" PointX="11.25" PointY="22.5" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0031" Width="1.5" PointX="11.25" PointY="38" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0032" Width="1.5" PointX="1.5" PointY="7" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0033" Width="1.5" PointX="3.75" PointY="11.25" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0034" Width="1.5" PointX="9" PointY="12.5" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0035" Width="1.5" PointX="9" PointY="0.875" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0036" Width="1.5" PointX="11.25" PointY="13" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0037" Width="1.5" PointX="11.25" PointY="26.875" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0038" Width="1.5" PointX="13.5" PointY="32.25" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0039" Width="1.5" PointX="13.5" PointY="22.75" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0040" Width="1.5" PointX="13.75" PointY="11.75" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0041" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0042" Width="1.5" PointX="3" PointY="25" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0043" Width="1.5" PointX="14.75" PointY="8.75" />
+        <EntityTypeShape EntityType="PhanQuyenModel.A0044" Width="1.5" PointX="15.75" PointY="0.75" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0042_A0001" />
+        <AssociationConnector Association="PhanQuyenModel.FK_Meiko_Sys_UserRole_Meiko_Sys_Role" />
+        <AssociationConnector Association="PhanQuyenModel.FK_Meiko_TD_PhanQuyen_Meiko_TD_Role" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0014_A0002" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0019_A0002" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0025_A0002" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0028_A0002" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0029_A0002" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0030_A0002" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0037_A0002" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0042_A0002" />
+        <AssociationConnector Association="PhanQuyenModel.FK_Meiko_Sys_UserRole_Meiko_Sys_User" />
+        <AssociationConnector Association="PhanQuyenModel.FK_Meiko_TD_PhanQuyen_Meiko_TD_NhanSu" />
+        <AssociationConnector Association="PhanQuyenModel.FK_Meiko_TD_PhanQuyenBuaAn_Meiko_TD_User" />
+        <AssociationConnector Association="PhanQuyenModel.FK_MenuRole_Menu" />
+        <AssociationConnector Association="PhanQuyenModel.FK_Meiko_Sys_Menu_Meiko_Sys_Module" />
+        <AssociationConnector Association="PhanQuyenModel.FK_Meiko_TD_ThamSoDungChung_Meiko_TD_NgonNgu" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0018_A0015" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0021_A0015" />
+        <AssociationConnector Association="PhanQuyenModel.FK_Meiko_TD_CongViec_Meiko_TD_LoaiCongViec" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0016_A0032" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0022_A0016" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0028_A0016" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0033_A0016" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0019_A0017" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0021_A0017" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0021_A0020" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0023_A0022" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0025_A0022" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0024_A0023" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0026_A0023" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0027_A0024" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0029_A0028" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0030_A0028" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0031_A0028" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0033_A0028" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0037_A0028" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0036_A0034" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0037_A0034" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0036_A0035" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0038_A0037" />
+        <AssociationConnector Association="PhanQuyenModel.FK_A0039_A0037" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

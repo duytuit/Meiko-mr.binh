@@ -1,0 +1,126 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    min-width: 500px;
+    min-height: 300px;
+  }
+  
+  .container > * {
+    width: 100%;
+  }
+  /* Structure */
+  .container-table {
+      display: flex;
+      flex-direction: column;
+    }
+   
+    /* Filter */
+    .form {
+      min-height: 56px;
+      max-height: 56px;
+      display: flex;
+      align-items: center;
+      padding: 8px 24px 0;
+      font-size: 20px;
+      justify-content: space-between;
+      border-bottom: 1px solid transparent;
+    }
+    
+    .mat-form-field {
+      font-size: 14px;
+      flex-grow: 1;
+      margin-top: 8px;
+    } 
+    
+    .mat-cell:nth-child(1),
+    .mat-header-cell:nth-child(1){
+      flex: 0 0 8%;
+    }
+    
+    .mat-cell:nth-child(2),
+    .mat-header-cell:nth-child(2){
+      flex: 0 0 15%;
+    }
+    
+    .mat-cell:nth-child(3),
+    .mat-header-cell:nth-child(3){
+      flex: 0 0 8%;
+    }
+    
+    .mat-cell:nth-child(4),
+    .mat-header-cell:nth-child(4){
+      flex: 0 0 8%;
+    }
+
+    .mat-cell:nth-child(7),
+    .mat-header-cell:nth-child(7){
+      flex: 0 0 6%;
+    }
+    .mat-cell:nth-child(8),
+    .mat-header-cell:nth-child(8){
+      flex: 0 0 6%;
+    }
+    
+    .mat-cell:nth-child(9),
+    .mat-header-cell:nth-child(9){
+      flex: 0 0 4%;
+    }
+  
+    .mat-row:hover {
+      background-color: #f0f3f5;
+    }
+    .text-title {      
+      font-weight: bold;
+      font-size: 24px;
+      text-align: center;
+      font-family: 'Times New Roman', Times, serif;
+    }
+    .bg-info {
+      background-color: #5dd38e !important;
+    }     
+    
+    mat-row{
+      min-height:30px;
+      font-family:Verdana,sans-serif;
+      font-size:12px;
+      color: #1a084c;
+      }
+    mat-cell{
+      height:30px;
+      font-family:Verdana,sans-serif;
+      font-size:12px; 
+      color: #1a084c;
+    }
+    .mat-table {
+      height: 300px;
+      overflow: auto; 
+      width: 100%;
+    }
+    .btn-sp {        
+      margin-left: 10px; 
+    } 
+    .mat-button{
+      min-width: 10px !important;
+    }
+    
+    mat-header-cell{
+      //min-height:35px;
+      //background-color:#ddd;
+      font-weight: bold;
+      //font-size: 14px;
+    }
+  /*mat-header-row {
+    min-height: 56px
+  }*/
+
+  mat-row:nth-child(odd) {
+    background: #eee;
+    }
+    
+    mat-row.mat-row.ng-star-inserted {
+    border: 0;
+    }
+
+    .mat-row:hover {
+      background-color: #5dd38e;
+    } 

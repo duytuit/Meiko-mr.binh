@@ -1,0 +1,151 @@
+<div id="quytrinhbaophe">
+  <div class="navbar-bottom nav1-bottom">
+    <div class="row">
+    </div>
+    <div class="row">
+      <div class="col-md-4" style="width:240px">
+        <div class="row">
+          <div class="col-md-12" style="width:240px; padding-right:0">
+            <ul class="navbar-bottomleft">
+              <li class="checkall" title="Chọn tất cả"><input type="checkbox" name="checkAll" [(ngModel)]="mod.checkAll"
+                  (click)="toggleAll(ListNhomKy)"></li>
+              <li><a (click)="Refersh()" title="Làm mới"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8" style="width:calc(100% - 240px)">
+        <div class="row">
+          <div class="col-md-6" style="padding:5px 0 0 0">
+            <div class="row">
+              <div class="col-md-6 widths" style="padding-right:5px">
+                <div class="box-droplist">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="box-page">
+              <ul class="ul-box-page">
+                <li><span [textContent]="(opition.p-1)*opition.pz+1"></span> - <span
+                    [textContent]="opition.pz*opition.p>opition.total?opition.total:opition.pz*opition.p"></span> trong
+                  số <span [textContent]="opition.total"></span></li>
+                <li class="li-prevpage" title="Trang trước"><a (click)="PrevPage()"><i class="fa fa-chevron-left"
+                      aria-hidden="true"></i></a></li>
+                <li class="li-nextpage" title="Trang sau"><a (click)="NextPage()"><i class="fa fa-chevron-right"
+                      aria-hidden="true"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="CDNhomGet" class="incluceView">
+    <table class="table dotborder table-hover table-vedu"
+      style="margin-bottom:-1px;table-layout:fixed;background: #f2f2f2;">
+      <thead>
+        <tr>
+          <th width="50" align="center"></th>
+          <th width="50" align="center">STT</th>
+          <th align="left">Bộ phận báo phế</th>
+          <th align="left" width="180">Người ký 1</th>
+          <th align="left" width="180">Người ký 2</th>
+          <th align="left" width="180">Người ký 3</th>
+          <th align="left" width="180">Người ký 4</th>
+          <th align="left" width="180">Người ký 5</th>
+          <th align="left" width="180">Người ký 6</th>
+          <th align="left" width="180">Người ký 7</th>
+        </tr>
+      </thead>
+    </table>
+    <div style="max-height:calc(100vh - 170px)!important;margin-right:-17px;overflow:scroll;overflow-x:hidden">
+      <table class="table dotborder table-hover table-vedu tableconfigquytrinh" style="table-layout:fixed">
+        <tbody>
+          <tr *ngFor="let r of ListQuyTrinhBaoPhe;index as i">
+            <td width="50" align="center"><input type="checkbox" (change)="CheckCheked()" value="r.A0039_ID"
+                [(ngModel)]="r.checked" /> </td>
+            <td width="50" align="center">{{i + 1}}</td>
+            <td align="left">{{r.tenPhongBan}}</td>
+            <td align="left" width="180" title="Cấu hình người ký nhóm 1">
+              <span style="cursor: pointer" (click)="ModalConfig(r,1)">{{r.tenNguoiKy1}}</span>
+              <span *ngIf="r.nguoiKy1 != null" class="btndeletenk" title="Xóa người ký" (click)="DeleteRowBP(r,1)"><i class="fa fa-times"></i></span>
+              <a *ngIf="r.nguoiKy1 != null" (click)="ConfigEmail(r,1)" title="{{r.MailNguoiKy1 != null ? 'Mail: '+ r.MailNguoiKy1 : 'Cấu hình Mail Nhóm 1'}}"><i
+                  class="fa fa-envelope"></i></a>
+            </td>
+            <td align="left" width="180" title="Cấu hình người ký nhóm 2">
+              <span style="cursor: pointer" (click)="ModalConfig(r,2)">{{r.tenNguoiKy2}}</span>
+              <span *ngIf="r.nguoiKy2 != null" class="btndeletenk" title="Xóa người ký" (click)="DeleteRowBP(r,2)"><i class="fa fa-times"></i></span>
+              <a *ngIf="r.nguoiKy2 != null" (click)="ConfigEmail(r,2)" title="{{r.MailNguoiKy2 != null ? 'Mail: '+ r.MailNguoiKy2 : 'Cấu hình Mail Nhóm 2'}}"><i
+                  class="fa fa-envelope"></i></a>
+            </td>
+            <td align="left" width="180" title="Cấu hình người ký nhóm 3">
+              <span style="cursor: pointer" (click)="ModalConfig(r,3)">{{r.tenNguoiKy3}}</span>
+              <span *ngIf="r.nguoiKy3 != null" class="btndeletenk" title="Xóa người ký" (click)="DeleteRowBP(r,3)"><i class="fa fa-times"></i></span>
+              <a *ngIf="r.nguoiKy3 != null" (click)="ConfigEmail(r,3)" title="{{r.MailNguoiKy3 != null ? 'Mail: '+ r.MailNguoiKy3 : 'Cấu hình Mail Nhóm 3'}}"><i
+                  class="fa fa-envelope"></i></a>
+            </td>
+            <td align="left" width="180" title="Cấu hình người ký nhóm 4">
+              <span style="cursor: pointer" (click)="ModalConfig(r,4)">{{r.tenNguoiKy4}}</span>
+              <span *ngIf="r.nguoiKy4 != null" class="btndeletenk" title="Xóa người ký" (click)="DeleteRowBP(r,4)"><i class="fa fa-times"></i></span>
+              <a *ngIf="r.nguoiKy4 != null" (click)="ConfigEmail(r,4)" title="{{r.MailNguoiKy4 != null ? 'Mail: '+ r.MailNguoiKy4 : 'Cấu hình Mail Nhóm 4'}}"><i
+                  class="fa fa-envelope"></i></a>
+            </td>
+            <td align="left" width="180" title="Cấu hình người ký nhóm 5">
+              <span style="cursor: pointer" (click)="ModalConfig(r,5)">{{r.tenNguoiKy5}}</span>
+              <span *ngIf="r.nguoiKy5 != null" class="btndeletenk" title="Xóa người ký" (click)="DeleteRowBP(r,5)"><i class="fa fa-times"></i></span>
+              <a *ngIf="r.nguoiKy5 != null" (click)="ConfigEmail(r,5)" title="{{r.MailNguoiKy5 != null ? 'Mail: '+ r.MailNguoiKy5 : 'Cấu hình Mail Nhóm 5'}}"><i
+                  class="fa fa-envelope"></i></a>
+            </td>
+            <td align="left" width="180" title="Cấu hình người ký nhóm 6">
+              <span style="cursor: pointer" (click)="ModalConfig(r,6)">{{r.tenNguoiKy6}}</span>
+              <span *ngIf="r.nguoiKy6 != null" class="btndeletenk" title="Xóa người ký" (click)="DeleteRowBP(r,6)"><i class="fa fa-times"></i></span>
+              <a *ngIf="r.nguoiKy6 != null" (click)="ConfigEmail(r,6)" title="{{r.MailNguoiKy6 != null ? 'Mail: '+ r.MailNguoiKy6 : 'Cấu hình Mail Nhóm 6'}}"><i
+                  class="fa fa-envelope"></i></a>
+            </td>
+            <td align="left" width="180" title="Cấu hình người ký nhóm 7">
+              <span style="cursor: pointer" (click)="ModalConfig(r,7)">{{r.tenNguoiKy7}}</span>
+              <span *ngIf="r.nguoiKy7 != null" class="btndeletenk" title="Xóa người ký" (click)="DeleteRowBP(r,7)"><i class="fa fa-times"></i></span>
+              <a *ngIf="r.nguoiKy7 != null" (click)="ConfigEmail(r,7)" title="{{r.MailNguoiKy7 != null ? 'Mail: '+ r.MailNguoiKy7 : 'Cấu hình Mail Nhóm 7'}}"><i
+                  class="fa fa-envelope"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <app-user-list (choiceUser)="ChoiceSelectUser($event)"></app-user-list>
+
+    <div class="modal fadess" id="ModalConfigEmail" [style.display]="mEmail ? 'block' : 'none'" tabindex="-1"
+    role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog w300">
+      <div class="modal-content">
+        <div modal-movable class="modal-header head-modal">
+          <button type="button" class="close" (click)="hideModal()">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Back</span>
+          </button>
+          <h4 class="modal-title">Cấu hình Email nhóm ký</h4>
+        </div>
+        <div class="modal-body" style="padding:5px 15px;max-height: calc(100vh - 150px)">
+          <form class="form-horizontal" role="form" name="frEventLogs" id="frEventLogs" novalidate>
+            <div class="row">
+              <div class="col-sm-12" style="padding: 0px 10px;">
+                <label>Mail nhóm ký: </label>
+              </div>
+              <div class="col-sm-12" style="padding: 0px 10px;">
+                <input type="text" class="form-control  text-company" [(ngModel)]="UserSign.Email" name="Email" style="width:100% !important" maxlength="250">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="UpdateMail(frEventLogs)"><i
+              class="fa fa-save"></i> Save</button>
+          <button type="button" class="btn btn-default" (click)="hideModal()"><i
+              class="fa fa-power-off"></i>Thoát</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

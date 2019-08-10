@@ -1,0 +1,118 @@
+<div class="modal fadess" id="usersModal" [style.display]="mUserSelect ? 'block' : 'none'" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog w1000">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div modal-movable class="modal-header head-modal">
+        <button type="button" class="close" data-dismiss="modal" (click)="hideModal()">
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">Exit</span>
+        </button>
+        <h4 class="modal-title">Chọn người dùng</h4>
+      </div>
+      <!-- Modal Body -->
+      <div class="modal-body" style="height: calc(100vh - 160px);">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-5">
+                <div class="panel panel-default" style="margin-bottom: 0px">
+                  <div class="panel-heading"><b><i class="fa fa-folder-open" aria-hidden="true"></i> Danh sách phòng
+                      ban</b></div>
+                  <div class="panel-body" style="height: calc(100vh - 330px);overflow-y: auto;">
+                    <a (click)="refershModel()"><img src="assets/Img/MyBox.ico" /><b
+                        style="margin-left: 5px;vertical-align: sub;color: #023f98;">Công ty MEIKO</b></a>
+                    <div class="boxtree">
+                      <p-tree [value]="ListPhongBan">
+                        <ng-template let-node pTemplate="default">
+                          <label style="cursor: pointer;" (click)="SelectModel(node)"><img
+                              src="assets/Img/folder.png" />&nbsp;&nbsp; {{node.bophan_ten}}</label>
+                        </ng-template>
+                      </p-tree>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-7">
+                <div class="panel panel-default" style="margin-bottom: 0px">
+                  <div class="panel-heading"><b><i class="fa fa-users" aria-hidden="true"></i> Danh sách người dùng</b>
+                  </div>
+                  <div class="panel-body" style="padding:10px">
+                    <div class="box-search" style="left:0px;position: relative;top: 0px;width: 100%;float: left;margin-bottom: 5px;
+                    margin-top: -5px;">
+                      <input type="text" class="form-control" style="width: calc(100% - 80px);"
+                        [(ngModel)]="convert.Search" placeholder="Tìm kiếm người dùng ...">
+                      <!-- [(ngModel)]="convert.Search" -->
+                      <div class="btn-group btngroup-search">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span
+                            class="caret"></span></button>
+                        <ul class="dropdown-menu" role="menu" style="right:0;left:auto">
+                          <li><a (click)="setCD(null)"><span>Tất cả</span></a></li>
+                          <li *ngFor="let r of ListRole;index as i"><a (click)="setCD(r)"><span>{{r.tenRole}}</span></a>
+                          </li>
+                        </ul>
+                      </div>
+                      <button type="button" class="btn btn-default btnseach" (click)="refershModel()"
+                        style="background:linear-gradient(to bottom,#f5f5f5,#f1f1f1);border-color: #ddd!important;margin-left:-1px;border-radius: 0px !important"><i
+                          class="fa fa-refresh" style="color:#333"></i></button>
+                    </div>
+                    <table class="table dotborder table-hover" style="margin-bottom:-1px;table-layout:fixed;">
+                      <thead style="background-color:#d9edf7">
+                        <tr>
+                          <th align="center" width="30"><input ng-show="mu!=0" type="checkbox"
+                              (click)="checkAllUST()" /></th>
+                          <!-- [(ngModel)]="$parent.uAll" -->
+                          <th align="center" width="30">STT</th>
+                          <th align="center" width="50"></th>
+                          <th width="180">Họ và tên</th>
+                          <th>Phòng ban</th>
+                        </tr>
+                      </thead>
+                    </table>
+                    <div style="clear: both"></div>
+                    <div style="height: calc(100vh - 417px);overflow-y: auto;">
+                      <table class="table dotborder table-hover" style="margin-bottom:-1px;table-layout:fixed;" *ngFor="let m of ListUser;index as z">
+                        <tbody *ngIf="z == 0">
+                          <tr class="trhide">
+                            <td align="center" width="30"></td>
+                            <td align="center" width="30"></td>
+                            <td width="50" align="center"></td>
+                            <td width="180"></td>
+                            <td></td>
+                          </tr> 
+                          <tr class="trGroup">
+                            <td colspan="5"><span style="padding-left: 5px">{{m.tenPhongBanMoi}}</span></td>
+                          </tr>
+                          <tr *ngFor="let u of m.users|Filter:{hoVaTen: convert.Search}|Filter:{A0001_ID: convert.A0001_ID};index as i">
+                            <td align="center" width="30">
+                              <input *ngIf="mu==0" type="checkbox" [(ngModel)]="u.isCheck" (click)="checkUser(u)" />
+                              <input *ngIf="mu!=0" type="checkbox" [(ngModel)]="u.isCheck" />
+                            </td>
+                            <td align="center" ng-bind="$index+1" width="30"></td>
+                            <td width="50" align="center"><img class="ava"
+                                style="width:32px;height:32px;object-fit:cover" [src]="u.anhDaiDien" /></td>
+                            <td width="180"><span>{{u.hoVaTen}}</span></td>
+                            <td><span></span></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="ChoiceUser()">
+          <i class="fa fa-save"></i>Chọn
+        </button>
+        <button type="button" class="btn btn-default" (click)="hideModal()">
+          <i class="fa fa-power-off"></i>Thoát
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

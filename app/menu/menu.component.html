@@ -1,0 +1,254 @@
+<div id="Menu">
+    <div class="navbar-bottom nav1-bottom">
+        <div class="row">
+            <div class="box-search">
+                <input type="text" class="form-control search-edu" placeholder="Tìm kiếm..." [(ngModel)]="opition.s"
+                    my-enter="ListSearch()">
+                <div class="btn-group btngroup-search">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span
+                            class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a (click)="FilterStatus('')">Tất cả</a></li>
+                        <li><a ng-style="{'color':(opition.sts == 'on') ? 'red':'black'}"
+                                (click)="FilterStatus('on')">Kích hoạt</a>
+                        </li>
+                        <li><a ng-style="{'color':(opition.sts == 'off') ? 'red':'black'}"
+                                (click)="FilterStatus('off')">Khóa</a>
+                        </li>
+                    </ul>
+                </div>
+                <button type="button" class="btn btn-default btnseach"><i class="fa fa-search icon-vedu"></i></button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4" style="width:240px">
+                <div class="row">
+                    <div class="col-md-12" style="width:240px; padding-right:0">
+                        <ul class="navbar-bottomleft">
+                            <!-- <li class="checkall" title="Chọn tất cả"><input type="checkbox" name="checkAll"
+                                    [(ngModel)]="mo.checkAll" (click)="toggleAll(menu)"></li> -->
+                            <li><a title="Thêm mới" (click)="modalMenu('add')"><i class="fa fa-plus"></i></a></li>
+                            <li><a (click)="refresh()" title="Làm mới"><i class="fa fa-refresh"
+                                        aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8" style="width:calc(100% - 240px)">
+                <div class="row">
+                    <div class="col-md-6" style="padding:5px 0 0 0">
+                        <div class="row">
+                            <div class="col-md-6 widths" style="padding-right:5px">
+                                <div class="box-droplist">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- <div class="box-page">
+                            <ul class="ul-box-page">
+                                <li><span [textContent]="1"></span> - <span [textContent]="20"></span> trong số <span
+                                        [textContent]="100"></span></li>
+                                <li class="li-prevpage" title="Trang trước"><a (click)="PrevPage()"><i
+                                            class="fa fa-chevron-left" aria-hidden="true"></i></a></li>
+                                <li class="li-nextpage" title="Trang sau"><a (click)="NextPage()"><i
+                                            class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="CDNhomGet" class="incluceView">
+        <div style="max-height:calc(100vh - 130px)!important;margin-right:-17px;overflow:scroll;overflow-x:hidden">
+            <table class="table dotborder table-hover table-vedu table-menu" style="table-layout:fixed">
+                <tbody>
+                    <tr *ngFor="let m of menu;index as i">
+                        <td align="left"
+                            [ngClass]="{'lv-1': m.lv==1, 'lv-2': m.lv==2,'lv-3': m.lv==3,'lv-4': m.lv==4 }">
+                            <img style="max-height: 17px;margin-right: 10px" [src]="m.Icon"> {{m.tenMenu}}
+                        </td>
+                        <td width="40" align="center">
+                            <a class="btnlinktbl" title="Sửa" (click)="selectEdit(m)"><i
+                                    class="fa fa-pencil-square-o"></i></a>
+                        </td>
+                        <td width="40" align="center">
+                            <a class="btnlinktbl" title="Xóa" (click)="deleteMenu(m)"><i class="fa fa-trash-o"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- <div style="max-height:calc(100vh - 170px)!important;margin-right:-17px;overflow:scroll;overflow-x:hidden">
+            <div class="content-section implementation">
+                <p-treeTable [value]="menu" [columns]="cols">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th width="60" align="center"></th>
+                            <th align="left">Tên Menu</th>
+                            <th width="70" align="center">Icon</th>
+                            <th width="60" align="center">Sửa</th>
+                            <th width="60" align="center">Xóa</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+                        <tr>
+                            <td align="center" width="60">
+                                <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
+                            </td>
+                            <td>{{rowData.tenMenu}}</td>
+                            <td align="center" style="padding: 0px"><img style="max-height: 20px"
+                                    src="{{rowData.Icon}}"></td>
+                            <td align="center">
+                                <a class="btnlinktbl" title="Sửa" (click)="selectEdit(rowData)"><i
+                                        class="fa fa-pencil-square-o"></i></a>
+                            </td>
+                            <td align="center"><a class="btnlinktbl" title="Xóa" (click)="deleteMenu(rowData)"><i
+                                        class="fa fa-trash-o"></i></a></td>
+                        </tr>
+                    </ng-template>
+                </p-treeTable>
+            </div>
+        </div> -->
+        <!--Modal Create Menu--->
+        <div class="modal fadess" id="ModalMenu" [style.display]="mMenu ? 'block' : 'none'" tabindex="-1" role="dialog"
+            aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div modal-movable class="modal-header head-modal">
+                        <button type="button" class="close" data-dismiss="modal" (click)="hideModal()">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Back</span>
+                        </button>
+                        <h4 class="modal-title">Cập nhật menu chức năng</h4>
+                    </div>
+                    <!-- Modal Body -->
+                    <div class="modal-body" style="padding:5px 15px;overflow: initial;">
+                        <form class="form-horizontal" role="form" name="frMenu" id="frMenu" novalidate>
+                            <div style="display:block;">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="text-title"><label style="width: 120px;">Mã Menu :</label><input
+                                                type="text" class="form-control text-company" [(ngModel)]="me.A0007_ID"
+                                                name="A0007_ID" required /></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="text-title"><label style="width:120px"><b>Tên Menu
+                                                    :</b></label><input type="text" class="form-control text-company"
+                                                name="tenMenu" [(ngModel)]="me.tenMenu" required /></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="text-title">
+                                            <label style="width:120px"><b>Tên Rút Gọn:</b></label>
+                                            <input type="text" class="form-control text-company" name="tenRutGon"
+                                                [(ngModel)]="me.tenRutGon" required /></div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="text-title"><label style="width: 120px;">ParentID :</label>
+                                            <select class="form-control text-company" name="IDCha"
+                                                [(ngModel)]="me.IDCha">
+                                                <option [value]="null">--- Chọn Menu cha ---</option>
+                                                <option *ngFor="let item of menu" [value]="item.A0007_ID">
+                                                    {{item.tenMenuNew}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="text-title"><label style="width: 120px;">Module :</label>
+                                            <select class="form-control text-company" name="A0006_ID"
+                                                [(ngModel)]="me.A0006_ID">
+                                                <option [value]="null">--- Chọn Module ---</option>
+                                                <option *ngFor="let item of listSelectModule" [value]="item.A0006_ID">
+                                                    {{item.tenModule}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="text-title"><label style="width: 120px;">Link Menu :</label><input
+                                                type="text" class="form-control text-company" name="Link"
+                                                [(ngModel)]="me.Link" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="text-title"><label style="width: 120px;">Icon Menu :</label>
+                                            <input type="file" accept="image/*" class="form-control text-imgnhansu"
+                                                [(ngModel)]="me.Icon" name="Icon" id="Icon"
+                                                (change)="onFileSelect($event,1)" />
+                                            <img [src]="me.Icon" class="img-responsive img-user-change">
+                                        </div>
+                                        <!-- <div class="text-title"><label style="width: 120px;">Icon Menu :</label>
+                                            <input type="file" accept="image/*" (change)="handleFileInput($event)">
+                                            
+                                             <input type="text" class="form-control text-imgnhansu" [(ngModel)]="me.Icon"
+                                                name="Icon" /><button type="button" class="btn btn-primary btn-images"
+                                                style="margin-left:10px" ng-click="BrowseServer(1);">Chọn
+                                                ảnh</button>  
+                                        </div> -->
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="text-title"><label style="width: 120px;">Icon Menu Dọc:</label>
+                                            <input type="file" accept="image/*" class="form-control text-imgnhansu"
+                                                [(ngModel)]="me.anhDoc" name="anhDoc" id="anhDoc"
+                                                (change)="onFileSelect($event,2)" />
+                                            <img [src]="me.anhDoc" class="img-responsive img-user-change">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="text-title"><label style="width: 120px;">Mã Code :</label><input
+                                                name="maCode" type="text" class="form-control text-company"
+                                                [(ngModel)]="me.maCode" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="text-title"><label style="width: 120px;">Mã Count :</label><input
+                                                name="maCount" type="text" class="form-control text-company"
+                                                [(ngModel)]="me.maCount" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="text-title"><label style="width: 120px;">STT :</label><input
+                                                name="thuThu" type="text" class="form-control text-company"
+                                                [(ngModel)]="me.thuThu" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="text-title">
+                                            <label style="width:120px">Trạng thái :</label>
+                                            <div class="boxquydanh">
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="tinhTrang" [(ngModel)]="me.tinhTrang"
+                                                            [value]="true">
+                                                        Kích hoạt
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="tinhTrang" [(ngModel)]="me.tinhTrang"
+                                                            [value]="false">
+                                                        Ẩn
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Modal Footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" (click)="saveMenu()"><i
+                                class="fa fa-save"></i>Lưu</button>
+                        <button type="button" class="btn btn-default" (click)="hideModal()" data-dismiss="modal"><i
+                                class="fa fa-power-off"></i>Thoát</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

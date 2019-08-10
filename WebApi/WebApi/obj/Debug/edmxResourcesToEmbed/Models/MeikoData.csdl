@@ -1,0 +1,1637 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PhanQuyenModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="MeikoEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="List_ThamSoDungChung" ReturnType="Collection(PhanQuyenModel.List_ThamSoDungChung_Result1)">
+      <Parameter Name="tenTieuDe" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="R1_List_PhanQuyen" ReturnType="Collection(PhanQuyenModel.R1_List_PhanQuyen_Result3)">
+      <Parameter Name="A0001_ID" Mode="In" Type="String" />
+      <Parameter Name="A0002_ID" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="A0001" EntityType="PhanQuyenModel.A0001" />
+    <EntitySet Name="A0002" EntityType="PhanQuyenModel.A0002" />
+    <EntitySet Name="A0003" EntityType="PhanQuyenModel.A0003" />
+    <EntitySet Name="A0004" EntityType="PhanQuyenModel.A0004" />
+    <EntitySet Name="A0005" EntityType="PhanQuyenModel.A0005" />
+    <EntitySet Name="A0006" EntityType="PhanQuyenModel.A0006" />
+    <EntitySet Name="A0007" EntityType="PhanQuyenModel.A0007" />
+    <EntitySet Name="A0008" EntityType="PhanQuyenModel.A0008" />
+    <EntitySet Name="A0009" EntityType="PhanQuyenModel.A0009" />
+    <EntitySet Name="A0010" EntityType="PhanQuyenModel.A0010" />
+    <EntitySet Name="A0011" EntityType="PhanQuyenModel.A0011" />
+    <EntitySet Name="A0012" EntityType="PhanQuyenModel.A0012" />
+    <EntitySet Name="A0013" EntityType="PhanQuyenModel.A0013" />
+    <EntitySet Name="A0014" EntityType="PhanQuyenModel.A0014" />
+    <EntitySet Name="A0015" EntityType="PhanQuyenModel.A0015" />
+    <EntitySet Name="A0016" EntityType="PhanQuyenModel.A0016" />
+    <EntitySet Name="A0017" EntityType="PhanQuyenModel.A0017" />
+    <EntitySet Name="A0018" EntityType="PhanQuyenModel.A0018" />
+    <EntitySet Name="A0019" EntityType="PhanQuyenModel.A0019" />
+    <EntitySet Name="A0020" EntityType="PhanQuyenModel.A0020" />
+    <EntitySet Name="A0021" EntityType="PhanQuyenModel.A0021" />
+    <EntitySet Name="A0022" EntityType="PhanQuyenModel.A0022" />
+    <EntitySet Name="A0023" EntityType="PhanQuyenModel.A0023" />
+    <EntitySet Name="A0024" EntityType="PhanQuyenModel.A0024" />
+    <EntitySet Name="A0025" EntityType="PhanQuyenModel.A0025" />
+    <EntitySet Name="A0026" EntityType="PhanQuyenModel.A0026" />
+    <EntitySet Name="A0027" EntityType="PhanQuyenModel.A0027" />
+    <EntitySet Name="A0028" EntityType="PhanQuyenModel.A0028" />
+    <EntitySet Name="A0028D" EntityType="PhanQuyenModel.A0028D" />
+    <EntitySet Name="A0029" EntityType="PhanQuyenModel.A0029" />
+    <EntitySet Name="A0030" EntityType="PhanQuyenModel.A0030" />
+    <EntitySet Name="A0031" EntityType="PhanQuyenModel.A0031" />
+    <EntitySet Name="A0032" EntityType="PhanQuyenModel.A0032" />
+    <EntitySet Name="A0033" EntityType="PhanQuyenModel.A0033" />
+    <EntitySet Name="A0034" EntityType="PhanQuyenModel.A0034" />
+    <EntitySet Name="A0035" EntityType="PhanQuyenModel.A0035" />
+    <EntitySet Name="A0036" EntityType="PhanQuyenModel.A0036" />
+    <EntitySet Name="A0037" EntityType="PhanQuyenModel.A0037" />
+    <EntitySet Name="A0038" EntityType="PhanQuyenModel.A0038" />
+    <EntitySet Name="A0039" EntityType="PhanQuyenModel.A0039" />
+    <EntitySet Name="A0040" EntityType="PhanQuyenModel.A0040" />
+    <EntitySet Name="A0041" EntityType="PhanQuyenModel.A0041" />
+    <EntitySet Name="A0042" EntityType="PhanQuyenModel.A0042" />
+    <EntitySet Name="A0043" EntityType="PhanQuyenModel.A0043" />
+    <EntitySet Name="A0044" EntityType="PhanQuyenModel.A0044" />
+    <AssociationSet Name="FK_A0042_A0001" Association="PhanQuyenModel.FK_A0042_A0001">
+      <End Role="A0001" EntitySet="A0001" />
+      <End Role="A0042" EntitySet="A0042" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Meiko_Sys_UserRole_Meiko_Sys_Role" Association="PhanQuyenModel.FK_Meiko_Sys_UserRole_Meiko_Sys_Role">
+      <End Role="A0001" EntitySet="A0001" />
+      <End Role="A0003" EntitySet="A0003" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Meiko_TD_PhanQuyen_Meiko_TD_Role" Association="PhanQuyenModel.FK_Meiko_TD_PhanQuyen_Meiko_TD_Role">
+      <End Role="A0001" EntitySet="A0001" />
+      <End Role="A0005" EntitySet="A0005" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0014_A0002" Association="PhanQuyenModel.FK_A0014_A0002">
+      <End Role="A0002" EntitySet="A0002" />
+      <End Role="A0014" EntitySet="A0014" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0019_A0002" Association="PhanQuyenModel.FK_A0019_A0002">
+      <End Role="A0002" EntitySet="A0002" />
+      <End Role="A0019" EntitySet="A0019" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0025_A0002" Association="PhanQuyenModel.FK_A0025_A0002">
+      <End Role="A0002" EntitySet="A0002" />
+      <End Role="A0025" EntitySet="A0025" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0028_A0002" Association="PhanQuyenModel.FK_A0028_A0002">
+      <End Role="A0002" EntitySet="A0002" />
+      <End Role="A0028" EntitySet="A0028" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0029_A0002" Association="PhanQuyenModel.FK_A0029_A0002">
+      <End Role="A0002" EntitySet="A0002" />
+      <End Role="A0029" EntitySet="A0029" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0030_A0002" Association="PhanQuyenModel.FK_A0030_A0002">
+      <End Role="A0002" EntitySet="A0002" />
+      <End Role="A0030" EntitySet="A0030" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0037_A0002" Association="PhanQuyenModel.FK_A0037_A0002">
+      <End Role="A0002" EntitySet="A0002" />
+      <End Role="A0037" EntitySet="A0037" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0042_A0002" Association="PhanQuyenModel.FK_A0042_A0002">
+      <End Role="A0002" EntitySet="A0002" />
+      <End Role="A0042" EntitySet="A0042" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Meiko_Sys_UserRole_Meiko_Sys_User" Association="PhanQuyenModel.FK_Meiko_Sys_UserRole_Meiko_Sys_User">
+      <End Role="A0002" EntitySet="A0002" />
+      <End Role="A0003" EntitySet="A0003" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Meiko_TD_PhanQuyen_Meiko_TD_NhanSu" Association="PhanQuyenModel.FK_Meiko_TD_PhanQuyen_Meiko_TD_NhanSu">
+      <End Role="A0002" EntitySet="A0002" />
+      <End Role="A0005" EntitySet="A0005" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Meiko_TD_PhanQuyenBuaAn_Meiko_TD_User" Association="PhanQuyenModel.FK_Meiko_TD_PhanQuyenBuaAn_Meiko_TD_User">
+      <End Role="A0002" EntitySet="A0002" />
+      <End Role="A0010" EntitySet="A0010" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MenuRole_Menu" Association="PhanQuyenModel.FK_MenuRole_Menu">
+      <End Role="A0007" EntitySet="A0007" />
+      <End Role="A0005" EntitySet="A0005" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Meiko_Sys_Menu_Meiko_Sys_Module" Association="PhanQuyenModel.FK_Meiko_Sys_Menu_Meiko_Sys_Module">
+      <End Role="A0006" EntitySet="A0006" />
+      <End Role="A0007" EntitySet="A0007" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Meiko_TD_ThamSoDungChung_Meiko_TD_NgonNgu" Association="PhanQuyenModel.FK_Meiko_TD_ThamSoDungChung_Meiko_TD_NgonNgu">
+      <End Role="A0008" EntitySet="A0008" />
+      <End Role="A0009" EntitySet="A0009" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0018_A0015" Association="PhanQuyenModel.FK_A0018_A0015">
+      <End Role="A0015" EntitySet="A0015" />
+      <End Role="A0018" EntitySet="A0018" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0021_A0015" Association="PhanQuyenModel.FK_A0021_A0015">
+      <End Role="A0015" EntitySet="A0015" />
+      <End Role="A0021" EntitySet="A0021" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Meiko_TD_CongViec_Meiko_TD_LoaiCongViec" Association="PhanQuyenModel.FK_Meiko_TD_CongViec_Meiko_TD_LoaiCongViec">
+      <End Role="A0015" EntitySet="A0015" />
+      <End Role="A0016" EntitySet="A0016" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0016_A0032" Association="PhanQuyenModel.FK_A0016_A0032">
+      <End Role="A0032" EntitySet="A0032" />
+      <End Role="A0016" EntitySet="A0016" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0022_A0016" Association="PhanQuyenModel.FK_A0022_A0016">
+      <End Role="A0016" EntitySet="A0016" />
+      <End Role="A0022" EntitySet="A0022" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0028_A0016" Association="PhanQuyenModel.FK_A0028_A0016">
+      <End Role="A0016" EntitySet="A0016" />
+      <End Role="A0028" EntitySet="A0028" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0033_A0016" Association="PhanQuyenModel.FK_A0033_A0016">
+      <End Role="A0016" EntitySet="A0016" />
+      <End Role="A0033" EntitySet="A0033" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0019_A0017" Association="PhanQuyenModel.FK_A0019_A0017">
+      <End Role="A0017" EntitySet="A0017" />
+      <End Role="A0019" EntitySet="A0019" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0021_A0017" Association="PhanQuyenModel.FK_A0021_A0017">
+      <End Role="A0017" EntitySet="A0017" />
+      <End Role="A0021" EntitySet="A0021" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0021_A0020" Association="PhanQuyenModel.FK_A0021_A0020">
+      <End Role="A0020" EntitySet="A0020" />
+      <End Role="A0021" EntitySet="A0021" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0023_A0022" Association="PhanQuyenModel.FK_A0023_A0022">
+      <End Role="A0022" EntitySet="A0022" />
+      <End Role="A0023" EntitySet="A0023" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0025_A0022" Association="PhanQuyenModel.FK_A0025_A0022">
+      <End Role="A0022" EntitySet="A0022" />
+      <End Role="A0025" EntitySet="A0025" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0024_A0023" Association="PhanQuyenModel.FK_A0024_A0023">
+      <End Role="A0023" EntitySet="A0023" />
+      <End Role="A0024" EntitySet="A0024" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0026_A0023" Association="PhanQuyenModel.FK_A0026_A0023">
+      <End Role="A0023" EntitySet="A0023" />
+      <End Role="A0026" EntitySet="A0026" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0027_A0024" Association="PhanQuyenModel.FK_A0027_A0024">
+      <End Role="A0024" EntitySet="A0024" />
+      <End Role="A0027" EntitySet="A0027" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0029_A0028" Association="PhanQuyenModel.FK_A0029_A0028">
+      <End Role="A0028" EntitySet="A0028" />
+      <End Role="A0029" EntitySet="A0029" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0030_A0028" Association="PhanQuyenModel.FK_A0030_A0028">
+      <End Role="A0028" EntitySet="A0028" />
+      <End Role="A0030" EntitySet="A0030" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0031_A0028" Association="PhanQuyenModel.FK_A0031_A0028">
+      <End Role="A0028" EntitySet="A0028" />
+      <End Role="A0031" EntitySet="A0031" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0033_A0028" Association="PhanQuyenModel.FK_A0033_A0028">
+      <End Role="A0028" EntitySet="A0028" />
+      <End Role="A0028D" EntitySet="A0028D" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0037_A0028" Association="PhanQuyenModel.FK_A0037_A0028">
+      <End Role="A0028" EntitySet="A0028" />
+      <End Role="A0037" EntitySet="A0037" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0036_A0034" Association="PhanQuyenModel.FK_A0036_A0034">
+      <End Role="A0034" EntitySet="A0034" />
+      <End Role="A0036" EntitySet="A0036" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0037_A0034" Association="PhanQuyenModel.FK_A0037_A0034">
+      <End Role="A0034" EntitySet="A0034" />
+      <End Role="A0037" EntitySet="A0037" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0036_A0035" Association="PhanQuyenModel.FK_A0036_A0035">
+      <End Role="A0035" EntitySet="A0035" />
+      <End Role="A0036" EntitySet="A0036" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0038_A0037" Association="PhanQuyenModel.FK_A0038_A0037">
+      <End Role="A0037" EntitySet="A0037" />
+      <End Role="A0038" EntitySet="A0038" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A0039_A0037" Association="PhanQuyenModel.FK_A0039_A0037">
+      <End Role="A0037" EntitySet="A0037" />
+      <End Role="A0039" EntitySet="A0039" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="R1_List_PhanQuyen_Result">
+    <Property Type="String" Name="MenuID" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="tenMenu" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="Icon" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="thuThu" Nullable="false" />
+    <Property Type="String" Name="IDCha" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RoleID" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="IsView" Nullable="false" />
+    <Property Type="Boolean" Name="IsAdd" Nullable="false" />
+    <Property Type="Boolean" Name="IsUpdate" Nullable="false" />
+    <Property Type="Boolean" Name="IsDelete" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="List_ThamSoDungChung_Result">
+    <Property Type="String" Name="ghiChu" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="maCode" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Module" Nullable="false" MaxLength="250" />
+  </ComplexType>
+  <ComplexType Name="R1_List_PhanQuyen_Result1">
+    <Property Type="String" Name="MenuID" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="tenMenu" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="Icon" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="thuThu" Nullable="false" />
+    <Property Type="String" Name="IDCha" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RoleID" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="quyenXem" Nullable="false" />
+    <Property Type="Boolean" Name="quyenThem" Nullable="false" />
+    <Property Type="Boolean" Name="quyenCapNhap" Nullable="false" />
+    <Property Type="Boolean" Name="quyenXoa" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="R1_List_PhanQuyen_Result2">
+    <Property Type="String" Name="MenuID" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="tenMenu" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="Icon" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="thuThu" Nullable="false" />
+    <Property Type="String" Name="IDCha" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ModuleID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RoleID" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="quyenXem" Nullable="false" />
+    <Property Type="Boolean" Name="quyenThem" Nullable="false" />
+    <Property Type="Boolean" Name="quyenCapNhap" Nullable="false" />
+    <Property Type="Boolean" Name="quyenXoa" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="List_ThamSoDungChung_Result1">
+    <Property Type="String" Name="ghiChu" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="maCode" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Module" Nullable="false" MaxLength="250" />
+  </ComplexType>
+  <ComplexType Name="R1_List_PhanQuyen_Result3">
+    <Property Type="String" Name="A0007_ID" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="tenMenu" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="Icon" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="thuThu" Nullable="false" />
+    <Property Type="String" Name="IDCha" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="A0006_ID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="A0001_ID" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="quyenXem" Nullable="false" />
+    <Property Type="Boolean" Name="quyenThem" Nullable="false" />
+    <Property Type="Boolean" Name="quyenCapNhap" Nullable="false" />
+    <Property Type="Boolean" Name="quyenXoa" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="A0001">
+    <Key>
+      <PropertyRef Name="A0001_ID" />
+    </Key>
+    <Property Name="A0001_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tenRole" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="maRole" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tinhTrang" Type="Boolean" Nullable="false" />
+    <Property Name="thuTu" Type="Int32" Nullable="false" />
+    <Property Name="kieuDuLieu" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="A0042" Relationship="PhanQuyenModel.FK_A0042_A0001" FromRole="A0001" ToRole="A0042" />
+    <NavigationProperty Name="A0003" Relationship="PhanQuyenModel.FK_Meiko_Sys_UserRole_Meiko_Sys_Role" FromRole="A0001" ToRole="A0003" />
+    <NavigationProperty Name="A0005" Relationship="PhanQuyenModel.FK_Meiko_TD_PhanQuyen_Meiko_TD_Role" FromRole="A0001" ToRole="A0005" />
+  </EntityType>
+  <EntityType Name="A0002">
+    <Key>
+      <PropertyRef Name="A0002_ID" />
+    </Key>
+    <Property Name="A0002_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0004_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="APKID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="maNhanVien" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ana03Name" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+    <Property Name="hoVaTen" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="soDienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="userName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="passWord" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="anhDaiDien" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="diaChi" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ngaySinh" Type="DateTime" Precision="3" />
+    <Property Name="tinhTrang" Type="Int32" Nullable="false" />
+    <Property Name="CMTND" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="passWordRandom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ngayVao" Type="DateTime" Precision="0" />
+    <Property Name="ngayCapNhap" Type="DateTime" Precision="0" />
+    <Property Name="kieuUser" Type="Int32" Nullable="false" />
+    <Property Name="IsPosition" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="A0014" Relationship="PhanQuyenModel.FK_A0014_A0002" FromRole="A0002" ToRole="A0014" />
+    <NavigationProperty Name="A0019" Relationship="PhanQuyenModel.FK_A0019_A0002" FromRole="A0002" ToRole="A0019" />
+    <NavigationProperty Name="A0025" Relationship="PhanQuyenModel.FK_A0025_A0002" FromRole="A0002" ToRole="A0025" />
+    <NavigationProperty Name="A0028" Relationship="PhanQuyenModel.FK_A0028_A0002" FromRole="A0002" ToRole="A0028" />
+    <NavigationProperty Name="A0029" Relationship="PhanQuyenModel.FK_A0029_A0002" FromRole="A0002" ToRole="A0029" />
+    <NavigationProperty Name="A0030" Relationship="PhanQuyenModel.FK_A0030_A0002" FromRole="A0002" ToRole="A0030" />
+    <NavigationProperty Name="A0037" Relationship="PhanQuyenModel.FK_A0037_A0002" FromRole="A0002" ToRole="A0037" />
+    <NavigationProperty Name="A0042" Relationship="PhanQuyenModel.FK_A0042_A0002" FromRole="A0002" ToRole="A0042" />
+    <NavigationProperty Name="A0003" Relationship="PhanQuyenModel.FK_Meiko_Sys_UserRole_Meiko_Sys_User" FromRole="A0002" ToRole="A0003" />
+    <NavigationProperty Name="A0005" Relationship="PhanQuyenModel.FK_Meiko_TD_PhanQuyen_Meiko_TD_NhanSu" FromRole="A0002" ToRole="A0005" />
+    <NavigationProperty Name="A0010" Relationship="PhanQuyenModel.FK_Meiko_TD_PhanQuyenBuaAn_Meiko_TD_User" FromRole="A0002" ToRole="A0010" />
+  </EntityType>
+  <EntityType Name="A0003">
+    <Key>
+      <PropertyRef Name="A0003_ID" />
+    </Key>
+    <Property Name="A0003_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0001_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0002_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="A0001" Relationship="PhanQuyenModel.FK_Meiko_Sys_UserRole_Meiko_Sys_Role" FromRole="A0003" ToRole="A0001" />
+    <NavigationProperty Name="A0002" Relationship="PhanQuyenModel.FK_Meiko_Sys_UserRole_Meiko_Sys_User" FromRole="A0003" ToRole="A0002" />
+  </EntityType>
+  <EntityType Name="A0004">
+    <Key>
+      <PropertyRef Name="A0004_ID" />
+    </Key>
+    <Property Name="A0004_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="maPhongBan" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IDCha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tenPhongBan" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="diaChi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="dienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="logo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="thuTu" Type="Int32" Nullable="false" />
+    <Property Name="tinhTrang" Type="Boolean" Nullable="false" />
+    <Property Name="CongTyID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="A0005">
+    <Key>
+      <PropertyRef Name="A0005_ID" />
+    </Key>
+    <Property Name="A0005_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0007_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0001_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0002_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0006_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="quyenXem" Type="Boolean" Nullable="false" />
+    <Property Name="quyenThem" Type="Boolean" Nullable="false" />
+    <Property Name="quyenCapNhap" Type="Boolean" Nullable="false" />
+    <Property Name="quyenXoa" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="A0001" Relationship="PhanQuyenModel.FK_Meiko_TD_PhanQuyen_Meiko_TD_Role" FromRole="A0005" ToRole="A0001" />
+    <NavigationProperty Name="A0002" Relationship="PhanQuyenModel.FK_Meiko_TD_PhanQuyen_Meiko_TD_NhanSu" FromRole="A0005" ToRole="A0002" />
+    <NavigationProperty Name="A0007" Relationship="PhanQuyenModel.FK_MenuRole_Menu" FromRole="A0005" ToRole="A0007" />
+  </EntityType>
+  <EntityType Name="A0006">
+    <Key>
+      <PropertyRef Name="A0006_ID" />
+    </Key>
+    <Property Name="A0006_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="maModule" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tenModule" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="thuTu" Type="Int32" Nullable="false" />
+    <Property Name="tinhTrang" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="A0007" Relationship="PhanQuyenModel.FK_Meiko_Sys_Menu_Meiko_Sys_Module" FromRole="A0006" ToRole="A0007" />
+  </EntityType>
+  <EntityType Name="A0007">
+    <Key>
+      <PropertyRef Name="A0007_ID" />
+    </Key>
+    <Property Name="A0007_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0006_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IDCha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tenMenu" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="tenRutGon" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="anhDoc" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Link" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="maCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Icon" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="thuThu" Type="Int32" Nullable="false" />
+    <Property Name="tinhTrang" Type="Boolean" Nullable="false" />
+    <Property Name="maCount" Type="Int32" />
+    <NavigationProperty Name="A0005" Relationship="PhanQuyenModel.FK_MenuRole_Menu" FromRole="A0007" ToRole="A0005" />
+    <NavigationProperty Name="A0006" Relationship="PhanQuyenModel.FK_Meiko_Sys_Menu_Meiko_Sys_Module" FromRole="A0007" ToRole="A0006" />
+  </EntityType>
+  <EntityType Name="A0008">
+    <Key>
+      <PropertyRef Name="A0008_ID" />
+    </Key>
+    <Property Name="A0008_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tenNgonNgu" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Icon" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="maCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thuTu" Type="Int32" Nullable="false" />
+    <Property Name="tinhTrang" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="A0009" Relationship="PhanQuyenModel.FK_Meiko_TD_ThamSoDungChung_Meiko_TD_NgonNgu" FromRole="A0008" ToRole="A0009" />
+  </EntityType>
+  <EntityType Name="A0009">
+    <Key>
+      <PropertyRef Name="A0009_ID" />
+    </Key>
+    <Property Name="A0009_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0008_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tenTieuDe" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ghiChu" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="maCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Module" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="A0008" Relationship="PhanQuyenModel.FK_Meiko_TD_ThamSoDungChung_Meiko_TD_NgonNgu" FromRole="A0009" ToRole="A0008" />
+  </EntityType>
+  <EntityType Name="A0010">
+    <Key>
+      <PropertyRef Name="A0010_ID" />
+    </Key>
+    <Property Name="A0010_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0001_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0002_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0004_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BuaAnID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="thoiGianGioiHan" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="quyenThem" Type="Boolean" Nullable="false" />
+    <Property Name="quyenCapNhap" Type="Boolean" Nullable="false" />
+    <Property Name="quyenXoa" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="A0002" Relationship="PhanQuyenModel.FK_Meiko_TD_PhanQuyenBuaAn_Meiko_TD_User" FromRole="A0010" ToRole="A0002" />
+  </EntityType>
+  <EntityType Name="A0011">
+    <Key>
+      <PropertyRef Name="A0011_ID" />
+    </Key>
+    <Property Name="A0011_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0002_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hoVaTen" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="IsTime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IPTruyCap" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="thietBiTruyCap" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="IPMac" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="A0012">
+    <Key>
+      <PropertyRef Name="A0012_ID" />
+    </Key>
+    <Property Name="A0012_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0002_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tieuDe" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="controller" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="logDate" Type="DateTime" Precision="0" />
+    <Property Name="logContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="hoVaTen" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="kieuDuLieu" Type="Int32" />
+    <Property Name="IPTruyCap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thietBiTruyCap" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="A0013">
+    <Key>
+      <PropertyRef Name="A0013_ID" />
+    </Key>
+    <Property Name="A0013_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0002_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="thoiGianTruyCap" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="isCountLogin" Type="Int32" Nullable="false" />
+    <Property Name="IPTruyCap" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="thietBiTruyCap" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="A0014">
+    <Key>
+      <PropertyRef Name="A0014_ID" />
+    </Key>
+    <Property Name="A0014_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0002_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ngayGui" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="tinhTrang" Type="Boolean" Nullable="false" />
+    <Property Name="ngayResetMatKhau" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="A0002" Relationship="PhanQuyenModel.FK_A0014_A0002" FromRole="A0014" ToRole="A0002" />
+  </EntityType>
+  <EntityType Name="A0015">
+    <Key>
+      <PropertyRef Name="A0015_ID" />
+    </Key>
+    <Property Name="A0015_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="maLoaiCongViec" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tenLoaiCongViec" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="STT" Type="Int32" Nullable="false" />
+    <Property Name="trangThai" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="A0018" Relationship="PhanQuyenModel.FK_A0018_A0015" FromRole="A0015" ToRole="A0018" />
+    <NavigationProperty Name="A0021" Relationship="PhanQuyenModel.FK_A0021_A0015" FromRole="A0015" ToRole="A0021" />
+    <NavigationProperty Name="A0016" Relationship="PhanQuyenModel.FK_Meiko_TD_CongViec_Meiko_TD_LoaiCongViec" FromRole="A0015" ToRole="A0016" />
+  </EntityType>
+  <EntityType Name="A0016">
+    <Key>
+      <PropertyRef Name="A0016_ID" />
+    </Key>
+    <Property Name="A0016_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0015_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0032_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="maCongViec" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tenCongViec" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="A0004_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="STT" Type="Int32" Nullable="false" />
+    <Property Name="loaiCongViec" Type="Int32" Nullable="false" />
+    <Property Name="trangThai" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="A0015" Relationship="PhanQuyenModel.FK_Meiko_TD_CongViec_Meiko_TD_LoaiCongViec" FromRole="A0016" ToRole="A0015" />
+    <NavigationProperty Name="A0032" Relationship="PhanQuyenModel.FK_A0016_A0032" FromRole="A0016" ToRole="A0032" />
+    <NavigationProperty Name="A0022" Relationship="PhanQuyenModel.FK_A0022_A0016" FromRole="A0016" ToRole="A0022" />
+    <NavigationProperty Name="A0028" Relationship="PhanQuyenModel.FK_A0028_A0016" FromRole="A0016" ToRole="A0028" />
+    <NavigationProperty Name="A0033" Relationship="PhanQuyenModel.FK_A0033_A0016" FromRole="A0016" ToRole="A0033" />
+  </EntityType>
+  <EntityType Name="A0017">
+    <Key>
+      <PropertyRef Name="A0017_ID" />
+    </Key>
+    <Property Name="A0017_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="maNhomNguoiKy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tenNhomNguoiKy" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="false" />
+    <Property Name="moTaNhomNguoiKy" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="false" />
+    <Property Name="kieuNhomNguoiKy" Type="Int32" Nullable="false" />
+    <Property Name="STT" Type="Int32" Nullable="false" />
+    <Property Name="trangThai" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="A0019" Relationship="PhanQuyenModel.FK_A0019_A0017" FromRole="A0017" ToRole="A0019" />
+    <NavigationProperty Name="A0021" Relationship="PhanQuyenModel.FK_A0021_A0017" FromRole="A0017" ToRole="A0021" />
+  </EntityType>
+  <EntityType Name="A0018">
+    <Key>
+      <PropertyRef Name="A0018_ID" />
+    </Key>
+    <Property Name="A0018_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0015_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0004_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tenQuyTrinh" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="kieuQuyTrinh" Type="Int32" Nullable="false" />
+    <Property Name="STT" Type="Int32" Nullable="false" />
+    <Property Name="trangThai" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="A0015" Relationship="PhanQuyenModel.FK_A0018_A0015" FromRole="A0018" ToRole="A0015" />
+  </EntityType>
+  <EntityType Name="A0019">
+    <Key>
+      <PropertyRef Name="A0019_ID" />
+    </Key>
+    <Property Name="A0019_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0017_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0002_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0004_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="STT" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="A0002" Relationship="PhanQuyenModel.FK_A0019_A0002" FromRole="A0019" ToRole="A0002" />
+    <NavigationProperty Name="A0017" Relationship="PhanQuyenModel.FK_A0019_A0017" FromRole="A0019" ToRole="A0017" />
+  </EntityType>
+  <EntityType Name="A0020">
+    <Key>
+      <PropertyRef Name="A0020_ID" />
+    </Key>
+    <Property Name="A0020_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tenBuocKy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AliasBuocKy" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="false" />
+    <Property Name="kieuBuocKy" Type="Int32" Nullable="false" />
+    <Property Name="STT" Type="Int32" Nullable="false" />
+    <Property Name="trangThai" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="A0021" Relationship="PhanQuyenModel.FK_A0021_A0020" FromRole="A0020" ToRole="A0021" />
+  </EntityType>
+  <EntityType Name="A0021">
+    <Key>
+      <PropertyRef Name="A0021_ID" />
+    </Key>
+    <Property Name="A0021_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0004_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0015_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0017_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0018_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0020_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="A0015" Relationship="PhanQuyenModel.FK_A0021_A0015" FromRole="A0021" ToRole="A0015" />
+    <NavigationProperty Name="A0017" Relationship="PhanQuyenModel.FK_A0021_A0017" FromRole="A0021" ToRole="A0017" />
+    <NavigationProperty Name="A0020" Relationship="PhanQuyenModel.FK_A0021_A0020" FromRole="A0021" ToRole="A0020" />
+  </EntityType>
+  <EntityType Name="A0022">
+    <Key>
+      <PropertyRef Name="A0022_ID" />
+    </Key>
+    <Property Name="A0022_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0016_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0028_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="soHoSo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tenHoSoKhongDau" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="tenHoSo" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="noiDungHoSo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="noiDungHoSoKhongDau" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="nguoiTao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nguoiDong" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ngayMo" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ngayDuKienHoanThanh" Type="DateTime" Precision="0" />
+    <Property Name="ngayHoanThanh" Type="DateTime" Precision="0" />
+    <Property Name="trangThai" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="A0016" Relationship="PhanQuyenModel.FK_A0022_A0016" FromRole="A0022" ToRole="A0016" />
+    <NavigationProperty Name="A0023" Relationship="PhanQuyenModel.FK_A0023_A0022" FromRole="A0022" ToRole="A0023" />
+    <NavigationProperty Name="A0025" Relationship="PhanQuyenModel.FK_A0025_A0022" FromRole="A0022" ToRole="A0025" />
+  </EntityType>
+  <EntityType Name="A0023">
+    <Key>
+      <PropertyRef Name="A0023_ID" />
+    </Key>
+    <Property Name="A0023_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0022_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tenHangMuc" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="tenHangMucKhongDau" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="nguoiTao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ngayTao" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ngayDuKienHoanThanh" Type="DateTime" Precision="0" />
+    <Property Name="nguoiHoanThanh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ngayHoanThanh" Type="DateTime" Precision="0" />
+    <Property Name="phanTramHoanThanh" Type="Double" Nullable="false" />
+    <Property Name="trangThai" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="A0022" Relationship="PhanQuyenModel.FK_A0023_A0022" FromRole="A0023" ToRole="A0022" />
+    <NavigationProperty Name="A0024" Relationship="PhanQuyenModel.FK_A0024_A0023" FromRole="A0023" ToRole="A0024" />
+    <NavigationProperty Name="A0026" Relationship="PhanQuyenModel.FK_A0026_A0023" FromRole="A0023" ToRole="A0026" />
+  </EntityType>
+  <EntityType Name="A0024">
+    <Key>
+      <PropertyRef Name="A0024_ID" />
+    </Key>
+    <Property Name="A0024_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0023_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tenTieuMucHoSo" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="tenTieuMucHoSoKhongDau" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="nguoiTao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ngayTao" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ngayDuKienHoanThanh" Type="DateTime" Precision="0" />
+    <Property Name="nguoiHoanThanh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ngayHoanThanh" Type="DateTime" Precision="0" />
+    <Property Name="phanTramHoanThanh" Type="Double" Nullable="false" />
+    <Property Name="trangThai" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="A0023" Relationship="PhanQuyenModel.FK_A0024_A0023" FromRole="A0024" ToRole="A0023" />
+    <NavigationProperty Name="A0027" Relationship="PhanQuyenModel.FK_A0027_A0024" FromRole="A0024" ToRole="A0027" />
+  </EntityType>
+  <EntityType Name="A0025">
+    <Key>
+      <PropertyRef Name="A0025_ID" />
+    </Key>
+    <Property Name="A0025_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0022_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0002_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="kieuNguoiXuLy" Type="Int32" Nullable="false" />
+    <Property Name="ngayThem" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="thuTu" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="A0002" Relationship="PhanQuyenModel.FK_A0025_A0002" FromRole="A0025" ToRole="A0002" />
+    <NavigationProperty Name="A0022" Relationship="PhanQuyenModel.FK_A0025_A0022" FromRole="A0025" ToRole="A0022" />
+  </EntityType>
+  <EntityType Name="A0026">
+    <Key>
+      <PropertyRef Name="A0026_ID" />
+    </Key>
+    <Property Name="A0026_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0023_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0002_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="kieuNguoiXuLy" Type="Int32" Nullable="false" />
+    <Property Name="ngayThem" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="thuTu" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="A0023" Relationship="PhanQuyenModel.FK_A0026_A0023" FromRole="A0026" ToRole="A0023" />
+  </EntityType>
+  <EntityType Name="A0027">
+    <Key>
+      <PropertyRef Name="A0027_ID" />
+    </Key>
+    <Property Name="A0027_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0024_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0002_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="kieuNguoiXuLy" Type="Int32" Nullable="false" />
+    <Property Name="ngayThem" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="thuTu" Type="Int32" />
+    <NavigationProperty Name="A0024" Relationship="PhanQuyenModel.FK_A0027_A0024" FromRole="A0027" ToRole="A0024" />
+  </EntityType>
+  <EntityType Name="A0028">
+    <Key>
+      <PropertyRef Name="A0028_ID" />
+    </Key>
+    <Property Name="A0028_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0002_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0016_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0032_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="T001C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T002C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T003C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T004C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T005C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T006C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T007C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T008C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T009C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T010C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T011C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T012C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T013C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T014C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T015C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T016C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T017C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T018C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T019C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T020C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T021C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T022C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T023C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T024C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T025C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T026C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T027C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T028C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T029C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T030C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T031C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T032C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T033C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T034C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T035C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T036C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T037C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T038C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T039C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T040C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T041C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T042C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T043C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T044C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T045C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T046C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T047C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T048C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T049C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T050C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T051C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T052C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T053C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T054C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T055C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T056C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T057C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T058C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T059C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T060C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T061C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T062C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T063C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T064C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T065C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T066C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T067C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T068C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T069C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T070C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T071C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T072C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T073C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T074C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T075C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T076C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T077C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T078C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T079C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T080C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T081C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T082C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T083C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T084C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T085C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T086C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T087C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T088C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T089C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T090C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T091C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T092C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T093C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T094C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T095C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T096C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T097C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T098C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T099C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="T100C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="maForm" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="trangThaiNguoiTao" Type="Int32" />
+    <Property Name="trangThai" Type="Int32" Nullable="false" />
+    <Property Name="ngayTao" Type="DateTime" Precision="0" />
+    <Property Name="ngayXuLyMongMuon" Type="DateTime" Precision="0" />
+    <Property Name="viTriHienTaiMenuID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="viTriHienTaiNhomKyID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="viTriHienTaiUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="daXoa" Type="Boolean" />
+    <NavigationProperty Name="A0002" Relationship="PhanQuyenModel.FK_A0028_A0002" FromRole="A0028" ToRole="A0002" />
+    <NavigationProperty Name="A0016" Relationship="PhanQuyenModel.FK_A0028_A0016" FromRole="A0028" ToRole="A0016" />
+    <NavigationProperty Name="A0029" Relationship="PhanQuyenModel.FK_A0029_A0028" FromRole="A0028" ToRole="A0029" />
+    <NavigationProperty Name="A0030" Relationship="PhanQuyenModel.FK_A0030_A0028" FromRole="A0028" ToRole="A0030" />
+    <NavigationProperty Name="A0031" Relationship="PhanQuyenModel.FK_A0031_A0028" FromRole="A0028" ToRole="A0031" />
+    <NavigationProperty Name="A0028D" Relationship="PhanQuyenModel.FK_A0033_A0028" FromRole="A0028" ToRole="A0028D" />
+    <NavigationProperty Name="A0037" Relationship="PhanQuyenModel.FK_A0037_A0028" FromRole="A0028" ToRole="A0037" />
+  </EntityType>
+  <EntityType Name="A0028D">
+    <Key>
+      <PropertyRef Name="A0028D_ID" />
+    </Key>
+    <Property Name="A0028D_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0028_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsPostion" Type="Int32" Nullable="false" />
+    <Property Name="C001C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C002C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C003C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C004C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C005C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C006C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C007C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C008C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C009C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C010C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C011C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C012C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C013C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C014C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C015C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C016C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C017C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C018C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C019C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C020C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C021C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C022C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C023C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C024C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C025C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C026C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C027C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C028C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C029C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C030C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C031C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C032C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C033C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C034C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C035C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C036C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C037C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C038C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C039C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="C040C" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="A0028" Relationship="PhanQuyenModel.FK_A0033_A0028" FromRole="A0028D" ToRole="A0028" />
+  </EntityType>
+  <EntityType Name="A0029">
+    <Key>
+      <PropertyRef Name="A0029_ID" />
+    </Key>
+    <Property Name="A0029_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0028_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0002_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0017_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0020_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tenNhomKy" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="tenViTri" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="daKy" Type="Boolean" Nullable="false" />
+    <Property Name="thuThu" Type="Int32" Nullable="false" />
+    <Property Name="thoiGianGui" Type="DateTime" Precision="0" />
+    <Property Name="viTriHienTai" Type="Boolean" Nullable="false" />
+    <Property Name="daXem" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="A0002" Relationship="PhanQuyenModel.FK_A0029_A0002" FromRole="A0029" ToRole="A0002" />
+    <NavigationProperty Name="A0028" Relationship="PhanQuyenModel.FK_A0029_A0028" FromRole="A0029" ToRole="A0028" />
+  </EntityType>
+  <EntityType Name="A0030">
+    <Key>
+      <PropertyRef Name="A0030_ID" />
+    </Key>
+    <Property Name="A0030_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0028_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0002_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tieuDe" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="noiDung" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="thuThu" Type="Int32" Nullable="false" />
+    <Property Name="trangThai" Type="Int32" Nullable="false" />
+    <Property Name="thoiGianGui" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="A0002" Relationship="PhanQuyenModel.FK_A0030_A0002" FromRole="A0030" ToRole="A0002" />
+    <NavigationProperty Name="A0028" Relationship="PhanQuyenModel.FK_A0030_A0028" FromRole="A0030" ToRole="A0028" />
+  </EntityType>
+  <EntityType Name="A0031">
+    <Key>
+      <PropertyRef Name="A0031_ID" />
+    </Key>
+    <Property Name="A0031_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0028_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tenFile" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="true" />
+    <Property Name="dungLuong" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="duongDan" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+    <Property Name="ngayTao" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="loaiFile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="kieuFile" Type="Int32" Nullable="false" />
+    <Property Name="thuTu" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="A0028" Relationship="PhanQuyenModel.FK_A0031_A0028" FromRole="A0031" ToRole="A0028" />
+  </EntityType>
+  <EntityType Name="A0032">
+    <Key>
+      <PropertyRef Name="A0032_ID" />
+    </Key>
+    <Property Name="A0032_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="maForm" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tenForm" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="tenTiengNhat" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+    <Property Name="formPhongBan" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="kieuForm" Type="Int32" />
+    <Property Name="images" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ngayPhatHanh" Type="DateTime" Precision="0" />
+    <Property Name="nguoiTao" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="thuTu" Type="Int32" />
+    <Property Name="trangThai" Type="Boolean" />
+    <NavigationProperty Name="A0016" Relationship="PhanQuyenModel.FK_A0016_A0032" FromRole="A0032" ToRole="A0016" />
+  </EntityType>
+  <EntityType Name="A0033">
+    <Key>
+      <PropertyRef Name="A0033_ID" />
+    </Key>
+    <Property Name="A0033_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0004_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0021_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0019_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0016_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="A0016" Relationship="PhanQuyenModel.FK_A0033_A0016" FromRole="A0033" ToRole="A0016" />
+  </EntityType>
+  <EntityType Name="A0034">
+    <Key>
+      <PropertyRef Name="A0034_ID" />
+    </Key>
+    <Property Name="A0034_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Parent_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="phongBanMapID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="maPhongBan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tenPhongBan" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+    <Property Name="trangThai" Type="Boolean" />
+    <Property Name="kieuPhongBan" Type="Int32" Nullable="false" />
+    <Property Name="STT" Type="Int32" />
+    <NavigationProperty Name="A0036" Relationship="PhanQuyenModel.FK_A0036_A0034" FromRole="A0034" ToRole="A0036" />
+    <NavigationProperty Name="A0037" Relationship="PhanQuyenModel.FK_A0037_A0034" FromRole="A0034" ToRole="A0037" />
+  </EntityType>
+  <EntityType Name="A0035">
+    <Key>
+      <PropertyRef Name="A0035_ID" />
+    </Key>
+    <Property Name="A0035_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="maNoiDungBaoPhe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tenTiengViet" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="tenTiengNhat" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="STT" Type="Int32" />
+    <Property Name="trangThai" Type="Boolean" />
+    <NavigationProperty Name="A0036" Relationship="PhanQuyenModel.FK_A0036_A0035" FromRole="A0035" ToRole="A0036" />
+  </EntityType>
+  <EntityType Name="A0036">
+    <Key>
+      <PropertyRef Name="A0036_ID" />
+    </Key>
+    <Property Name="A0036_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0035_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0034_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsType" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="A0034" Relationship="PhanQuyenModel.FK_A0036_A0034" FromRole="A0036" ToRole="A0034" />
+    <NavigationProperty Name="A0035" Relationship="PhanQuyenModel.FK_A0036_A0035" FromRole="A0036" ToRole="A0035" />
+  </EntityType>
+  <EntityType Name="A0037">
+    <Key>
+      <PropertyRef Name="A0037_ID" />
+    </Key>
+    <Property Name="A0037_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0002_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0028_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0034_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tenBoPhan" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="true" />
+    <Property Name="trangThai" Type="Int32" Nullable="false" />
+    <Property Name="IsEdit" Type="Boolean" Nullable="false" />
+    <Property Name="ngayTao" Type="DateTime" Precision="0" />
+    <Property Name="ngayXuLyMongMuon" Type="DateTime" Precision="0" />
+    <Property Name="viTriHienTaiMenuID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="viTriHienTaiUserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ngayHoanThanh" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="A0002" Relationship="PhanQuyenModel.FK_A0037_A0002" FromRole="A0037" ToRole="A0002" />
+    <NavigationProperty Name="A0028" Relationship="PhanQuyenModel.FK_A0037_A0028" FromRole="A0037" ToRole="A0028" />
+    <NavigationProperty Name="A0034" Relationship="PhanQuyenModel.FK_A0037_A0034" FromRole="A0037" ToRole="A0034" />
+    <NavigationProperty Name="A0038" Relationship="PhanQuyenModel.FK_A0038_A0037" FromRole="A0037" ToRole="A0038" />
+    <NavigationProperty Name="A0039" Relationship="PhanQuyenModel.FK_A0039_A0037" FromRole="A0037" ToRole="A0039" />
+  </EntityType>
+  <EntityType Name="A0038">
+    <Key>
+      <PropertyRef Name="A0038_ID" />
+    </Key>
+    <Property Name="A0038_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0028D_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0037_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0002_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="mailNguoiKy" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="viTri" Type="Int32" />
+    <Property Name="viTriHienTai" Type="Boolean" Nullable="false" />
+    <Property Name="daKy" Type="Boolean" Nullable="false" />
+    <Property Name="thoiGianKy" Type="DateTime" Precision="0" />
+    <Property Name="thuTu" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="A0037" Relationship="PhanQuyenModel.FK_A0038_A0037" FromRole="A0038" ToRole="A0037" />
+  </EntityType>
+  <EntityType Name="A0039">
+    <Key>
+      <PropertyRef Name="A0039_ID" />
+    </Key>
+    <Property Name="A0039_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0028_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0028D_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0037_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ngayXuLy" Type="DateTime" Precision="0" />
+    <Property Name="nguoiXuLy" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="noiDungXuLy" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="trangThai" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="A0037" Relationship="PhanQuyenModel.FK_A0039_A0037" FromRole="A0039" ToRole="A0037" />
+  </EntityType>
+  <EntityType Name="A0040">
+    <Key>
+      <PropertyRef Name="A0040_ID" />
+    </Key>
+    <Property Name="A0040_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0034_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nguoiKy1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nguoiKy2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nguoiKy3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nguoiKy4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nguoiKy5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nguoiKy6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nguoiKy7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MailNguoiKy1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MailNguoiKy2" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MailNguoiKy3" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MailNguoiKy4" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MailNguoiKy5" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MailNguoiKy6" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MailNguoiKy7" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="A0041">
+    <Key>
+      <PropertyRef Name="A0041_ID" />
+    </Key>
+    <Property Name="A0041_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tenEmail" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="PassWord" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Port" Type="Int32" Nullable="false" />
+    <Property Name="SMTPIn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SMTPOut" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="A0042">
+    <Key>
+      <PropertyRef Name="A0042_ID" />
+    </Key>
+    <Property Name="A0042_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0001_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A0002_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="A0001" Relationship="PhanQuyenModel.FK_A0042_A0001" FromRole="A0042" ToRole="A0001" />
+    <NavigationProperty Name="A0002" Relationship="PhanQuyenModel.FK_A0042_A0002" FromRole="A0042" ToRole="A0002" />
+  </EntityType>
+  <EntityType Name="A0043">
+    <Key>
+      <PropertyRef Name="A0043_ID" />
+    </Key>
+    <Property Name="A0043_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tenKieuBaiViet" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="true" />
+    <Property Name="kieuBaiViet" Type="Int32" Nullable="false" />
+    <Property Name="giaTri" Type="Double" Nullable="false" />
+    <Property Name="STT" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="A0044">
+    <Key>
+      <PropertyRef Name="A0044_ID" />
+    </Key>
+    <Property Name="A0044_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Parent_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="boPhan_ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tenBoPhan" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="true" />
+    <Property Name="thang" Type="Int32" Nullable="false" />
+    <Property Name="nam" Type="Int32" Nullable="false" />
+    <Property Name="chiTieuBai" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_A0042_A0001">
+    <End Type="PhanQuyenModel.A0001" Role="A0001" Multiplicity="1" />
+    <End Type="PhanQuyenModel.A0042" Role="A0042" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0001">
+        <PropertyRef Name="A0001_ID" />
+      </Principal>
+      <Dependent Role="A0042">
+        <PropertyRef Name="A0001_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Meiko_Sys_UserRole_Meiko_Sys_Role">
+    <End Type="PhanQuyenModel.A0001" Role="A0001" Multiplicity="1" />
+    <End Type="PhanQuyenModel.A0003" Role="A0003" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0001">
+        <PropertyRef Name="A0001_ID" />
+      </Principal>
+      <Dependent Role="A0003">
+        <PropertyRef Name="A0001_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Meiko_TD_PhanQuyen_Meiko_TD_Role">
+    <End Type="PhanQuyenModel.A0001" Role="A0001" Multiplicity="1" />
+    <End Type="PhanQuyenModel.A0005" Role="A0005" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0001">
+        <PropertyRef Name="A0001_ID" />
+      </Principal>
+      <Dependent Role="A0005">
+        <PropertyRef Name="A0001_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0014_A0002">
+    <End Type="PhanQuyenModel.A0002" Role="A0002" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="PhanQuyenModel.A0014" Role="A0014" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0002">
+        <PropertyRef Name="A0002_ID" />
+      </Principal>
+      <Dependent Role="A0014">
+        <PropertyRef Name="A0002_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0019_A0002">
+    <End Type="PhanQuyenModel.A0002" Role="A0002" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="PhanQuyenModel.A0019" Role="A0019" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0002">
+        <PropertyRef Name="A0002_ID" />
+      </Principal>
+      <Dependent Role="A0019">
+        <PropertyRef Name="A0002_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0025_A0002">
+    <End Type="PhanQuyenModel.A0002" Role="A0002" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="PhanQuyenModel.A0025" Role="A0025" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0002">
+        <PropertyRef Name="A0002_ID" />
+      </Principal>
+      <Dependent Role="A0025">
+        <PropertyRef Name="A0002_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0028_A0002">
+    <End Type="PhanQuyenModel.A0002" Role="A0002" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="PhanQuyenModel.A0028" Role="A0028" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0002">
+        <PropertyRef Name="A0002_ID" />
+      </Principal>
+      <Dependent Role="A0028">
+        <PropertyRef Name="A0002_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0029_A0002">
+    <End Type="PhanQuyenModel.A0002" Role="A0002" Multiplicity="1" />
+    <End Type="PhanQuyenModel.A0029" Role="A0029" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0002">
+        <PropertyRef Name="A0002_ID" />
+      </Principal>
+      <Dependent Role="A0029">
+        <PropertyRef Name="A0002_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0030_A0002">
+    <End Type="PhanQuyenModel.A0002" Role="A0002" Multiplicity="1" />
+    <End Type="PhanQuyenModel.A0030" Role="A0030" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0002">
+        <PropertyRef Name="A0002_ID" />
+      </Principal>
+      <Dependent Role="A0030">
+        <PropertyRef Name="A0002_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0037_A0002">
+    <End Type="PhanQuyenModel.A0002" Role="A0002" Multiplicity="1" />
+    <End Type="PhanQuyenModel.A0037" Role="A0037" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0002">
+        <PropertyRef Name="A0002_ID" />
+      </Principal>
+      <Dependent Role="A0037">
+        <PropertyRef Name="A0002_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0042_A0002">
+    <End Type="PhanQuyenModel.A0002" Role="A0002" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="PhanQuyenModel.A0042" Role="A0042" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0002">
+        <PropertyRef Name="A0002_ID" />
+      </Principal>
+      <Dependent Role="A0042">
+        <PropertyRef Name="A0002_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Meiko_Sys_UserRole_Meiko_Sys_User">
+    <End Type="PhanQuyenModel.A0002" Role="A0002" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="PhanQuyenModel.A0003" Role="A0003" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0002">
+        <PropertyRef Name="A0002_ID" />
+      </Principal>
+      <Dependent Role="A0003">
+        <PropertyRef Name="A0002_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Meiko_TD_PhanQuyen_Meiko_TD_NhanSu">
+    <End Type="PhanQuyenModel.A0002" Role="A0002" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="PhanQuyenModel.A0005" Role="A0005" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0002">
+        <PropertyRef Name="A0002_ID" />
+      </Principal>
+      <Dependent Role="A0005">
+        <PropertyRef Name="A0002_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Meiko_TD_PhanQuyenBuaAn_Meiko_TD_User">
+    <End Type="PhanQuyenModel.A0002" Role="A0002" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="PhanQuyenModel.A0010" Role="A0010" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0002">
+        <PropertyRef Name="A0002_ID" />
+      </Principal>
+      <Dependent Role="A0010">
+        <PropertyRef Name="A0002_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MenuRole_Menu">
+    <End Type="PhanQuyenModel.A0007" Role="A0007" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="PhanQuyenModel.A0005" Role="A0005" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0007">
+        <PropertyRef Name="A0007_ID" />
+      </Principal>
+      <Dependent Role="A0005">
+        <PropertyRef Name="A0007_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Meiko_Sys_Menu_Meiko_Sys_Module">
+    <End Type="PhanQuyenModel.A0006" Role="A0006" Multiplicity="0..1" />
+    <End Type="PhanQuyenModel.A0007" Role="A0007" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0006">
+        <PropertyRef Name="A0006_ID" />
+      </Principal>
+      <Dependent Role="A0007">
+        <PropertyRef Name="A0006_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Meiko_TD_ThamSoDungChung_Meiko_TD_NgonNgu">
+    <End Type="PhanQuyenModel.A0008" Role="A0008" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="PhanQuyenModel.A0009" Role="A0009" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0008">
+        <PropertyRef Name="A0008_ID" />
+      </Principal>
+      <Dependent Role="A0009">
+        <PropertyRef Name="A0008_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0018_A0015">
+    <End Type="PhanQuyenModel.A0015" Role="A0015" Multiplicity="1" />
+    <End Type="PhanQuyenModel.A0018" Role="A0018" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0015">
+        <PropertyRef Name="A0015_ID" />
+      </Principal>
+      <Dependent Role="A0018">
+        <PropertyRef Name="A0015_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0021_A0015">
+    <End Type="PhanQuyenModel.A0015" Role="A0015" Multiplicity="1" />
+    <End Type="PhanQuyenModel.A0021" Role="A0021" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0015">
+        <PropertyRef Name="A0015_ID" />
+      </Principal>
+      <Dependent Role="A0021">
+        <PropertyRef Name="A0015_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Meiko_TD_CongViec_Meiko_TD_LoaiCongViec">
+    <End Type="PhanQuyenModel.A0015" Role="A0015" Multiplicity="1" />
+    <End Type="PhanQuyenModel.A0016" Role="A0016" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0015">
+        <PropertyRef Name="A0015_ID" />
+      </Principal>
+      <Dependent Role="A0016">
+        <PropertyRef Name="A0015_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0016_A0032">
+    <End Type="PhanQuyenModel.A0032" Role="A0032" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="PhanQuyenModel.A0016" Role="A0016" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0032">
+        <PropertyRef Name="A0032_ID" />
+      </Principal>
+      <Dependent Role="A0016">
+        <PropertyRef Name="A0032_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0022_A0016">
+    <End Type="PhanQuyenModel.A0016" Role="A0016" Multiplicity="1" />
+    <End Type="PhanQuyenModel.A0022" Role="A0022" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0016">
+        <PropertyRef Name="A0016_ID" />
+      </Principal>
+      <Dependent Role="A0022">
+        <PropertyRef Name="A0016_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0028_A0016">
+    <End Type="PhanQuyenModel.A0016" Role="A0016" Multiplicity="1" />
+    <End Type="PhanQuyenModel.A0028" Role="A0028" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0016">
+        <PropertyRef Name="A0016_ID" />
+      </Principal>
+      <Dependent Role="A0028">
+        <PropertyRef Name="A0016_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0033_A0016">
+    <End Type="PhanQuyenModel.A0016" Role="A0016" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="PhanQuyenModel.A0033" Role="A0033" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0016">
+        <PropertyRef Name="A0016_ID" />
+      </Principal>
+      <Dependent Role="A0033">
+        <PropertyRef Name="A0016_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0019_A0017">
+    <End Type="PhanQuyenModel.A0017" Role="A0017" Multiplicity="1" />
+    <End Type="PhanQuyenModel.A0019" Role="A0019" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0017">
+        <PropertyRef Name="A0017_ID" />
+      </Principal>
+      <Dependent Role="A0019">
+        <PropertyRef Name="A0017_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0021_A0017">
+    <End Type="PhanQuyenModel.A0017" Role="A0017" Multiplicity="1" />
+    <End Type="PhanQuyenModel.A0021" Role="A0021" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0017">
+        <PropertyRef Name="A0017_ID" />
+      </Principal>
+      <Dependent Role="A0021">
+        <PropertyRef Name="A0017_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0021_A0020">
+    <End Type="PhanQuyenModel.A0020" Role="A0020" Multiplicity="1" />
+    <End Type="PhanQuyenModel.A0021" Role="A0021" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0020">
+        <PropertyRef Name="A0020_ID" />
+      </Principal>
+      <Dependent Role="A0021">
+        <PropertyRef Name="A0020_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0023_A0022">
+    <End Type="PhanQuyenModel.A0022" Role="A0022" Multiplicity="1" />
+    <End Type="PhanQuyenModel.A0023" Role="A0023" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0022">
+        <PropertyRef Name="A0022_ID" />
+      </Principal>
+      <Dependent Role="A0023">
+        <PropertyRef Name="A0022_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0025_A0022">
+    <End Type="PhanQuyenModel.A0022" Role="A0022" Multiplicity="1" />
+    <End Type="PhanQuyenModel.A0025" Role="A0025" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0022">
+        <PropertyRef Name="A0022_ID" />
+      </Principal>
+      <Dependent Role="A0025">
+        <PropertyRef Name="A0022_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0024_A0023">
+    <End Type="PhanQuyenModel.A0023" Role="A0023" Multiplicity="1" />
+    <End Type="PhanQuyenModel.A0024" Role="A0024" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0023">
+        <PropertyRef Name="A0023_ID" />
+      </Principal>
+      <Dependent Role="A0024">
+        <PropertyRef Name="A0023_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0026_A0023">
+    <End Type="PhanQuyenModel.A0023" Role="A0023" Multiplicity="1" />
+    <End Type="PhanQuyenModel.A0026" Role="A0026" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0023">
+        <PropertyRef Name="A0023_ID" />
+      </Principal>
+      <Dependent Role="A0026">
+        <PropertyRef Name="A0023_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0027_A0024">
+    <End Type="PhanQuyenModel.A0024" Role="A0024" Multiplicity="1" />
+    <End Type="PhanQuyenModel.A0027" Role="A0027" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0024">
+        <PropertyRef Name="A0024_ID" />
+      </Principal>
+      <Dependent Role="A0027">
+        <PropertyRef Name="A0024_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0029_A0028">
+    <End Type="PhanQuyenModel.A0028" Role="A0028" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="PhanQuyenModel.A0029" Role="A0029" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0028">
+        <PropertyRef Name="A0028_ID" />
+      </Principal>
+      <Dependent Role="A0029">
+        <PropertyRef Name="A0028_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0030_A0028">
+    <End Type="PhanQuyenModel.A0028" Role="A0028" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="PhanQuyenModel.A0030" Role="A0030" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0028">
+        <PropertyRef Name="A0028_ID" />
+      </Principal>
+      <Dependent Role="A0030">
+        <PropertyRef Name="A0028_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0031_A0028">
+    <End Type="PhanQuyenModel.A0028" Role="A0028" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="PhanQuyenModel.A0031" Role="A0031" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0028">
+        <PropertyRef Name="A0028_ID" />
+      </Principal>
+      <Dependent Role="A0031">
+        <PropertyRef Name="A0028_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0033_A0028">
+    <End Type="PhanQuyenModel.A0028" Role="A0028" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="PhanQuyenModel.A0028D" Role="A0028D" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0028">
+        <PropertyRef Name="A0028_ID" />
+      </Principal>
+      <Dependent Role="A0028D">
+        <PropertyRef Name="A0028_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0037_A0028">
+    <End Type="PhanQuyenModel.A0028" Role="A0028" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="PhanQuyenModel.A0037" Role="A0037" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0028">
+        <PropertyRef Name="A0028_ID" />
+      </Principal>
+      <Dependent Role="A0037">
+        <PropertyRef Name="A0028_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0036_A0034">
+    <End Type="PhanQuyenModel.A0034" Role="A0034" Multiplicity="1" />
+    <End Type="PhanQuyenModel.A0036" Role="A0036" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0034">
+        <PropertyRef Name="A0034_ID" />
+      </Principal>
+      <Dependent Role="A0036">
+        <PropertyRef Name="A0034_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0037_A0034">
+    <End Type="PhanQuyenModel.A0034" Role="A0034" Multiplicity="0..1" />
+    <End Type="PhanQuyenModel.A0037" Role="A0037" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0034">
+        <PropertyRef Name="A0034_ID" />
+      </Principal>
+      <Dependent Role="A0037">
+        <PropertyRef Name="A0034_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0036_A0035">
+    <End Type="PhanQuyenModel.A0035" Role="A0035" Multiplicity="1" />
+    <End Type="PhanQuyenModel.A0036" Role="A0036" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0035">
+        <PropertyRef Name="A0035_ID" />
+      </Principal>
+      <Dependent Role="A0036">
+        <PropertyRef Name="A0035_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0038_A0037">
+    <End Type="PhanQuyenModel.A0037" Role="A0037" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="PhanQuyenModel.A0038" Role="A0038" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0037">
+        <PropertyRef Name="A0037_ID" />
+      </Principal>
+      <Dependent Role="A0038">
+        <PropertyRef Name="A0037_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A0039_A0037">
+    <End Type="PhanQuyenModel.A0037" Role="A0037" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="PhanQuyenModel.A0039" Role="A0039" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="A0037">
+        <PropertyRef Name="A0037_ID" />
+      </Principal>
+      <Dependent Role="A0039">
+        <PropertyRef Name="A0037_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

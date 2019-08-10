@@ -1,0 +1,427 @@
+<div id="Users">
+  <div class="navbar-bottom nav1-bottom">
+    <div class="row">
+      <div class="box-search">
+        <input type="text" class="form-control search-edu" placeholder="Tìm kiếm..." [(ngModel)]="opition.s"
+          my-enter="ListSearch()">
+        <div class="btn-group btngroup-search">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span
+              class="caret"></span></button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a (click)="FilterStatus('')">Tất cả</a></li>
+            <li><a ng-style="{'color':(opition.sts == 'on') ? 'red':'black'}" (click)="FilterStatus('on')">Kích hoạt</a>
+            </li>
+            <li><a ng-style="{'color':(opition.sts == 'off') ? 'red':'black'}" (click)="FilterStatus('off')">Khóa</a>
+            </li>
+          </ul>
+        </div>
+        <button type="button" class="btn btn-default btnseach" (click)="ListSearch()"><i
+            class="fa fa-search icon-vedu"></i></button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <div class="row">
+          <div class="col-md-12" style="padding-right:0">
+            <ul class="navbar-bottomleft">
+              <li class="checkall" title="Chọn tất cả"><input type="checkbox" name="checkAllPass"
+                  [(ngModel)]="mo.checkAllPass" (click)="toggleAllPassword(listUserResetPass)"></li>
+              <li><a title="Đồng bộ dữ liệu" (click)="sysUserData(1)"><i class="fa fa-download"></i></a></li>
+              <li *ngIf="checkLenPass > 0"><a (click)="RefershPassword()" title="Reset mật khẩu"><i
+                    class="fa fa-refresh" aria-hidden="true"></i></a></li>
+              <li class="box-inputvb">
+                <a class="btn-filtervb dropdown-toggle" data-toggle="dropdown"
+                  style="margin: 0px !important;margin: 0px !important;padding: 1px 15px;border: none;background: none !important"><i
+                    class="fa fa-file-excel-o"></i></a>
+                <ul class="dropdown-menu dropdown-menu-vb" role="menu">
+                  <li>
+                    <a (click)="ExportRefershPassword()">Export yêu cầu Reset mật khẩu</a>
+                  </li>
+                  <li>
+                    <a (click)="ExportUserNoSign()">Export người dùng chưa có tài khoản</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="row">
+          <div class="col-md-6">
+            <div style="margin-left: 10px">
+              <ul class="navbar-bottomleft">
+                <li class="checkall" title="Chọn tất cả"><input type="checkbox" name="checkAll"
+                    [(ngModel)]="mo.checkAll" (click)="toggleAll(User)"></li>
+                <li><a title="Thêm mới" (click)="modalUser('add')"><i class="fa fa-plus"></i></a></li>
+                <li *ngIf="checkLen > 0"><a title="Xóa" (click)="deleteList()"><i class="fa fa-trash-o"></i></a></li>
+                <li><a (click)="Refersh()" title="Làm mới"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
+                <li><a (click)="ExportExcel()" title="Export dữ liệu ra file Excel"><i class="fa fa-file-excel-o"
+                      aria-hidden="true"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="box-filer-nhansu"
+              style="width:calc(100% - 265px);display:inline-block;float:left;padding:5px 0px;">             
+              <select style="height:33px;border-radius:25px;width:220px;float:right" 
+              class="form-control text-company" name="RoleID" [(ngModel)]="opition.RoleID" (change)="FilterRoleUser($event.target.value)">                
+                <option [value]="null">--- Chọn Role ---</option>
+                <option *ngFor="let item of ListRoles" [value]="item.A0001_ID">{{item.tenRole}}</option>                  
+              </select>
+            </div>
+            <div class="box-page">
+              <ul class="ul-box-page">
+                <li><span [textContent]="(opition.p-1)*opition.pz+1"></span> - <span
+                    [textContent]="opition.pz*opition.p>opition.total?opition.total:opition.pz*opition.p"></span> trong
+                  số <span [textContent]="opition.total"></span></li>
+                <li class="li-prevpage" title="Trang trước"><a (click)="PrevPage()"><i class="fa fa-chevron-left"
+                      aria-hidden="true"></i></a></li>
+                <li class="li-nextpage" title="Trang sau"><a (click)="NextPage()"><i class="fa fa-chevron-right"
+                      aria-hidden="true"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="CDNhomGet" class="incluceView">
+    <div class="row">
+      <div class="col-md-5">
+        <h3 style="margin-top: 10px;font-size: 13px;font-weight: bold;color: #023f98;">Danh sách người dùng yêu cầu Reset
+          mật khẩu</h3>
+
+        <table class="table dotborder table-hover table-vedu"
+          style="margin-bottom:-1px;table-layout:fixed;background: #f2f2f2;">
+          <thead>
+            <tr>
+              <th width="50" align="center"></th>
+              <th width="40" align="center">STT</th>
+              <th align="left">Họ và tên</th>
+              <th width="110" align="center">Mã nhân viên</th>
+              <th width="90" align="center">Chức năng</th>
+            </tr>
+          </thead>
+        </table>
+        <div style="max-height:calc(100vh - 170px)!important;margin-right:-17px;overflow:scroll;overflow-x:hidden">
+          <table class="table dotborder table-hover table-vedu" style="table-layout:fixed">
+            <tbody>
+              <tr *ngFor="let ns of listUserResetPass;index as i">
+                <td width="50" align="center"> <input type="checkbox" (change)="CheckChekedPassword()"
+                    value="ns.A0002_ID" [(ngModel)]="ns.checked" /></td>
+                <td width="40" align="center">{{i + 1}}</td>
+                <td align="left">{{ns.hoVaTen}}</td>
+                <td align="left" width="110">{{ns.maNhanVien}}</td>
+                <td width="90" align="center"><a title="Reset Mật khẩu" (click)="RefershPasswordUser(ns)"><i
+                      class="fa fa-refresh"></i></a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h3 style="margin-top: 0px;font-size: 13px;font-weight: bold;color: #023f98;">Danh sách người dùng chưa có tài
+          khoản</h3>
+        <table class="table dotborder table-hover table-vedu"
+          style="margin-bottom:-1px;table-layout:fixed;background: #f2f2f2;">
+          <thead>
+            <tr>
+              <th width="40" align="center">STT</th>
+              <th align="left">Họ và tên</th>
+              <th width="110" align="center">Mã nhân viên</th>
+              <th width="90" align="center">Chức năng</th>
+            </tr>
+          </thead>
+        </table>
+        <div style="max-height:calc(100vh - 170px)!important;margin-right:-17px;overflow:scroll;overflow-x:hidden">
+          <table class="table dotborder table-hover table-vedu" style="table-layout:fixed">
+            <tbody>
+              <tr *ngFor="let ns of listUserNotSign;index as i">
+                <td width="40" align="center">{{i + 1}}</td>
+                <td align="left">{{ns.hodem}} {{ns.ten}}</td>
+                <td align="left" width="110" [textContent]="ns.manhansu"></td>
+                <td width="90" align="center"><a title="Đồng bộ" (click)="SignUser(ns)"><i
+                      class="fa fa-refresh"></i></a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <table class="table dotborder table-hover table-vedu"
+          style="margin-bottom:-1px;table-layout:fixed;background: #f2f2f2;">
+          <thead>
+            <tr>
+              <th width="50" align="center"></th>
+              <th width="40" align="center">STT</th>
+              <th align="left">Họ và tên</th>
+              <th align="left" width="120">Mã đăng nhập</th>
+              <th align="left" width="100">Số điện thoại</th>
+              <th width="95" align="center">Ảnh đại diện</th>
+              <th width="95" align="center">Quyền Role</th>
+              <th align="center" width="80">Trạng thái</th>
+              <th width="90" align="center">Chức năng</th>
+            </tr>
+          </thead>
+        </table>
+        <div style="max-height:calc(100vh - 170px)!important;margin-right:-17px;overflow:scroll;overflow-x:hidden">
+          <table class="table dotborder table-hover table-vedu" style="table-layout:fixed">
+            <tbody>
+              <tr *ngFor="let ns of User;index as i">
+                <td width="50" align="center"> <input type="checkbox" (change)="CheckCheked()" value="ns.A0002_ID"
+                    [(ngModel)]="ns.checked" /></td>
+                <td width="40" align="center">{{i + 1}}</td>
+                <td align="left" [textContent]="ns.hoVaTen"></td>
+                <td align="left" width="120" [textContent]="ns.userName"></td>
+                <td align="left" width="100" [textContent]="ns.soDienThoai"></td>
+                <td align="center" width="95">
+                  <!-- <img [src]="ns.anhDaiDien" class="img-responsive img-user" style="float:none !important"> -->
+                  <crystal-gallery class="img-responsive img-user" style="float:none !important" [images]="ns.imgages">
+                  </crystal-gallery>
+                </td>
+                <td width="95" align="center">
+                  <a title="Hiển thị quyền Role User được thao tác phần quyền" (click)="ModalUserRole(ns)">
+                    <span class="badge" style="background-color:red">{{ns.countRole}}</span>
+                  </a>
+                </td>
+                <td align="center" width="80" [textContent]="ns.tinhTrang == 1 ? 'Kích hoạt':'Khóa'"></td>
+                <td width="90" align="center"><a title="Sửa" (click)="selectEdit(ns)"><i
+                      class="fa fa-pencil-square-o"></i></a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="modal fadess" id="modalUser" [style.display]="moUser ? 'block' : 'none'" tabindex="-1" role="dialog"
+      aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div modal-movable class="modal-header head-modal">
+            <button type="button" class="close" (click)="hideModal()">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Back</span>
+            </button>
+            <h4 class="modal-title">Cập nhật người dùng</h4>
+          </div>
+          <!-- Modal Body -->
+          <div class="modal-body" style="padding:5px 15px;overflow: initial;">
+            <form class="form-horizontal" role="form" name="frUser" id="frUser" novalidate>
+              <div style="display:block;">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="text-title"><label style="width: 120px;">Họ và tên :</label><input type="text"
+                        class="form-control text-company" [(ngModel)]="us.hoVaTen" name="hoVaTen" required /></div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="text-title"><label style="width:120px"><b>Phòng ban :</b></label>
+                      <select class="form-control text-company" name="A0004_ID" [(ngModel)]="us.A0004_ID">
+                        <option [value]="null">--- Chọn phòng ban ---</option>
+                        <option *ngFor="let item of ListCompageDiagram" [value]="item.id">
+                          {{item.tenPhongBanMoi}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="text-title"><label style="width:120px"><b>Role tác nghiệp: </b></label>
+                      <select class="form-control text-company" name="A0001_ID" [(ngModel)]="us.A0001_ID" [disabled]="us.A0002_ID != null">
+                        <option [value]="null">--- Chọn Role ---</option>
+                        <option *ngFor="let item of ListRoles" [value]="item.A0001_ID">
+                          {{item.tenRole}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="text-title"><label style="width: 120px;">Tên đăng nhập :</label><input
+                        ng-disabled="us.A0002_ID != null" type="text" name="userName" class="form-control text-company"
+                        [(ngModel)]="us.userName" required /></div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="text-title"><label style="width: 120px;">Mật khẩu :</label><input type="password"
+                        class="form-control text-company" [(ngModel)]="us.passWord" name="passWord" required /></div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="text-title"><label style="width: 120px;">Ảnh đại diện :</label>
+                      <input type="file" class="form-control text-imgnhansu" [(ngModel)]="us.anhDaiDien" name="anhDaiDien" id="anhDaiDien" (change)="onFileSelect($event)" /> 
+                      <img [src]="us.anhDaiDien" class="img-responsive img-user-change">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="text-title"><label style="width: 120px;">Số điện thoại :</label><input type="text"
+                        class="form-control text-company" [(ngModel)]="us.soDienThoai" name="soDienThoai" /></div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="text-title"><label style="width: 120px;">Email :</label>
+                      <input type="text" class="form-control text-company" [(ngModel)]="us.Email" name="Email" />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="text-title"><label style="width: 120px;">Số CMTND :</label><input type="text"
+                        class="form-control text-company" [(ngModel)]="us.CMTND" name="CMTND" required /></div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="text-title"><label style="width: 120px;">Ngày sinh :</label>
+                      <input type="text" class="form-control text-company" [(ngModel)]="us.ngaySinh" name="ngaySinh"
+                        bsDatepicker [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY'}" placement="top" required>
+                      <!-- ,showWeekNumbers:false // Config View số tuần của calendar -->
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="text-title"><label style="width: 120px;">Địa chỉ :</label><input type="text"
+                        class="form-control text-company" [(ngModel)]="us.diaChi" name="diaChi" /></div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="text-title"><label style="width: 120px;">Mật khẩu tự động :</label><input type="text"
+                        class="form-control text-company" [(ngModel)]="us.passWordRandom" name="passWordRandom"
+                        required /></div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="text-title"><label style="width: 120px;">Ngày gia nhập :</label>
+                      <input type="text" class="form-control text-company" [(ngModel)]="us.ngayVao" name="ngayVao"
+                        bsDatepicker [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-red' }"
+                        placement="top" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="text-title">
+                      <label style="width:120px">Trạng thái: </label>
+                      <div class="boxquydanh" style="width:calc(100% - 120px) !important">
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="tinhTrang" [(ngModel)]="us.tinhTrang" [value]="1">
+                            Kích hoạt
+                          </label>
+                        </div>
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="tinhTrang" [(ngModel)]="us.tinhTrang" [value]="0">
+                            Khóa
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="text-title">
+                      <label style="width:120px">Quyền Thao Tác: </label>
+                      <div class="boxquydanh" style="width:calc(100% - 120px) !important">
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="IsPosition" [(ngModel)]="us.IsPosition" [value]="1">
+                            Giới hạn Role
+                          </label>
+                        </div>
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="IsPosition" [(ngModel)]="us.IsPosition" [value]="0">
+                            Full Role
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!-- Modal Footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="saveUser()"><i class="fa fa-save"></i> Lưu</button>
+            <button type="button" class="btn btn-default" (click)="hideModal()"><i class="fa fa-power-off"></i>
+              Thoát</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fadess" id="ModalUserRole" [style.display]="mUserRole ? 'block' : 'none'" tabindex="-1"
+    role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div modal-movable class="modal-header head-modal">
+          <button type="button" class="close" (click)="hideModal()">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Back</span>
+          </button>
+          <h4 class="modal-title">Cập nhật Role tác nghiệp được phép phân quyền</h4>
+        </div>
+        <!-- Modal Body -->
+        <div class="modal-body" style="padding:5px 15px;overflow: initial;">
+          <form class="form-horizontal" role="form" name="frModule" id="frModule" novalidate>
+            <div style="display:block;">
+              <div class="row"> 
+                <div class="col-md-12">
+                  <div style="float: right;margin-top: -6px;">
+                    <ul class="navbar-bottomleft" style="display: inline-block">
+                      <li><a (click)="RefershURoles()" title="Làm mới"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
+                      <li *ngIf="userRoleSelect.length > 0"><a (click)="DeleteUserRoles()" title="Xóa quyền thao tác Role người dùng"><i class="fa fa-trash-o" aria-hidden="true"></i></a></li>
+                      <li><a (click)="SaveRoleUser()" title="Lưu lại"><i class="fa fa-save" aria-hidden="true"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div style="clear: both;"></div>
+              <div class="row">
+                <div class="col-md-6">
+                  <h3 style="font-size: 14px;margin: 7px 0px;color: #023f98;">Danh sách Role tác nghiệp</h3>
+                  <table class="table dotborder table-hover table-vedu"
+                    style="margin-bottom:-1px;table-layout:fixed;background: #f2f2f2;margin-top: 5px">
+                    <thead>
+                      <tr>
+                        <th width="50" align="center"></th>
+                        <th width="50" align="center">STT</th>
+                        <th width="130" align="center">Mã Role</th>
+                        <th align="left">Tên Role</th>
+                      </tr>
+                    </thead>
+                  </table>
+                  <table class="table dotborder table-hover table-vedu" style="table-layout:fixed;margin-bottom: 5px;">
+                    <tbody>
+                      <tr *ngFor="let r of ListRole;index as i">
+                        <td width="50" align="center"><input type="checkbox" name="checkedPB-{{i}}}" value="r.A0042_ID" [(ngModel)]="r.checked" /></td>
+                        <td width="50" align="center">{{i + 1}}</td>
+                        <td width="130" align="left">{{r.maRole}}</td>
+                        <td align="left">{{r.tenRole}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-md-6">
+                    <h3 style="font-size: 14px;margin: 7px 0px;color: #ff6313">Danh sách Role tác nghiệp đã chọn</h3>
+                  <table class="table dotborder table-hover table-vedu"
+                    style="margin-bottom:-1px;table-layout:fixed;background: #f2f2f2;margin-top: 5px">
+                    <thead>
+                      <tr>
+                        <th width="50" align="center"></th>
+                        <th width="50" align="center">STT</th>
+                        <th width="130" align="center">Mã Role</th>
+                        <th align="left">Tên Role</th>
+                      </tr>
+                    </thead>
+                  </table>
+                  <table class="table dotborder table-hover table-vedu" style="table-layout:fixed;margin-bottom: 5px;">
+                    <tbody>
+                      <tr *ngFor="let r of ListRoleUser;index as i">
+                        <td width="50" align="center"><input type="checkbox" name="checkedPBMapper-{{i}}}" value="r.A0001_ID" [(ngModel)]="r.checked" (change)="CheckRoleUser()" /></td>
+                        <td width="50" align="center">{{i + 1}}</td>
+                        <td width="130" align="left">{{r.maRole}}</td>
+                        <td align="left">{{r.tenRole}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- Modal Footer -->
+        <div class="modal-footer"> 
+          <button type="button" class="btn btn-default" (click)="hideModal()"><i class="fa fa-power-off"></i>
+            Thoát</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

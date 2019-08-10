@@ -1,0 +1,155 @@
+
+<div class="form" style="border-top: 1px">
+    <h3 class="text-title">QUẢN LÝ ĐĂNG KÝ CƠM</h3>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <form>
+      <div class="row">
+        <div class="col-md-2" style="padding-left: 30px">
+          <mat-form-field color="accent">
+            <input matInput [formControl]="_date" [matDatepicker]="picker" placeholder="Ngày" (dateChange)="getDataCheckIn()"/>
+            <mat-datepicker-toggle matSuffix  [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col-md-2">
+          <mat-form-field color="accent">
+            <mat-select placeholder="Nhà ăn" [formControl]="_nhaan" [(ngModel)] = "currNhaan" (ngModelChange)="getDataCheckIn()">
+              <mat-option *ngFor="let na of caLamViec" [value]="na.id">
+                {{na.ten}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-8">            
+            <mat-form-field color="accent">
+              <mat-select placeholder="Bữa ăn" [formControl]="_buaan" [(ngModel)] = "currBuaan" (ngModelChange)="getDataCheckIn()">
+                <mat-option *ngFor="let ba of _buaan" [value]="ba.id">
+                  {{ba.ten}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <button mat-button color="primary"  (click)="this.v3getBaoCom(this.actionForm.value.nhaanid.id,this.actionForm.value.buaanid.id)" matTooltip="Xem danh sách đăng ký" aria-label=""><mat-icon class="inline-icon">view_list</mat-icon></button> 
+            <button mat-button color="primary"  (click)="addNew()"><mat-icon class="inline-icon" matTooltip="Đăng ký xuất ăn" aria-label="">add</mat-icon></button>
+            <button mat-button color="primary"  (click)="v2DuyetAll(1)" matTooltip="Duyệt dữ liệu đăng ký" aria-label=""><mat-icon class="inline-icon">check</mat-icon></button>  
+            <button mat-button color="accent"  (click)="v2DuyetAll(0)" matTooltip="Bỏ duyệt dữ liệu" aria-label=""><mat-icon class="inline-icon">undo</mat-icon></button> 
+            <button mat-button (click)="exportAsXLSX()" matTooltip="Xuất file Excel" aria-label=""><mat-icon class="inline-icon">save_alt</mat-icon></button>
+            <button mat-button color="warn" (click)="v3DeleteAll()" matTooltip="Xóa dữ liệu đăng ký cơm" aria-label=""><mat-icon class="inline-icon">delete</mat-icon></button>
+        </div>        
+      </div>
+    </form>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    
+    <div class="container-table mat-elevation-z8">
+      <mat-table
+        #table
+        [dataSource]="dataSource"
+        matSort
+        matSortActive="nam"
+        matSortDirection="desc"
+        matSortDisableClear
+        class="mat-cell"
+      >
+        <ng-container matColumnDef="gioquet">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Giờ quẹt</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element">{{ element.gioquet }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="manhanvien">
+            <mat-header-cell *matHeaderCellDef>
+                <div>
+                  <mat-form-field>
+                    <input matInput class="form-field" [formControl]="maIdFilter" placeholder="Mã/ID">
+                  </mat-form-field>
+                </div>
+            </mat-header-cell>
+          <mat-cell *matCellDef="let element"
+            >{{ element.manhanvien }}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="hoten">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Họ tên</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element">{{ element.hoten }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="phong">
+            <mat-header-cell *matHeaderCellDef>
+                <div>
+                  <mat-form-field>
+                    <input matInput class="form-field" [formControl]="phongFilter" placeholder="Phòng">
+                  </mat-form-field>
+               </div>
+            </mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.phong }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="ban">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Ban</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element">{{ element.ban }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="congdoan">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Công đoạn</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element">{{ element.congdoan }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="mamay">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Máy</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element">{{ element.mamay }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="maca">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Ca</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element"
+            >{{ element.macanhansu }}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef>Xóa </mat-header-cell>
+
+          <mat-cell *matCellDef="let row; let i = index">
+            <button mat-icon-button color="warn" (click)="deleteItem(row.id)">
+              <mat-icon aria-label="Delete">delete</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row
+          *matRowDef="let row; columns: displayedColumns"
+          [ngClass]="{ hovered: row.hovered, highlighted: row.highlighted }"
+          (click)="row.highlighted = !row.highlighted"
+          (mouseover)="row.hovered = true"
+          (mouseout)="row.hovered = false"
+        ></mat-row>
+      </mat-table>
+
+      <mat-paginator
+        #paginator
+        [pageIndex]="0"
+        [pageSize]="20"
+        [pageSizeOptions]="[20, 40, 60,80,100]"
+        [showFirstLastButtons]="true"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</div>

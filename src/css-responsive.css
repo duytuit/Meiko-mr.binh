@@ -1,0 +1,263 @@
+@media (min-width: 300px) and (max-width: 400px) {
+ .content-boxlogin-left{
+    margin-top: 0px
+ }
+ .content-boxlogin-left h2{
+    font-size: 35px;
+    line-height: 50px;
+    margin-bottom: 40px;
+ }
+ .box-caption-boxlogin-left {
+    font-size: 20px;
+    font-family: tahoma;
+    line-height: 30px;
+}
+.box-button-right{
+    float: left;
+}
+}
+@media (max-width: 1366px) {
+.incluceView .hide-c
+{
+    display:none;
+}
+.table-vedu .hide-c
+{
+    display:none;
+}
+}
+@media (min-width: 401px) and (max-width: 500px) {
+     .content-boxlogin-left{
+    margin-top: 0px
+ }
+ .content-boxlogin-left h2{
+    font-size: 35px;
+    line-height: 50px;
+    margin-bottom: 40px;
+ }
+ .box-caption-boxlogin-left {
+    font-size: 20px;
+    font-family: tahoma;
+    line-height: 30px;
+}
+.box-button-right{
+    float: left;
+}
+}
+
+@media (min-width: 501px) and (max-width: 600px) {
+.content-boxlogin-left{
+    margin-top: 0px
+ }
+ .content-boxlogin-left h2{
+    font-size: 35px;
+    line-height: 50px;
+    margin-bottom: 40px;
+ }
+ .box-caption-boxlogin-left {
+    font-size: 20px;
+    font-family: tahoma;
+    line-height: 30px;
+}
+.box-button-right{
+    float: left;
+}
+}
+
+@media (min-width: 601px) and (max-width: 700px) {
+ .content-boxlogin-left{
+    margin-top: 0px
+ }
+ .content-boxlogin-left h2{
+    font-size: 35px;
+    line-height: 50px;
+    margin-bottom: 40px;
+ }
+ .box-caption-boxlogin-left {
+    font-size: 20px;
+    font-family: tahoma;
+    line-height: 30px;
+}
+.box-button-right{
+    float: left;
+}
+}
+@media (min-width: 601px) and (max-width: 767px){
+.content-boxlogin-left{
+    margin-top: 0px
+ }
+ .content-boxlogin-left h2{
+    font-size: 35px;
+    line-height: 50px;
+    margin-bottom: 40px;
+ }
+ .box-caption-boxlogin-left {
+    font-size: 20px;
+    font-family: tahoma;
+    line-height: 30px;
+}
+.box-button-right{
+    float: left;
+}
+}
+@media (min-width: 701px) and (max-width: 800px) {
+ .content-boxlogin-left{
+    margin-top: 0px
+ }
+ .content-boxlogin-left h2{
+    font-size: 35px;
+    line-height: 50px;
+    margin-bottom: 40px;
+ }
+ .box-caption-boxlogin-left {
+    font-size: 20px;
+    font-family: tahoma;
+    line-height: 30px;
+}
+.box-button-right{
+    float: left;
+}
+}
+@media (min-width: 701px) and (max-width: 767px){
+  .content-boxlogin-left{
+    margin-top: 0px
+ }
+ .content-boxlogin-left h2{
+    font-size: 35px;
+    line-height: 50px;
+    margin-bottom: 40px;
+ }
+ .box-caption-boxlogin-left {
+    font-size: 20px;
+    font-family: tahoma;
+    line-height: 30px;
+}
+.box-button-right{
+    float: left;
+}
+}
+@media (min-width: 801px) and (max-width: 900px) {
+  .content-boxlogin-left{
+    margin-top: 0px
+ }
+ .content-boxlogin-left h2{
+    font-size: 35px;
+    line-height: 50px;
+    margin-bottom: 40px;
+ }
+ .box-caption-boxlogin-left {
+    font-size: 20px;
+    font-family: tahoma;
+    line-height: 30px;
+}
+.box-button-right{
+    float: left;
+}
+}
+@media (min-width: 800px) and (max-width: 980px) {
+    .content-boxlogin-left{
+    margin-top: 0px
+ }
+ .content-boxlogin-left h2{
+    font-size: 35px;
+    line-height: 50px;
+    margin-bottom: 40px;
+ }
+ .box-caption-boxlogin-left {
+    font-size: 20px;
+    font-family: tahoma;
+    line-height: 30px;
+}
+.box-button-right{
+    float: left;
+}
+}
+@media (min-width: 901px) and (max-width: 1000px) {
+   .content-boxlogin-left{
+    margin-top: 0px
+ }
+ .content-boxlogin-left h2{
+    font-size: 35px;
+    line-height: 50px;
+    margin-bottom: 40px;
+ }
+ .box-caption-boxlogin-left {
+    font-size: 20px;
+    font-family: tahoma;
+    line-height: 30px;
+}
+.box-button-right{
+    float: left;
+}
+.box-button-right a {
+    font-size: 20px;
+    font-family: tahoma;
+    padding: 5px 16px;
+    border: 2px solid #c4c6c5;
+    color: #3e91c5;
+    text-decoration: none !important;
+    position: relative;
+    display: inline-block;
+}
+}
+
+@media (min-width: 1000px) and (max-width: 1100px) {
+     .content-boxlogin-left{
+    margin-top: 0px
+ }
+ .content-boxlogin-left h2{
+    font-size: 35px;
+    line-height: 50px;
+    margin-bottom: 40px;
+ }
+ .box-caption-boxlogin-left {
+    font-size: 20px;
+    font-family: tahoma;
+    line-height: 30px;
+}
+.box-button-right{
+    float: left;
+}
+.box-button-right a {
+    font-size: 20px;
+    font-family: tahoma;
+    padding: 5px 16px;
+    border: 2px solid #c4c6c5;
+    color: #3e91c5;
+    text-decoration: none !important;
+    position: relative;
+    display: inline-block;
+}
+}
+
+@media (min-width: 1100px) and (max-width: 1280px) {
+.box-search .form-control
+     {
+        width: calc(100% - 140px)!important;
+     }
+}
+@media (min-width: 1280px) and (max-width: 1920px) {
+     .page-tree-left{
+        width: 230px !important
+     }
+     .page-tree-right{
+        width: calc(100% - 240px);
+     }
+}
+@media (max-width: 1280px) {
+    .incluceView th[width="220"], .incluceView td[width="220"]{
+        width:150px;
+    }
+    .incluceView th[width="160"], .incluceView td[width="160"] {
+        width: 100px;
+    }
+}
+@media (max-width: 1366px) {
+    .MainMenu > div {
+        max-width: 960px;
+    }
+
+    .MainMenu .mblock {
+        margin: 10px;
+    }
+}

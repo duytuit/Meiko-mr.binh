@@ -1,0 +1,802 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PhanQuyenModelStoreContainer" CdmEntityContainer="MeikoEntities">
+    <FunctionImportMapping FunctionImportName="List_ThamSoDungChung" FunctionName="PhanQuyenModel.Store.List_ThamSoDungChung">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PhanQuyenModel.List_ThamSoDungChung_Result1">
+          <ScalarProperty Name="ghiChu" ColumnName="ghiChu" />
+          <ScalarProperty Name="maCode" ColumnName="maCode" />
+          <ScalarProperty Name="Module" ColumnName="Module" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="R1_List_PhanQuyen" FunctionName="PhanQuyenModel.Store.R1_List_PhanQuyen">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PhanQuyenModel.R1_List_PhanQuyen_Result3">
+          <ScalarProperty Name="A0007_ID" ColumnName="A0007_ID" />
+          <ScalarProperty Name="tenMenu" ColumnName="tenMenu" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="thuThu" ColumnName="thuThu" />
+          <ScalarProperty Name="IDCha" ColumnName="IDCha" />
+          <ScalarProperty Name="A0006_ID" ColumnName="A0006_ID" />
+          <ScalarProperty Name="A0001_ID" ColumnName="A0001_ID" />
+          <ScalarProperty Name="quyenXem" ColumnName="quyenXem" />
+          <ScalarProperty Name="quyenThem" ColumnName="quyenThem" />
+          <ScalarProperty Name="quyenCapNhap" ColumnName="quyenCapNhap" />
+          <ScalarProperty Name="quyenXoa" ColumnName="quyenXoa" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="A0001">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0001">
+        <MappingFragment StoreEntitySet="A0001">
+          <ScalarProperty Name="kieuDuLieu" ColumnName="kieuDuLieu" />
+          <ScalarProperty Name="thuTu" ColumnName="thuTu" />
+          <ScalarProperty Name="tinhTrang" ColumnName="tinhTrang" />
+          <ScalarProperty Name="maRole" ColumnName="maRole" />
+          <ScalarProperty Name="tenRole" ColumnName="tenRole" />
+          <ScalarProperty Name="A0001_ID" ColumnName="A0001_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0002">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0002">
+        <MappingFragment StoreEntitySet="A0002">
+          <ScalarProperty Name="IsPosition" ColumnName="IsPosition" />
+          <ScalarProperty Name="kieuUser" ColumnName="kieuUser" />
+          <ScalarProperty Name="ngayCapNhap" ColumnName="ngayCapNhap" />
+          <ScalarProperty Name="ngayVao" ColumnName="ngayVao" />
+          <ScalarProperty Name="passWordRandom" ColumnName="passWordRandom" />
+          <ScalarProperty Name="CMTND" ColumnName="CMTND" />
+          <ScalarProperty Name="tinhTrang" ColumnName="tinhTrang" />
+          <ScalarProperty Name="ngaySinh" ColumnName="ngaySinh" />
+          <ScalarProperty Name="diaChi" ColumnName="diaChi" />
+          <ScalarProperty Name="anhDaiDien" ColumnName="anhDaiDien" />
+          <ScalarProperty Name="passWord" ColumnName="passWord" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="soDienThoai" ColumnName="soDienThoai" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="hoVaTen" ColumnName="hoVaTen" />
+          <ScalarProperty Name="Ana03Name" ColumnName="Ana03Name" />
+          <ScalarProperty Name="maNhanVien" ColumnName="maNhanVien" />
+          <ScalarProperty Name="APKID" ColumnName="APKID" />
+          <ScalarProperty Name="A0004_ID" ColumnName="A0004_ID" />
+          <ScalarProperty Name="A0002_ID" ColumnName="A0002_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0003">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0003">
+        <MappingFragment StoreEntitySet="A0003">
+          <ScalarProperty Name="A0002_ID" ColumnName="A0002_ID" />
+          <ScalarProperty Name="A0001_ID" ColumnName="A0001_ID" />
+          <ScalarProperty Name="A0003_ID" ColumnName="A0003_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0004">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0004">
+        <MappingFragment StoreEntitySet="A0004">
+          <ScalarProperty Name="CongTyID" ColumnName="CongTyID" />
+          <ScalarProperty Name="tinhTrang" ColumnName="tinhTrang" />
+          <ScalarProperty Name="thuTu" ColumnName="thuTu" />
+          <ScalarProperty Name="logo" ColumnName="logo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="dienThoai" ColumnName="dienThoai" />
+          <ScalarProperty Name="diaChi" ColumnName="diaChi" />
+          <ScalarProperty Name="tenPhongBan" ColumnName="tenPhongBan" />
+          <ScalarProperty Name="IDCha" ColumnName="IDCha" />
+          <ScalarProperty Name="maPhongBan" ColumnName="maPhongBan" />
+          <ScalarProperty Name="A0004_ID" ColumnName="A0004_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0005">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0005">
+        <MappingFragment StoreEntitySet="A0005">
+          <ScalarProperty Name="quyenXoa" ColumnName="quyenXoa" />
+          <ScalarProperty Name="quyenCapNhap" ColumnName="quyenCapNhap" />
+          <ScalarProperty Name="quyenThem" ColumnName="quyenThem" />
+          <ScalarProperty Name="quyenXem" ColumnName="quyenXem" />
+          <ScalarProperty Name="A0006_ID" ColumnName="A0006_ID" />
+          <ScalarProperty Name="A0002_ID" ColumnName="A0002_ID" />
+          <ScalarProperty Name="A0001_ID" ColumnName="A0001_ID" />
+          <ScalarProperty Name="A0007_ID" ColumnName="A0007_ID" />
+          <ScalarProperty Name="A0005_ID" ColumnName="A0005_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0006">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0006">
+        <MappingFragment StoreEntitySet="A0006">
+          <ScalarProperty Name="tinhTrang" ColumnName="tinhTrang" />
+          <ScalarProperty Name="thuTu" ColumnName="thuTu" />
+          <ScalarProperty Name="tenModule" ColumnName="tenModule" />
+          <ScalarProperty Name="maModule" ColumnName="maModule" />
+          <ScalarProperty Name="A0006_ID" ColumnName="A0006_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0007">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0007">
+        <MappingFragment StoreEntitySet="A0007">
+          <ScalarProperty Name="maCount" ColumnName="maCount" />
+          <ScalarProperty Name="tinhTrang" ColumnName="tinhTrang" />
+          <ScalarProperty Name="thuThu" ColumnName="thuThu" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="maCode" ColumnName="maCode" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="anhDoc" ColumnName="anhDoc" />
+          <ScalarProperty Name="tenRutGon" ColumnName="tenRutGon" />
+          <ScalarProperty Name="tenMenu" ColumnName="tenMenu" />
+          <ScalarProperty Name="IDCha" ColumnName="IDCha" />
+          <ScalarProperty Name="A0006_ID" ColumnName="A0006_ID" />
+          <ScalarProperty Name="A0007_ID" ColumnName="A0007_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0008">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0008">
+        <MappingFragment StoreEntitySet="A0008">
+          <ScalarProperty Name="tinhTrang" ColumnName="tinhTrang" />
+          <ScalarProperty Name="thuTu" ColumnName="thuTu" />
+          <ScalarProperty Name="maCode" ColumnName="maCode" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="tenNgonNgu" ColumnName="tenNgonNgu" />
+          <ScalarProperty Name="A0008_ID" ColumnName="A0008_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0009">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0009">
+        <MappingFragment StoreEntitySet="A0009">
+          <ScalarProperty Name="Module" ColumnName="Module" />
+          <ScalarProperty Name="maCode" ColumnName="maCode" />
+          <ScalarProperty Name="ghiChu" ColumnName="ghiChu" />
+          <ScalarProperty Name="tenTieuDe" ColumnName="tenTieuDe" />
+          <ScalarProperty Name="A0008_ID" ColumnName="A0008_ID" />
+          <ScalarProperty Name="A0009_ID" ColumnName="A0009_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0010">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0010">
+        <MappingFragment StoreEntitySet="A0010">
+          <ScalarProperty Name="quyenXoa" ColumnName="quyenXoa" />
+          <ScalarProperty Name="quyenCapNhap" ColumnName="quyenCapNhap" />
+          <ScalarProperty Name="quyenThem" ColumnName="quyenThem" />
+          <ScalarProperty Name="thoiGianGioiHan" ColumnName="thoiGianGioiHan" />
+          <ScalarProperty Name="BuaAnID" ColumnName="BuaAnID" />
+          <ScalarProperty Name="A0004_ID" ColumnName="A0004_ID" />
+          <ScalarProperty Name="A0002_ID" ColumnName="A0002_ID" />
+          <ScalarProperty Name="A0001_ID" ColumnName="A0001_ID" />
+          <ScalarProperty Name="A0010_ID" ColumnName="A0010_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0011">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0011">
+        <MappingFragment StoreEntitySet="A0011">
+          <ScalarProperty Name="IPMac" ColumnName="IPMac" />
+          <ScalarProperty Name="thietBiTruyCap" ColumnName="thietBiTruyCap" />
+          <ScalarProperty Name="IPTruyCap" ColumnName="IPTruyCap" />
+          <ScalarProperty Name="IsTime" ColumnName="IsTime" />
+          <ScalarProperty Name="hoVaTen" ColumnName="hoVaTen" />
+          <ScalarProperty Name="A0002_ID" ColumnName="A0002_ID" />
+          <ScalarProperty Name="A0011_ID" ColumnName="A0011_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0012">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0012">
+        <MappingFragment StoreEntitySet="A0012">
+          <ScalarProperty Name="thietBiTruyCap" ColumnName="thietBiTruyCap" />
+          <ScalarProperty Name="IPTruyCap" ColumnName="IPTruyCap" />
+          <ScalarProperty Name="kieuDuLieu" ColumnName="kieuDuLieu" />
+          <ScalarProperty Name="hoVaTen" ColumnName="hoVaTen" />
+          <ScalarProperty Name="logContent" ColumnName="logContent" />
+          <ScalarProperty Name="logDate" ColumnName="logDate" />
+          <ScalarProperty Name="controller" ColumnName="controller" />
+          <ScalarProperty Name="tieuDe" ColumnName="tieuDe" />
+          <ScalarProperty Name="A0002_ID" ColumnName="A0002_ID" />
+          <ScalarProperty Name="A0012_ID" ColumnName="A0012_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0013">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0013">
+        <MappingFragment StoreEntitySet="A0013">
+          <ScalarProperty Name="thietBiTruyCap" ColumnName="thietBiTruyCap" />
+          <ScalarProperty Name="IPTruyCap" ColumnName="IPTruyCap" />
+          <ScalarProperty Name="isCountLogin" ColumnName="isCountLogin" />
+          <ScalarProperty Name="thoiGianTruyCap" ColumnName="thoiGianTruyCap" />
+          <ScalarProperty Name="A0002_ID" ColumnName="A0002_ID" />
+          <ScalarProperty Name="A0013_ID" ColumnName="A0013_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0014">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0014">
+        <MappingFragment StoreEntitySet="A0014">
+          <ScalarProperty Name="ngayResetMatKhau" ColumnName="ngayResetMatKhau" />
+          <ScalarProperty Name="tinhTrang" ColumnName="tinhTrang" />
+          <ScalarProperty Name="ngayGui" ColumnName="ngayGui" />
+          <ScalarProperty Name="A0002_ID" ColumnName="A0002_ID" />
+          <ScalarProperty Name="A0014_ID" ColumnName="A0014_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0015">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0015">
+        <MappingFragment StoreEntitySet="A0015">
+          <ScalarProperty Name="trangThai" ColumnName="trangThai" />
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="tenLoaiCongViec" ColumnName="tenLoaiCongViec" />
+          <ScalarProperty Name="maLoaiCongViec" ColumnName="maLoaiCongViec" />
+          <ScalarProperty Name="A0015_ID" ColumnName="A0015_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0016">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0016">
+        <MappingFragment StoreEntitySet="A0016">
+          <ScalarProperty Name="trangThai" ColumnName="trangThai" />
+          <ScalarProperty Name="loaiCongViec" ColumnName="loaiCongViec" />
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="A0004_ID" ColumnName="A0004_ID" />
+          <ScalarProperty Name="tenCongViec" ColumnName="tenCongViec" />
+          <ScalarProperty Name="maCongViec" ColumnName="maCongViec" />
+          <ScalarProperty Name="A0032_ID" ColumnName="A0032_ID" />
+          <ScalarProperty Name="A0015_ID" ColumnName="A0015_ID" />
+          <ScalarProperty Name="A0016_ID" ColumnName="A0016_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0017">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0017">
+        <MappingFragment StoreEntitySet="A0017">
+          <ScalarProperty Name="trangThai" ColumnName="trangThai" />
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="kieuNhomNguoiKy" ColumnName="kieuNhomNguoiKy" />
+          <ScalarProperty Name="moTaNhomNguoiKy" ColumnName="moTaNhomNguoiKy" />
+          <ScalarProperty Name="tenNhomNguoiKy" ColumnName="tenNhomNguoiKy" />
+          <ScalarProperty Name="maNhomNguoiKy" ColumnName="maNhomNguoiKy" />
+          <ScalarProperty Name="A0017_ID" ColumnName="A0017_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0018">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0018">
+        <MappingFragment StoreEntitySet="A0018">
+          <ScalarProperty Name="trangThai" ColumnName="trangThai" />
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="kieuQuyTrinh" ColumnName="kieuQuyTrinh" />
+          <ScalarProperty Name="tenQuyTrinh" ColumnName="tenQuyTrinh" />
+          <ScalarProperty Name="A0004_ID" ColumnName="A0004_ID" />
+          <ScalarProperty Name="A0015_ID" ColumnName="A0015_ID" />
+          <ScalarProperty Name="A0018_ID" ColumnName="A0018_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0019">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0019">
+        <MappingFragment StoreEntitySet="A0019">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="A0004_ID" ColumnName="A0004_ID" />
+          <ScalarProperty Name="A0002_ID" ColumnName="A0002_ID" />
+          <ScalarProperty Name="A0017_ID" ColumnName="A0017_ID" />
+          <ScalarProperty Name="A0019_ID" ColumnName="A0019_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0020">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0020">
+        <MappingFragment StoreEntitySet="A0020">
+          <ScalarProperty Name="trangThai" ColumnName="trangThai" />
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="kieuBuocKy" ColumnName="kieuBuocKy" />
+          <ScalarProperty Name="AliasBuocKy" ColumnName="AliasBuocKy" />
+          <ScalarProperty Name="tenBuocKy" ColumnName="tenBuocKy" />
+          <ScalarProperty Name="A0020_ID" ColumnName="A0020_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0021">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0021">
+        <MappingFragment StoreEntitySet="A0021">
+          <ScalarProperty Name="A0020_ID" ColumnName="A0020_ID" />
+          <ScalarProperty Name="A0018_ID" ColumnName="A0018_ID" />
+          <ScalarProperty Name="A0017_ID" ColumnName="A0017_ID" />
+          <ScalarProperty Name="A0015_ID" ColumnName="A0015_ID" />
+          <ScalarProperty Name="A0004_ID" ColumnName="A0004_ID" />
+          <ScalarProperty Name="A0021_ID" ColumnName="A0021_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0022">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0022">
+        <MappingFragment StoreEntitySet="A0022">
+          <ScalarProperty Name="trangThai" ColumnName="trangThai" />
+          <ScalarProperty Name="ngayHoanThanh" ColumnName="ngayHoanThanh" />
+          <ScalarProperty Name="ngayDuKienHoanThanh" ColumnName="ngayDuKienHoanThanh" />
+          <ScalarProperty Name="ngayMo" ColumnName="ngayMo" />
+          <ScalarProperty Name="nguoiDong" ColumnName="nguoiDong" />
+          <ScalarProperty Name="nguoiTao" ColumnName="nguoiTao" />
+          <ScalarProperty Name="noiDungHoSoKhongDau" ColumnName="noiDungHoSoKhongDau" />
+          <ScalarProperty Name="noiDungHoSo" ColumnName="noiDungHoSo" />
+          <ScalarProperty Name="tenHoSo" ColumnName="tenHoSo" />
+          <ScalarProperty Name="tenHoSoKhongDau" ColumnName="tenHoSoKhongDau" />
+          <ScalarProperty Name="soHoSo" ColumnName="soHoSo" />
+          <ScalarProperty Name="A0028_ID" ColumnName="A0028_ID" />
+          <ScalarProperty Name="A0016_ID" ColumnName="A0016_ID" />
+          <ScalarProperty Name="A0022_ID" ColumnName="A0022_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0023">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0023">
+        <MappingFragment StoreEntitySet="A0023">
+          <ScalarProperty Name="trangThai" ColumnName="trangThai" />
+          <ScalarProperty Name="phanTramHoanThanh" ColumnName="phanTramHoanThanh" />
+          <ScalarProperty Name="ngayHoanThanh" ColumnName="ngayHoanThanh" />
+          <ScalarProperty Name="nguoiHoanThanh" ColumnName="nguoiHoanThanh" />
+          <ScalarProperty Name="ngayDuKienHoanThanh" ColumnName="ngayDuKienHoanThanh" />
+          <ScalarProperty Name="ngayTao" ColumnName="ngayTao" />
+          <ScalarProperty Name="nguoiTao" ColumnName="nguoiTao" />
+          <ScalarProperty Name="tenHangMucKhongDau" ColumnName="tenHangMucKhongDau" />
+          <ScalarProperty Name="tenHangMuc" ColumnName="tenHangMuc" />
+          <ScalarProperty Name="A0022_ID" ColumnName="A0022_ID" />
+          <ScalarProperty Name="A0023_ID" ColumnName="A0023_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0024">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0024">
+        <MappingFragment StoreEntitySet="A0024">
+          <ScalarProperty Name="trangThai" ColumnName="trangThai" />
+          <ScalarProperty Name="phanTramHoanThanh" ColumnName="phanTramHoanThanh" />
+          <ScalarProperty Name="ngayHoanThanh" ColumnName="ngayHoanThanh" />
+          <ScalarProperty Name="nguoiHoanThanh" ColumnName="nguoiHoanThanh" />
+          <ScalarProperty Name="ngayDuKienHoanThanh" ColumnName="ngayDuKienHoanThanh" />
+          <ScalarProperty Name="ngayTao" ColumnName="ngayTao" />
+          <ScalarProperty Name="nguoiTao" ColumnName="nguoiTao" />
+          <ScalarProperty Name="tenTieuMucHoSoKhongDau" ColumnName="tenTieuMucHoSoKhongDau" />
+          <ScalarProperty Name="tenTieuMucHoSo" ColumnName="tenTieuMucHoSo" />
+          <ScalarProperty Name="A0023_ID" ColumnName="A0023_ID" />
+          <ScalarProperty Name="A0024_ID" ColumnName="A0024_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0025">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0025">
+        <MappingFragment StoreEntitySet="A0025">
+          <ScalarProperty Name="thuTu" ColumnName="thuTu" />
+          <ScalarProperty Name="ngayThem" ColumnName="ngayThem" />
+          <ScalarProperty Name="kieuNguoiXuLy" ColumnName="kieuNguoiXuLy" />
+          <ScalarProperty Name="A0002_ID" ColumnName="A0002_ID" />
+          <ScalarProperty Name="A0022_ID" ColumnName="A0022_ID" />
+          <ScalarProperty Name="A0025_ID" ColumnName="A0025_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0026">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0026">
+        <MappingFragment StoreEntitySet="A0026">
+          <ScalarProperty Name="thuTu" ColumnName="thuTu" />
+          <ScalarProperty Name="ngayThem" ColumnName="ngayThem" />
+          <ScalarProperty Name="kieuNguoiXuLy" ColumnName="kieuNguoiXuLy" />
+          <ScalarProperty Name="A0002_ID" ColumnName="A0002_ID" />
+          <ScalarProperty Name="A0023_ID" ColumnName="A0023_ID" />
+          <ScalarProperty Name="A0026_ID" ColumnName="A0026_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0027">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0027">
+        <MappingFragment StoreEntitySet="A0027">
+          <ScalarProperty Name="thuTu" ColumnName="thuTu" />
+          <ScalarProperty Name="ngayThem" ColumnName="ngayThem" />
+          <ScalarProperty Name="kieuNguoiXuLy" ColumnName="kieuNguoiXuLy" />
+          <ScalarProperty Name="A0002_ID" ColumnName="A0002_ID" />
+          <ScalarProperty Name="A0024_ID" ColumnName="A0024_ID" />
+          <ScalarProperty Name="A0027_ID" ColumnName="A0027_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0028">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0028">
+        <MappingFragment StoreEntitySet="A0028">
+          <ScalarProperty Name="daXoa" ColumnName="daXoa" />
+          <ScalarProperty Name="viTriHienTaiUserID" ColumnName="viTriHienTaiUserID" />
+          <ScalarProperty Name="viTriHienTaiNhomKyID" ColumnName="viTriHienTaiNhomKyID" />
+          <ScalarProperty Name="viTriHienTaiMenuID" ColumnName="viTriHienTaiMenuID" />
+          <ScalarProperty Name="ngayXuLyMongMuon" ColumnName="ngayXuLyMongMuon" />
+          <ScalarProperty Name="ngayTao" ColumnName="ngayTao" />
+          <ScalarProperty Name="trangThai" ColumnName="trangThai" />
+          <ScalarProperty Name="trangThaiNguoiTao" ColumnName="trangThaiNguoiTao" />
+          <ScalarProperty Name="maForm" ColumnName="maForm" />
+          <ScalarProperty Name="T100C" ColumnName="T100C" />
+          <ScalarProperty Name="T099C" ColumnName="T099C" />
+          <ScalarProperty Name="T098C" ColumnName="T098C" />
+          <ScalarProperty Name="T097C" ColumnName="T097C" />
+          <ScalarProperty Name="T096C" ColumnName="T096C" />
+          <ScalarProperty Name="T095C" ColumnName="T095C" />
+          <ScalarProperty Name="T094C" ColumnName="T094C" />
+          <ScalarProperty Name="T093C" ColumnName="T093C" />
+          <ScalarProperty Name="T092C" ColumnName="T092C" />
+          <ScalarProperty Name="T091C" ColumnName="T091C" />
+          <ScalarProperty Name="T090C" ColumnName="T090C" />
+          <ScalarProperty Name="T089C" ColumnName="T089C" />
+          <ScalarProperty Name="T088C" ColumnName="T088C" />
+          <ScalarProperty Name="T087C" ColumnName="T087C" />
+          <ScalarProperty Name="T086C" ColumnName="T086C" />
+          <ScalarProperty Name="T085C" ColumnName="T085C" />
+          <ScalarProperty Name="T084C" ColumnName="T084C" />
+          <ScalarProperty Name="T083C" ColumnName="T083C" />
+          <ScalarProperty Name="T082C" ColumnName="T082C" />
+          <ScalarProperty Name="T081C" ColumnName="T081C" />
+          <ScalarProperty Name="T080C" ColumnName="T080C" />
+          <ScalarProperty Name="T079C" ColumnName="T079C" />
+          <ScalarProperty Name="T078C" ColumnName="T078C" />
+          <ScalarProperty Name="T077C" ColumnName="T077C" />
+          <ScalarProperty Name="T076C" ColumnName="T076C" />
+          <ScalarProperty Name="T075C" ColumnName="T075C" />
+          <ScalarProperty Name="T074C" ColumnName="T074C" />
+          <ScalarProperty Name="T073C" ColumnName="T073C" />
+          <ScalarProperty Name="T072C" ColumnName="T072C" />
+          <ScalarProperty Name="T071C" ColumnName="T071C" />
+          <ScalarProperty Name="T070C" ColumnName="T070C" />
+          <ScalarProperty Name="T069C" ColumnName="T069C" />
+          <ScalarProperty Name="T068C" ColumnName="T068C" />
+          <ScalarProperty Name="T067C" ColumnName="T067C" />
+          <ScalarProperty Name="T066C" ColumnName="T066C" />
+          <ScalarProperty Name="T065C" ColumnName="T065C" />
+          <ScalarProperty Name="T064C" ColumnName="T064C" />
+          <ScalarProperty Name="T063C" ColumnName="T063C" />
+          <ScalarProperty Name="T062C" ColumnName="T062C" />
+          <ScalarProperty Name="T061C" ColumnName="T061C" />
+          <ScalarProperty Name="T060C" ColumnName="T060C" />
+          <ScalarProperty Name="T059C" ColumnName="T059C" />
+          <ScalarProperty Name="T058C" ColumnName="T058C" />
+          <ScalarProperty Name="T057C" ColumnName="T057C" />
+          <ScalarProperty Name="T056C" ColumnName="T056C" />
+          <ScalarProperty Name="T055C" ColumnName="T055C" />
+          <ScalarProperty Name="T054C" ColumnName="T054C" />
+          <ScalarProperty Name="T053C" ColumnName="T053C" />
+          <ScalarProperty Name="T052C" ColumnName="T052C" />
+          <ScalarProperty Name="T051C" ColumnName="T051C" />
+          <ScalarProperty Name="T050C" ColumnName="T050C" />
+          <ScalarProperty Name="T049C" ColumnName="T049C" />
+          <ScalarProperty Name="T048C" ColumnName="T048C" />
+          <ScalarProperty Name="T047C" ColumnName="T047C" />
+          <ScalarProperty Name="T046C" ColumnName="T046C" />
+          <ScalarProperty Name="T045C" ColumnName="T045C" />
+          <ScalarProperty Name="T044C" ColumnName="T044C" />
+          <ScalarProperty Name="T043C" ColumnName="T043C" />
+          <ScalarProperty Name="T042C" ColumnName="T042C" />
+          <ScalarProperty Name="T041C" ColumnName="T041C" />
+          <ScalarProperty Name="T040C" ColumnName="T040C" />
+          <ScalarProperty Name="T039C" ColumnName="T039C" />
+          <ScalarProperty Name="T038C" ColumnName="T038C" />
+          <ScalarProperty Name="T037C" ColumnName="T037C" />
+          <ScalarProperty Name="T036C" ColumnName="T036C" />
+          <ScalarProperty Name="T035C" ColumnName="T035C" />
+          <ScalarProperty Name="T034C" ColumnName="T034C" />
+          <ScalarProperty Name="T033C" ColumnName="T033C" />
+          <ScalarProperty Name="T032C" ColumnName="T032C" />
+          <ScalarProperty Name="T031C" ColumnName="T031C" />
+          <ScalarProperty Name="T030C" ColumnName="T030C" />
+          <ScalarProperty Name="T029C" ColumnName="T029C" />
+          <ScalarProperty Name="T028C" ColumnName="T028C" />
+          <ScalarProperty Name="T027C" ColumnName="T027C" />
+          <ScalarProperty Name="T026C" ColumnName="T026C" />
+          <ScalarProperty Name="T025C" ColumnName="T025C" />
+          <ScalarProperty Name="T024C" ColumnName="T024C" />
+          <ScalarProperty Name="T023C" ColumnName="T023C" />
+          <ScalarProperty Name="T022C" ColumnName="T022C" />
+          <ScalarProperty Name="T021C" ColumnName="T021C" />
+          <ScalarProperty Name="T020C" ColumnName="T020C" />
+          <ScalarProperty Name="T019C" ColumnName="T019C" />
+          <ScalarProperty Name="T018C" ColumnName="T018C" />
+          <ScalarProperty Name="T017C" ColumnName="T017C" />
+          <ScalarProperty Name="T016C" ColumnName="T016C" />
+          <ScalarProperty Name="T015C" ColumnName="T015C" />
+          <ScalarProperty Name="T014C" ColumnName="T014C" />
+          <ScalarProperty Name="T013C" ColumnName="T013C" />
+          <ScalarProperty Name="T012C" ColumnName="T012C" />
+          <ScalarProperty Name="T011C" ColumnName="T011C" />
+          <ScalarProperty Name="T010C" ColumnName="T010C" />
+          <ScalarProperty Name="T009C" ColumnName="T009C" />
+          <ScalarProperty Name="T008C" ColumnName="T008C" />
+          <ScalarProperty Name="T007C" ColumnName="T007C" />
+          <ScalarProperty Name="T006C" ColumnName="T006C" />
+          <ScalarProperty Name="T005C" ColumnName="T005C" />
+          <ScalarProperty Name="T004C" ColumnName="T004C" />
+          <ScalarProperty Name="T003C" ColumnName="T003C" />
+          <ScalarProperty Name="T002C" ColumnName="T002C" />
+          <ScalarProperty Name="T001C" ColumnName="T001C" />
+          <ScalarProperty Name="A0032_ID" ColumnName="A0032_ID" />
+          <ScalarProperty Name="A0016_ID" ColumnName="A0016_ID" />
+          <ScalarProperty Name="A0002_ID" ColumnName="A0002_ID" />
+          <ScalarProperty Name="A0028_ID" ColumnName="A0028_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0028D">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0028D">
+        <MappingFragment StoreEntitySet="A0028D">
+          <ScalarProperty Name="C040C" ColumnName="C040C" />
+          <ScalarProperty Name="C039C" ColumnName="C039C" />
+          <ScalarProperty Name="C038C" ColumnName="C038C" />
+          <ScalarProperty Name="C037C" ColumnName="C037C" />
+          <ScalarProperty Name="C036C" ColumnName="C036C" />
+          <ScalarProperty Name="C035C" ColumnName="C035C" />
+          <ScalarProperty Name="C034C" ColumnName="C034C" />
+          <ScalarProperty Name="C033C" ColumnName="C033C" />
+          <ScalarProperty Name="C032C" ColumnName="C032C" />
+          <ScalarProperty Name="C031C" ColumnName="C031C" />
+          <ScalarProperty Name="C030C" ColumnName="C030C" />
+          <ScalarProperty Name="C029C" ColumnName="C029C" />
+          <ScalarProperty Name="C028C" ColumnName="C028C" />
+          <ScalarProperty Name="C027C" ColumnName="C027C" />
+          <ScalarProperty Name="C026C" ColumnName="C026C" />
+          <ScalarProperty Name="C025C" ColumnName="C025C" />
+          <ScalarProperty Name="C024C" ColumnName="C024C" />
+          <ScalarProperty Name="C023C" ColumnName="C023C" />
+          <ScalarProperty Name="C022C" ColumnName="C022C" />
+          <ScalarProperty Name="C021C" ColumnName="C021C" />
+          <ScalarProperty Name="C020C" ColumnName="C020C" />
+          <ScalarProperty Name="C019C" ColumnName="C019C" />
+          <ScalarProperty Name="C018C" ColumnName="C018C" />
+          <ScalarProperty Name="C017C" ColumnName="C017C" />
+          <ScalarProperty Name="C016C" ColumnName="C016C" />
+          <ScalarProperty Name="C015C" ColumnName="C015C" />
+          <ScalarProperty Name="C014C" ColumnName="C014C" />
+          <ScalarProperty Name="C013C" ColumnName="C013C" />
+          <ScalarProperty Name="C012C" ColumnName="C012C" />
+          <ScalarProperty Name="C011C" ColumnName="C011C" />
+          <ScalarProperty Name="C010C" ColumnName="C010C" />
+          <ScalarProperty Name="C009C" ColumnName="C009C" />
+          <ScalarProperty Name="C008C" ColumnName="C008C" />
+          <ScalarProperty Name="C007C" ColumnName="C007C" />
+          <ScalarProperty Name="C006C" ColumnName="C006C" />
+          <ScalarProperty Name="C005C" ColumnName="C005C" />
+          <ScalarProperty Name="C004C" ColumnName="C004C" />
+          <ScalarProperty Name="C003C" ColumnName="C003C" />
+          <ScalarProperty Name="C002C" ColumnName="C002C" />
+          <ScalarProperty Name="C001C" ColumnName="C001C" />
+          <ScalarProperty Name="IsPostion" ColumnName="IsPostion" />
+          <ScalarProperty Name="A0028_ID" ColumnName="A0028_ID" />
+          <ScalarProperty Name="A0028D_ID" ColumnName="A0028D_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0029">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0029">
+        <MappingFragment StoreEntitySet="A0029">
+          <ScalarProperty Name="daXem" ColumnName="daXem" />
+          <ScalarProperty Name="viTriHienTai" ColumnName="viTriHienTai" />
+          <ScalarProperty Name="thoiGianGui" ColumnName="thoiGianGui" />
+          <ScalarProperty Name="thuThu" ColumnName="thuThu" />
+          <ScalarProperty Name="daKy" ColumnName="daKy" />
+          <ScalarProperty Name="tenViTri" ColumnName="tenViTri" />
+          <ScalarProperty Name="tenNhomKy" ColumnName="tenNhomKy" />
+          <ScalarProperty Name="A0020_ID" ColumnName="A0020_ID" />
+          <ScalarProperty Name="A0017_ID" ColumnName="A0017_ID" />
+          <ScalarProperty Name="A0002_ID" ColumnName="A0002_ID" />
+          <ScalarProperty Name="A0028_ID" ColumnName="A0028_ID" />
+          <ScalarProperty Name="A0029_ID" ColumnName="A0029_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0030">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0030">
+        <MappingFragment StoreEntitySet="A0030">
+          <ScalarProperty Name="thoiGianGui" ColumnName="thoiGianGui" />
+          <ScalarProperty Name="trangThai" ColumnName="trangThai" />
+          <ScalarProperty Name="thuThu" ColumnName="thuThu" />
+          <ScalarProperty Name="noiDung" ColumnName="noiDung" />
+          <ScalarProperty Name="tieuDe" ColumnName="tieuDe" />
+          <ScalarProperty Name="A0002_ID" ColumnName="A0002_ID" />
+          <ScalarProperty Name="A0028_ID" ColumnName="A0028_ID" />
+          <ScalarProperty Name="A0030_ID" ColumnName="A0030_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0031">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0031">
+        <MappingFragment StoreEntitySet="A0031">
+          <ScalarProperty Name="thuTu" ColumnName="thuTu" />
+          <ScalarProperty Name="kieuFile" ColumnName="kieuFile" />
+          <ScalarProperty Name="loaiFile" ColumnName="loaiFile" />
+          <ScalarProperty Name="ngayTao" ColumnName="ngayTao" />
+          <ScalarProperty Name="duongDan" ColumnName="duongDan" />
+          <ScalarProperty Name="dungLuong" ColumnName="dungLuong" />
+          <ScalarProperty Name="tenFile" ColumnName="tenFile" />
+          <ScalarProperty Name="A0028_ID" ColumnName="A0028_ID" />
+          <ScalarProperty Name="A0031_ID" ColumnName="A0031_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0032">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0032">
+        <MappingFragment StoreEntitySet="A0032">
+          <ScalarProperty Name="trangThai" ColumnName="trangThai" />
+          <ScalarProperty Name="thuTu" ColumnName="thuTu" />
+          <ScalarProperty Name="nguoiTao" ColumnName="nguoiTao" />
+          <ScalarProperty Name="ngayPhatHanh" ColumnName="ngayPhatHanh" />
+          <ScalarProperty Name="images" ColumnName="images" />
+          <ScalarProperty Name="kieuForm" ColumnName="kieuForm" />
+          <ScalarProperty Name="formPhongBan" ColumnName="formPhongBan" />
+          <ScalarProperty Name="tenTiengNhat" ColumnName="tenTiengNhat" />
+          <ScalarProperty Name="tenForm" ColumnName="tenForm" />
+          <ScalarProperty Name="maForm" ColumnName="maForm" />
+          <ScalarProperty Name="A0032_ID" ColumnName="A0032_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0033">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0033">
+        <MappingFragment StoreEntitySet="A0033">
+          <ScalarProperty Name="A0016_ID" ColumnName="A0016_ID" />
+          <ScalarProperty Name="A0019_ID" ColumnName="A0019_ID" />
+          <ScalarProperty Name="A0021_ID" ColumnName="A0021_ID" />
+          <ScalarProperty Name="A0004_ID" ColumnName="A0004_ID" />
+          <ScalarProperty Name="A0033_ID" ColumnName="A0033_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0034">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0034">
+        <MappingFragment StoreEntitySet="A0034">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="kieuPhongBan" ColumnName="kieuPhongBan" />
+          <ScalarProperty Name="trangThai" ColumnName="trangThai" />
+          <ScalarProperty Name="tenPhongBan" ColumnName="tenPhongBan" />
+          <ScalarProperty Name="maPhongBan" ColumnName="maPhongBan" />
+          <ScalarProperty Name="phongBanMapID" ColumnName="phongBanMapID" />
+          <ScalarProperty Name="Parent_ID" ColumnName="Parent_ID" />
+          <ScalarProperty Name="A0034_ID" ColumnName="A0034_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0035">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0035">
+        <MappingFragment StoreEntitySet="A0035">
+          <ScalarProperty Name="trangThai" ColumnName="trangThai" />
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="tenTiengNhat" ColumnName="tenTiengNhat" />
+          <ScalarProperty Name="tenTiengViet" ColumnName="tenTiengViet" />
+          <ScalarProperty Name="maNoiDungBaoPhe" ColumnName="maNoiDungBaoPhe" />
+          <ScalarProperty Name="A0035_ID" ColumnName="A0035_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0036">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0036">
+        <MappingFragment StoreEntitySet="A0036">
+          <ScalarProperty Name="IsType" ColumnName="IsType" />
+          <ScalarProperty Name="A0034_ID" ColumnName="A0034_ID" />
+          <ScalarProperty Name="A0035_ID" ColumnName="A0035_ID" />
+          <ScalarProperty Name="A0036_ID" ColumnName="A0036_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0037">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0037">
+        <MappingFragment StoreEntitySet="A0037">
+          <ScalarProperty Name="ngayHoanThanh" ColumnName="ngayHoanThanh" />
+          <ScalarProperty Name="viTriHienTaiUserID" ColumnName="viTriHienTaiUserID" />
+          <ScalarProperty Name="viTriHienTaiMenuID" ColumnName="viTriHienTaiMenuID" />
+          <ScalarProperty Name="ngayXuLyMongMuon" ColumnName="ngayXuLyMongMuon" />
+          <ScalarProperty Name="ngayTao" ColumnName="ngayTao" />
+          <ScalarProperty Name="IsEdit" ColumnName="IsEdit" />
+          <ScalarProperty Name="trangThai" ColumnName="trangThai" />
+          <ScalarProperty Name="tenBoPhan" ColumnName="tenBoPhan" />
+          <ScalarProperty Name="A0034_ID" ColumnName="A0034_ID" />
+          <ScalarProperty Name="A0028_ID" ColumnName="A0028_ID" />
+          <ScalarProperty Name="A0002_ID" ColumnName="A0002_ID" />
+          <ScalarProperty Name="A0037_ID" ColumnName="A0037_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0038">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0038">
+        <MappingFragment StoreEntitySet="A0038">
+          <ScalarProperty Name="thuTu" ColumnName="thuTu" />
+          <ScalarProperty Name="thoiGianKy" ColumnName="thoiGianKy" />
+          <ScalarProperty Name="daKy" ColumnName="daKy" />
+          <ScalarProperty Name="viTriHienTai" ColumnName="viTriHienTai" />
+          <ScalarProperty Name="viTri" ColumnName="viTri" />
+          <ScalarProperty Name="mailNguoiKy" ColumnName="mailNguoiKy" />
+          <ScalarProperty Name="A0002_ID" ColumnName="A0002_ID" />
+          <ScalarProperty Name="A0037_ID" ColumnName="A0037_ID" />
+          <ScalarProperty Name="A0028D_ID" ColumnName="A0028D_ID" />
+          <ScalarProperty Name="A0038_ID" ColumnName="A0038_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0039">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0039">
+        <MappingFragment StoreEntitySet="A0039">
+          <ScalarProperty Name="trangThai" ColumnName="trangThai" />
+          <ScalarProperty Name="noiDungXuLy" ColumnName="noiDungXuLy" />
+          <ScalarProperty Name="nguoiXuLy" ColumnName="nguoiXuLy" />
+          <ScalarProperty Name="ngayXuLy" ColumnName="ngayXuLy" />
+          <ScalarProperty Name="A0037_ID" ColumnName="A0037_ID" />
+          <ScalarProperty Name="A0028D_ID" ColumnName="A0028D_ID" />
+          <ScalarProperty Name="A0028_ID" ColumnName="A0028_ID" />
+          <ScalarProperty Name="A0039_ID" ColumnName="A0039_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0040">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0040">
+        <MappingFragment StoreEntitySet="A0040">
+          <ScalarProperty Name="MailNguoiKy7" ColumnName="MailNguoiKy7" />
+          <ScalarProperty Name="MailNguoiKy6" ColumnName="MailNguoiKy6" />
+          <ScalarProperty Name="MailNguoiKy5" ColumnName="MailNguoiKy5" />
+          <ScalarProperty Name="MailNguoiKy4" ColumnName="MailNguoiKy4" />
+          <ScalarProperty Name="MailNguoiKy3" ColumnName="MailNguoiKy3" />
+          <ScalarProperty Name="MailNguoiKy2" ColumnName="MailNguoiKy2" />
+          <ScalarProperty Name="MailNguoiKy1" ColumnName="MailNguoiKy1" />
+          <ScalarProperty Name="nguoiKy7" ColumnName="nguoiKy7" />
+          <ScalarProperty Name="nguoiKy6" ColumnName="nguoiKy6" />
+          <ScalarProperty Name="nguoiKy5" ColumnName="nguoiKy5" />
+          <ScalarProperty Name="nguoiKy4" ColumnName="nguoiKy4" />
+          <ScalarProperty Name="nguoiKy3" ColumnName="nguoiKy3" />
+          <ScalarProperty Name="nguoiKy2" ColumnName="nguoiKy2" />
+          <ScalarProperty Name="nguoiKy1" ColumnName="nguoiKy1" />
+          <ScalarProperty Name="A0034_ID" ColumnName="A0034_ID" />
+          <ScalarProperty Name="A0040_ID" ColumnName="A0040_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0041">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0041">
+        <MappingFragment StoreEntitySet="A0041">
+          <ScalarProperty Name="SMTPOut" ColumnName="SMTPOut" />
+          <ScalarProperty Name="SMTPIn" ColumnName="SMTPIn" />
+          <ScalarProperty Name="Port" ColumnName="Port" />
+          <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="tenEmail" ColumnName="tenEmail" />
+          <ScalarProperty Name="A0041_ID" ColumnName="A0041_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0042">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0042">
+        <MappingFragment StoreEntitySet="A0042">
+          <ScalarProperty Name="A0002_ID" ColumnName="A0002_ID" />
+          <ScalarProperty Name="A0001_ID" ColumnName="A0001_ID" />
+          <ScalarProperty Name="A0042_ID" ColumnName="A0042_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0043">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0043">
+        <MappingFragment StoreEntitySet="A0043">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="giaTri" ColumnName="giaTri" />
+          <ScalarProperty Name="kieuBaiViet" ColumnName="kieuBaiViet" />
+          <ScalarProperty Name="tenKieuBaiViet" ColumnName="tenKieuBaiViet" />
+          <ScalarProperty Name="A0043_ID" ColumnName="A0043_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A0044">
+      <EntityTypeMapping TypeName="PhanQuyenModel.A0044">
+        <MappingFragment StoreEntitySet="A0044">
+          <ScalarProperty Name="chiTieuBai" ColumnName="chiTieuBai" />
+          <ScalarProperty Name="nam" ColumnName="nam" />
+          <ScalarProperty Name="thang" ColumnName="thang" />
+          <ScalarProperty Name="tenBoPhan" ColumnName="tenBoPhan" />
+          <ScalarProperty Name="boPhan_ID" ColumnName="boPhan_ID" />
+          <ScalarProperty Name="Parent_ID" ColumnName="Parent_ID" />
+          <ScalarProperty Name="A0044_ID" ColumnName="A0044_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
